@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Monument : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int answersDone;
+    [SerializeField] private int totalAnswers;
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Adds a new answer. Returns true if completed
+    /// </summary>
+    /// <returns></returns>
+    public bool AddAnswer()
     {
-        
+        Debug.Log("Monument: Adding Answer");
+        return ++answersDone >= totalAnswers;
     }
 }

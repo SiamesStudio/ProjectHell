@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool isQuestionable;
+    [SerializeField] private List<Monument> monuments;
+    [HideInInspector] public Monument currentMonument;
+
+    public static LevelManager instance;
+
+    private void Awake()
     {
-        
+        if (instance) Destroy(instance);
+        instance = this;
+        currentMonument = monuments[0];
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateMonument()
     {
-        
+        Debug.Log("Level Manager: Monument Updated!");
     }
 }

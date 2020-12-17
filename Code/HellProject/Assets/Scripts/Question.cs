@@ -2,17 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Question : MonoBehaviour
+public class Question
 {
-    // Start is called before the first frame update
-    void Start()
+    public string question;
+    public List<string> answers;
+    public Tourist tourist;
+    public bool isMonumentRelated;
+    public float coolDown;
+
+    public Question(string _question, List<string> _answers, Tourist _tourist, bool _isMonumentRelated)
     {
-        
+        question = _question;
+        answers = _answers;
+        tourist = _tourist;
+        isMonumentRelated = _isMonumentRelated;
+        coolDown = _tourist.waitTime;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Answer(int _answerID)
     {
-        
+        switch(_answerID)
+        {
+            case -1:
+                Debug.Log("Not Answered!");
+                break;
+            case 0:
+                Debug.Log("Correct!");
+                break;
+            default:
+                Debug.Log("Incorrect!");
+                break;
+        }
     }
 }
