@@ -8,17 +8,21 @@ using UnityEditor;
 
 public class QuestionManager : MonoBehaviour
 {
-    private Queue<Question> questions;
+    private Queue<Question> questions = new Queue<Question>();
     [SerializeField] private Text touristNameDisplay;
     [SerializeField] private Text questionDisplay;
     [SerializeField] private List<Text> answersDisplay;
+    [SerializeField] private Slider timeSlider;
+    [SerializeField] private Vector2 timeBetweenQuestions;
+    private float questionCountDown = 0;
     private Animator anim;
     private int correctAnswer;
     private Question currentQuestion;
     private bool isVisible;
+
     [SerializeField] private bool debugOptions;
     [HideInInspector] [SerializeField] private Tourist tourist;
-    [HideInInspector] [SerializeField] private Slider timeSlider;
+    [HideInInspector] [SerializeField] private bool freezeCoolDown;
 
     public static QuestionManager instance;
 
@@ -29,26 +33,26 @@ public class QuestionManager : MonoBehaviour
 
         if (!TryGetComponent(out anim))
             Debug.LogError("QuestionManager error: No Animator Controller found in " + name);
-        if (debugOptions) GenerateExQuestions();
     }
 
     private void Update()
     {
-        if (questions == null) return;
+        questionCountDown -= Time.deltaTime;
+        if (debugOptions) DebugOptions();
         if (currentQuestion == null)
         {
-            if(questions.Count > 0) PrintQuestion();
+            if(questions.Count > 0 && LevelManager.instance.isQuestionable && questionCountDown < 0) 
+                PrintQuestion();
             else return;
         }
 
-        if (LevelManager.instance.isQuestionable) MakeVisible();
+        if (LevelManager.instance.isQuestionVisible) MakeVisible();
         else MakeInvisible();
 
-        currentQuestion.coolDown -= Time.deltaTime;
+        if(debugOptions && !freezeCoolDown) currentQuestion.coolDown -= Time.deltaTime;
         timeSlider.value = currentQuestion.coolDown;
         if (currentQuestion.coolDown < 0) ReceiveAnswer(-1);
 
-        if (debugOptions) DebugOptions();
     }
 
     /// <summary>
@@ -78,9 +82,8 @@ public class QuestionManager : MonoBehaviour
     public void MakeVisible()
     {
         if (isVisible) return;
-        Debug.Log("Making it visible");
         isVisible = true;
-        //anim.AnimName();
+        anim.SetBool("isVisible", isVisible);
     }
 
     /// <summary>
@@ -89,9 +92,8 @@ public class QuestionManager : MonoBehaviour
     public void MakeInvisible()
     {
         if (!isVisible) return;
-        Debug.Log("Making it invisible");
-        //anim.AnimName
         isVisible = false;
+        anim.SetBool("isVisible", isVisible);
     }
 
     /// <summary>
@@ -100,7 +102,6 @@ public class QuestionManager : MonoBehaviour
     /// <param name="_answer"></param>
     public void ReceiveAnswer(int _answer)
     {
-        MakeInvisible();
         if(_answer == -1) //Not answered
         {
             currentQuestion.Answer(-1);
@@ -118,7 +119,9 @@ public class QuestionManager : MonoBehaviour
         {
             currentQuestion.Answer(1);
         }
+        MakeInvisible();
         currentQuestion = null;
+        questionCountDown = Random.Range(timeBetweenQuestions.x, timeBetweenQuestions.y);
     }
 
     /// <summary>
@@ -141,22 +144,33 @@ public class QuestionManager : MonoBehaviour
     #region Debug
     private void DebugOptions()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-
+            LevelManager.instance.isQuestionable = !LevelManager.instance.isQuestionable;
+            Debug.Log("Key pressed: Q");
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            LevelManager.instance.isQuestionVisible = !LevelManager.instance.isQuestionVisible;
+            Debug.Log("Key pressed: V");
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GenerateExQuestion();
+            Debug.Log("Key pressed: G");
         }
     }
 
-    private void GenerateExQuestions()
-    {
-        questions = new Queue<Question>();
+    private void GenerateExQuestion()
+    {        
         string[] _answers = { "Good", "Bad" };
         Question _question = new Question("How r u?", new List<string>(_answers), tourist, true);
         questions.Enqueue(_question);
-
+        Debug.Log("Example question generated. Count: " + questions.Count);
+        /*
         string[] _answers2 = { "Yep", "Nope" };
         _question = new Question("U love me?", new List<string>(_answers2), tourist, true);
-        questions.Enqueue(_question);
+        questions.Enqueue(_question); */
     }
     #endregion
 
@@ -175,8 +189,8 @@ public class QuestionManager : MonoBehaviour
 
                 if (_script.debugOptions) // if bool is true, show other fields
                 {
+                    _script.freezeCoolDown = EditorGUILayout.Toggle("Freeze CoolDown", _script.freezeCoolDown);
                     _script.tourist = EditorGUILayout.ObjectField(_script.tourist, typeof(Tourist), true) as Tourist;
-                    _script.timeSlider = EditorGUILayout.ObjectField(_script.timeSlider, typeof(Slider), true) as Slider;
                 }
             }
         }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Monument : MonoBehaviour
 {
+    enum monument { PutoJudas, PacoPorros}; //This should probably be in the GameManager
+
+    [SerializeField] private monument id;
     private int answersDone;
     [SerializeField] private int totalAnswers;
 
@@ -14,6 +17,7 @@ public class Monument : MonoBehaviour
     public bool AddAnswer()
     {
         Debug.Log("Monument: Adding Answer");
+        //PARTICLES AND SHIT!
         return ++answersDone >= totalAnswers;
     }
 }

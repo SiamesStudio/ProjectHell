@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public bool isQuestionVisible;
     public bool isQuestionable;
     [SerializeField] private List<Monument> monuments;
     [HideInInspector] public Monument currentMonument;

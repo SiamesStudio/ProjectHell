@@ -24,12 +24,15 @@ public class Question
         switch(_answerID)
         {
             case -1:
+                tourist.emptyAnswers++;
                 Debug.Log("Not Answered!");
                 break;
             case 0:
+                tourist.rightAnswers++;
                 Debug.Log("Correct!");
                 break;
             default:
+                tourist.wrongAnswers++;
                 Debug.Log("Incorrect!");
                 break;
         }
