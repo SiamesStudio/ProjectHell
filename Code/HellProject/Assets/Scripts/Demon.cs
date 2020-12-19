@@ -8,9 +8,11 @@ using static LevelManager;
 public class Demon : MonoBehaviour
 {
     #region variables 
+    public int kind;
     public GameObject tourist; // solo puede tener un turista
-    private bool haveTourist;
-    private GameObject collisionT;
+     //public GameObject rock;
+    private bool rockToTourist;
+    private bool collisionT;
     public float distance;
     private Vector3 home = Vector3.zero;
     private Vector3 newPosition;
@@ -21,123 +23,169 @@ public class Demon : MonoBehaviour
     void Start()
     {
         newPosition = transform.position;
-        collisionT = null;
+        collisionT = false;
         tourist = null;
         lm = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        if (!tourist)
+        {
+
+            LookingForTourist();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!tourist)
-        {
-            LookingForTourist();
-        }
-        else
-        {
-            if (!collisionT) GoTo();
-            else if (collisionT) Attack();
-        }
+
+        collisionDemTou();
+        /* pwta
+                if (!tourist)
+                {
+                    LookingForTourist();
+                }
+                else
+                {*/
+        if (!collisionT) GoTo();
+        else if (collisionT) Attack();
+        if (!rockToTourist) FlyTo();
+        else if (rockToTourist) FlyAttack();
+
+        // }
+
 
     }
-    //metodo nuevo que destruye al demonio cuando llega a su posición inicial ya que sino hay muchos
-    void atHome()
+    void AtHome()
     {
         Destroy(this.gameObject);
     }
-    void toHome()
+
+    void ToHome()
     {
 
         newPosition = home;
         tourist = null;
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
-        if (Vector3.Distance(home, transform.position) <= distance) atHome();
+        if (Vector3.Distance(home, transform.position) <= distance) AtHome();
     }
+
     public void Attack()
     {
-
-        if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true && haveTourist)
+        if (kind == 0)
         {
-            newPosition = home;
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
-            tourist.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-
-            if (Vector3.Distance(home, transform.position) <= distance)
+            if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true)
             {
-                tourist.gameObject.GetComponent<Tourist>().SetDying(true);
-                tourist = null;
-                atHome();
+                newPosition = home;
+                transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
+                tourist.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
 
+                if (Vector3.Distance(home, transform.position) <= distance)
+                {
+                    tourist.gameObject.GetComponent<Tourist>().SetDying(true);
+                    tourist = null;
+                    AtHome();
+
+                }
+            }
+            else
+            {
+                LookingForTourist();
             }
         }
-        else
+    }
+    public void FlyAttack()
+    {
+        if (kind == 1)
         {
-            toHome();
-        }
 
+            Debug.Log("Soy demon2 y estoy atacando");
+            
+        }
     }
     void GoTo()
     {
-
-        if (tourist && tourist.gameObject.GetComponent<Tourist>().GetTargeted() == true && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == false)
+        bool prueba = tourist && tourist.gameObject.GetComponent<Tourist>().GetTargeted() == true && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == false ? true : false;
+        if (kind == 0)
         {
+            if (prueba)
+            {
+                newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
+                transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
+            }
+            
+        }
+    }
+    void FlyTo()
+    {
+
+        if (tourist)
+        {
+            Debug.Log("Go To Tourist");
             newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
-
-
+           
         }
-        else
+        else if (!tourist)
         {
-            newPosition = transform.position;
-            tourist = null;
-            LookingForTourist();
-
+            //hay que hacer un nuevo looking for tourist para el demonio 2(hacer herencia )
+            Debug.Log("no hay turista y soy 2");
+            
         }
-
-
     }
+
 
     void LookingForTourist()
     {
-        var visited = new List<GameObject>();
+        // hace que explote todo por stack overflow
         if (lm.tourists.Count > 0)
         {
+
+            var visited = new List<GameObject>();
             int i = (int)UnityEngine.Random.Range(0, lm.tourists.Count);
             while (lm.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() && !visited.Contains(lm.tourists[i]) && visited.Count != lm.tourists.Count)
             {
-                visited.Add(lm.tourists[i]);
                 i = (int)UnityEngine.Random.Range(0, lm.tourists.Count);
+                visited.Add(lm.tourists[i]);
             }
             if (visited.Count == lm.tourists.Count)
             {
-                toHome();
+                ToHome();
             }
             tourist = lm.tourists[i];
             if (tourist)
-                tourist.gameObject.GetComponent<Tourist>().SetTargeted(true);
+            { tourist.gameObject.GetComponent<Tourist>().SetTargeted(true);
+                visited = null;
+            }
         }
         else
         {
-            Attack();
+            ToHome();
         }
 
 
     }
-    void OnCollisionEnter(Collision collision)
+   void collisionDemTou()
     {
-        if (!collisionT && collision.gameObject == tourist && !tourist.gameObject.GetComponent<Tourist>().GetKidnapped())
+        if (kind == 0)
         {
-            collisionT = collision.gameObject;
-            tourist.gameObject.GetComponent<Tourist>().SetKidnapped(true);
-            lm.tourists.Remove(tourist);
-            haveTourist = true;
+            if (tourist && Vector3.Distance(tourist.gameObject.GetComponent<Tourist>().transform.position, transform.position) <= distance)
+            {
+                {
+                    collisionT = true;
+                    tourist.gameObject.GetComponent<Tourist>().SetKidnapped(true);
+                    lm.tourists.Remove(tourist);
+                }
+            }
         }
-        else if (!collisionT && collision.gameObject)
+        if (kind == 0)
         {
-            this.GetComponent<Rigidbody>().isKinematic = false;
+            if(tourist && Vector3.Distance(tourist.transform.position, transform.position) <= distance)
+
+            rockToTourist = true;
+
         }
 
     }
+
     #endregion
     #region getters and setters
     public GameObject GetTourist()
@@ -148,6 +196,14 @@ public class Demon : MonoBehaviour
     {
         this.tourist = tourist;
     }
+    /*public GameObject GetRock()
+    {
+        return rock;
+    }
+    public void SetRock(GameObject rock)
+    {
+        this.rock = rock;
+    }*/
     public Vector3 GetHome()
     {
         return home;
@@ -155,6 +211,14 @@ public class Demon : MonoBehaviour
     public void SetHome(Vector3 home)
     {
         this.home = home;
+    }
+    public int GetKind()
+    {
+        return kind;
+    }
+    public void SetKind(int kind)
+    {
+        this.kind = kind;
     }
     #endregion
 }

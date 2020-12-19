@@ -673,7 +673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059277693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -6.54}
+  m_LocalPosition: {x: 1.64, y: 1, z: -6.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 78909575}
@@ -706,11 +706,14 @@ MonoBehaviour:
   currentMonument: {fileID: 0}
   littleDemon: {fileID: 2371584536683798507, guid: e76bfa41c39d93c4c86d59e1b5132452,
     type: 3}
+  flyDemon: {fileID: -7237254556853436410, guid: d71956397ec3ed543a73e9a45b661607,
+    type: 3}
   tourists: []
   spawnPoint:
   - {fileID: 1774465659}
   - {fileID: 1877621079}
   - {fileID: 1558677446}
+  rocks: []
 --- !u!1 &1437629955
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,20 +13,29 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public Demon littleDemon;
+    public Demon flyDemon;
     private int numDemons = 0;
     public List<GameObject> tourists = null;
     private float spawnTime = 2.0f;
     public List<GameObject> spawnPoint;
+
+    public List<GameObject> rocks = null;
     private System.Random r;
     #endregion
     #region methods
-    
+
     private void Awake()
     {
-        if (instance) Destroy(instance);
-        instance = this;
-        currentMonument = monuments[0];
+        /*  if (instance) Destroy(instance);
+          instance = this;
+          currentMonument = monuments[0];*/
+
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
+        
+
+        littleDemon.SetKind(0);
+        flyDemon.SetKind(1);
+
         InvokeRepeating("spawner", 1, spawnTime);
         tourists = GameObject.FindGameObjectsWithTag("Turista").ToList<GameObject>();
         r = new System.Random();
@@ -41,11 +50,25 @@ public class LevelManager : MonoBehaviour
     private void spawner()
     {
         numDemons = GameObject.FindGameObjectsWithTag("Demon").Length;
+        Demon aux = null;
         foreach (GameObject point in spawnPoint)
         {
-            if (numDemons < 5 && tourists.Count > 0)
+
+            if (numDemons < 3 && tourists.Count > 0)
             {
-                Demon aux = Instantiate(littleDemon, point.transform.position, point.transform.rotation);
+
+                int i = (int)UnityEngine.Random.Range(0, 2);
+                if (i == 0)
+                {
+                    aux = Instantiate(littleDemon, point.transform.position, point.transform.rotation);
+                }
+                else if (i == 1)
+                {
+                    
+                    aux = Instantiate(flyDemon, new Vector3(point.transform.position.x, 4, point.transform.position.x), point.transform.rotation);
+
+                }
+                
                 aux.SetHome(point.transform.position);
                 numDemons++;
             }
