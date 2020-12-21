@@ -11,15 +11,15 @@ GameObject:
   - component: {fileID: 2371584536683798506}
   - component: {fileID: 2371584536683798519}
   - component: {fileID: 2371584536683798518}
-  - component: {fileID: 2371584536683798505}
   - component: {fileID: -3346394541526034091}
   - component: {fileID: 6922793111485457660}
+  - component: {fileID: 3863863226289507545}
   m_Layer: 0
   m_Name: demonio
   m_TagString: Demon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2371584536683798506
 Transform:
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2371584536683798505
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371584536683798509}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &-3346394541526034091
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -116,7 +102,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 2
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6922793111485457660
 MonoBehaviour:
@@ -133,6 +119,21 @@ MonoBehaviour:
   kind: 0
   tourist: {fileID: 0}
   haveTourist: 0
-  distance: 3
-  velocity: 3
+  distance: 2
+  home: {x: 0, y: 0, z: 0}
+  velocityToGo: 3
+  velocityToComeBack: 2
   lm: {fileID: 0}
+--- !u!65 &3863863226289507545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371584536683798509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

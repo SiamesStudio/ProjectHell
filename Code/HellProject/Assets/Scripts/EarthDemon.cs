@@ -11,8 +11,8 @@ public class EarthDemon : Demon
         if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true && haveTourist)
         {
             newPosition = home;
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
-            tourist.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToComeBack / 10);
+            tourist.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
             if (Vector3.Distance(home, transform.position) <= distance)
             {
@@ -39,8 +39,6 @@ public override void collisionDemTou()
                 haveTourist = true;
             lm.tourists.Remove(tourist);
         
-    }
-
-
+    } 
 }
 }

@@ -13,9 +13,10 @@ public class Demon : MonoBehaviour
     public bool haveTourist;
     protected bool collisionT;
     public float distance;
-    protected Vector3 home = Vector3.zero;
+    public Vector3 home = Vector3.zero;
     protected Vector3 newPosition;
-    public float velocity ;
+    public float velocityToGo;
+    public float velocityToComeBack;
     public LevelManager lm;
     #endregion
     #region methods
@@ -55,7 +56,7 @@ public class Demon : MonoBehaviour
 
         newPosition = home;
         tourist = null;
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToComeBack / 5);
         if (Vector3.Distance(home, transform.position) <= distance) AtHome();
     }
 
@@ -68,7 +69,7 @@ public class Demon : MonoBehaviour
         if (prueba)
         {
             newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocity / 5);
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
         }
         else
         {
@@ -79,13 +80,12 @@ public class Demon : MonoBehaviour
 
     protected  void LookingForTourist()
     {
-        
         if (lm.tourists.Count > 0)
         {
 
             var visited = new List<GameObject>();
             int i = (int)UnityEngine.Random.Range(0, lm.tourists.Count);
-            while (lm.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() && !visited.Contains(lm.tourists[i]) && visited.Count != lm.tourists.Count)
+            while (lm.tourists.Count > 0 && lm.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() && !visited.Contains(lm.tourists[i]) && visited.Count != lm.tourists.Count)
             {
                 i = (int)UnityEngine.Random.Range(0, lm.tourists.Count);
                 visited.Add(lm.tourists[i]);
@@ -101,6 +101,7 @@ public class Demon : MonoBehaviour
                 tourist.gameObject.GetComponent<Tourist>().SetTargeted(true);
                 visited = null;
             }
+            else ToHome();
         }
         else
         {

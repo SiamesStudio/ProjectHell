@@ -16,13 +16,12 @@ public class LevelManager : MonoBehaviour
     public AirDemon airD;
     private int numDemons = 0;
     public List<GameObject> tourists = null;
-    private float spawnTime = 2.0f;
-    public List<GameObject> spawnPoint;
+    public float spawnTime = 2.0f;
+    [SerializeField] private List<GameObject> spawnPoint;
 
-    public List<GameObject> rocks = null;
+    [SerializeField] private List<GameObject> rocks = null;
     private System.Random r;
     #endregion
-
     #region methods
 
     private void Awake()
@@ -61,11 +60,11 @@ public class LevelManager : MonoBehaviour
                 }
                 else if (i == 1)
                 {
-                    
-                    aux = Instantiate(airD, new Vector3(point.transform.position.x, 4, point.transform.position.x), point.transform.rotation);
+
+                    aux = Instantiate(airD, point.transform.position, point.transform.rotation);
 
                 }
-                
+
                 aux.SetHome(point.transform.position);
                 numDemons++;
             }
