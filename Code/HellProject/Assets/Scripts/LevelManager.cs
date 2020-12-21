@@ -12,8 +12,8 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-    public Demon littleDemon;
-    public Demon flyDemon;
+    public EarthDemon earthD;
+    public AirDemon airD;
     private int numDemons = 0;
     public List<GameObject> tourists = null;
     private float spawnTime = 2.0f;
@@ -31,10 +31,6 @@ public class LevelManager : MonoBehaviour
           currentMonument = monuments[0];*/
 
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
-        
-
-        littleDemon.SetKind(0);
-        flyDemon.SetKind(1);
 
         InvokeRepeating("spawner", 1, spawnTime);
         tourists = GameObject.FindGameObjectsWithTag("Turista").ToList<GameObject>();
@@ -60,12 +56,12 @@ public class LevelManager : MonoBehaviour
                 int i = (int)UnityEngine.Random.Range(0, 2);
                 if (i == 0)
                 {
-                    aux = Instantiate(littleDemon, point.transform.position, point.transform.rotation);
+                    aux = Instantiate(earthD, point.transform.position, point.transform.rotation);
                 }
                 else if (i == 1)
                 {
                     
-                    aux = Instantiate(flyDemon, new Vector3(point.transform.position.x, 4, point.transform.position.x), point.transform.rotation);
+                    aux = Instantiate(airD, new Vector3(point.transform.position.x, 4, point.transform.position.x), point.transform.rotation);
 
                 }
                 

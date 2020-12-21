@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2371584536683798519}
   - component: {fileID: 2371584536683798518}
   - component: {fileID: 2371584536683798505}
-  - component: {fileID: 2371584536683798507}
   - component: {fileID: -3346394541526034091}
+  - component: {fileID: 6922793111485457660}
   m_Layer: 0
   m_Name: demonio
   m_TagString: Demon
@@ -96,22 +96,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2371584536683798507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371584536683798509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcd59da6feec5c498da60c2e1f7042e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kind: 0
-  tourist: {fileID: 0}
-  distance: 1
-  velocity: 3
 --- !u!195 &-3346394541526034091
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -134,3 +118,21 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6922793111485457660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371584536683798509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7754c032e2ad01439e33e494e8f03a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kind: 0
+  tourist: {fileID: 0}
+  haveTourist: 0
+  distance: 3
+  velocity: 3
+  lm: {fileID: 0}

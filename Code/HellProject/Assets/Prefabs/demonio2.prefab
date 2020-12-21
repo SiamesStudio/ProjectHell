@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3861829965390262511}
   - component: {fileID: 4903140314154894526}
   - component: {fileID: 5749703780704473342}
-  - component: {fileID: -7237254556853436410}
+  - component: {fileID: 5851817963338457412}
   m_Layer: 0
   m_Name: demonio2
   m_TagString: Untagged
@@ -94,7 +94,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7237254556853436410
+--- !u!114 &5851817963338457412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,10 +103,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5977547440288016601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcd59da6feec5c498da60c2e1f7042e, type: 3}
+  m_Script: {fileID: 11500000, guid: bf28841d24d20144fa458a5924c1fd7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: 1
+  kind: 0
   tourist: {fileID: 0}
-  distance: 1
+  haveTourist: 0
+  distance: 3
   velocity: 3
+  lm: {fileID: 0}

@@ -657,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059277694}
-  - component: {fileID: 1059277695}
+  - component: {fileID: 1059277696}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: LevelManager
@@ -688,7 +688,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1059277695
+--- !u!114 &1059277696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -704,15 +704,10 @@ MonoBehaviour:
   isQuestionable: 0
   monuments: []
   currentMonument: {fileID: 0}
-  littleDemon: {fileID: 2371584536683798507, guid: e76bfa41c39d93c4c86d59e1b5132452,
-    type: 3}
-  flyDemon: {fileID: -7237254556853436410, guid: d71956397ec3ed543a73e9a45b661607,
-    type: 3}
+  earthD: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452, type: 3}
+  airD: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607, type: 3}
   tourists: []
-  spawnPoint:
-  - {fileID: 1774465659}
-  - {fileID: 1877621079}
-  - {fileID: 1558677446}
+  spawnPoint: []
   rocks: []
 --- !u!1 &1437629955
 GameObject:
