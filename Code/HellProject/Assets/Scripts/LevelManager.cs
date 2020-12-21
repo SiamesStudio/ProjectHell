@@ -22,13 +22,14 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> rocks = null;
     private System.Random r;
     #endregion
+
     #region methods
 
     private void Awake()
     {
-        /*  if (instance) Destroy(instance);
-          instance = this;
-          currentMonument = monuments[0];*/
+        if (instance) Destroy(instance);
+        instance = this;
+        currentMonument = monuments[0];
 
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
 
