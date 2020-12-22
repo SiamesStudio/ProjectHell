@@ -33,15 +33,13 @@ public class Demon : MonoBehaviour
             LookingForTourist();
         }
     }
-
-    // Update is called once per frame
     public void Update()
     {
 
         collisionDemTou();
 
-        if (!collisionT) GoTo();
-        else if (collisionT) Attack();
+        if (!collisionT && !haveTourist) GoTo();
+        else if (collisionT && haveTourist) Attack();
 
 
 

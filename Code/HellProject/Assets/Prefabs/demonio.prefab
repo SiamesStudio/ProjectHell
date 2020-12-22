@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3346394541526034091}
   - component: {fileID: 6922793111485457660}
   - component: {fileID: 3863863226289507545}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: demonio
   m_TagString: Demon
   m_Icon: {fileID: 0}
@@ -121,8 +121,8 @@ MonoBehaviour:
   haveTourist: 0
   distance: 2
   home: {x: 0, y: 0, z: 0}
-  velocityToGo: 3
-  velocityToComeBack: 2
+  velocityToGo: 2
+  velocityToComeBack: 0.5
   lm: {fileID: 0}
 --- !u!65 &3863863226289507545
 BoxCollider:

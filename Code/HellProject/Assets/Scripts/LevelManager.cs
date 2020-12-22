@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 public class LevelManager : MonoBehaviour
 {
@@ -33,7 +34,6 @@ public class LevelManager : MonoBehaviour
         if (instance) Destroy(instance);
         instance = this;
         currentMonument = monuments[0];
-
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
 
         InvokeRepeating("spawner", 1, spawnTime);
@@ -49,13 +49,13 @@ public class LevelManager : MonoBehaviour
         currentMonument = monuments[monuments.IndexOf(currentMonument) + 1];
     }
 
-    private void Update()
+    void Update()
     {
-        //Questionable -> RTSZone OnTrigger MonumentZone
-        //Visible -> Player OnTrigger RTSZone
+        if (tourists.Count == 0)
+            SceneManager.LoadScene("Menu");
     }
 
-    private void Spawner()
+    private void spawner()
     {
         numDemons = GameObject.FindGameObjectsWithTag("Demon").Length;
         Demon aux = null;
