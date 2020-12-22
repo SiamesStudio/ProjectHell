@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 public class LevelManager : MonoBehaviour
 {
@@ -41,6 +42,12 @@ public class LevelManager : MonoBehaviour
     public void UpdateMonument()
     {
         Debug.Log("Level Manager: Monument Updated!");
+    }
+
+    void Update()
+    {
+        if (tourists.Count == 0)
+            SceneManager.LoadScene("Menu");
     }
 
     private void spawner()

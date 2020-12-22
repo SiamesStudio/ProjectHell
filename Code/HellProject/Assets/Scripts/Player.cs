@@ -81,11 +81,14 @@ public class Player : PointMovement
     }
     private void AttackDemon(GameObject demon)
     {
-
+        
         GameObject aux = demon.gameObject.GetComponent<Demon>().tourist;
-        aux.gameObject.GetComponent<Tourist>().SetKidnapped(false);
-        aux.gameObject.GetComponent<Tourist>().SetTargeted(false);
-        lm.tourists.Add(aux);
+        if (aux && demon.gameObject.GetComponent<Demon>().haveTourist)
+        {
+            aux.gameObject.GetComponent<Tourist>().SetKidnapped(false);
+            aux.gameObject.GetComponent<Tourist>().SetTargeted(false);
+            lm.tourists.Add(aux);
+        }
         Destroy(demon);
 
     }
