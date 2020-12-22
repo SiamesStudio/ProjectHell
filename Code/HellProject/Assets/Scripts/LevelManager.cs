@@ -51,8 +51,8 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (tourists.Count == 0)
-            SceneManager.LoadScene("Menu");
+        /*if (tourists.Count == 0)
+            SceneManager.LoadScene("Menu");*/
     }
 
     private void spawner()
