@@ -45,6 +45,10 @@ public class RTSZone : MonoBehaviour
 
     void Update()
     {
+        //Check distance to target
+        float _distance = Vector3.Distance(realTarget.transform.position, transform.position);
+        LevelManager.instance.isQuestionVisible = _distance < transform.localScale.x*.5f;
+
         if (Input.GetKeyDown(KeyCode.Space)) ChangeState();
         if (following)
         {
@@ -80,7 +84,6 @@ public class RTSZone : MonoBehaviour
             float _alpha = Vector3.Angle(target.forward, dir0);
             if (_alpha > anglesToDisorder)
             {
-                Debug.Log("Change of direction");
                 SetPositions(true);
             }
         }

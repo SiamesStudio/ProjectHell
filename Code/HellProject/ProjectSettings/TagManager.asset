@@ -9,6 +9,7 @@ TagManager:
   - LevelManager
   - SpawnPoint
   - rock
+  - RTSZone
   layers:
   - Default
   - TransparentFX

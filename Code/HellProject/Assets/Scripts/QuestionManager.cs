@@ -8,7 +8,7 @@ using UnityEditor;
 
 public class QuestionManager : MonoBehaviour
 {
-    private Queue<Question> questions = new Queue<Question>();
+    public Queue<Question> questions = new Queue<Question>();
     [SerializeField] private Text touristNameDisplay;
     [SerializeField] private Text questionDisplay;
     [SerializeField] private List<Text> answersDisplay;
@@ -62,7 +62,7 @@ public class QuestionManager : MonoBehaviour
     {
         currentQuestion = questions.Dequeue();
 
-        touristNameDisplay.text = currentQuestion.tourist.name;
+        touristNameDisplay.text = currentQuestion.tourist.character.name;
         questionDisplay.text = currentQuestion.question;
         timeSlider.maxValue = currentQuestion.coolDown;
         timeSlider.value = currentQuestion.coolDown;
@@ -102,6 +102,7 @@ public class QuestionManager : MonoBehaviour
     /// <param name="_answer"></param>
     public void ReceiveAnswer(int _answer)
     {
+        if (currentQuestion == null) return;
         if(_answer == -1) //Not answered
         {
             currentQuestion.Answer(-1);

@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class TouristManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum CharacterName {Tom, Tom1, Tom2, Tom3, Tom4, Tom5};
+
+    public Dictionary<CharacterName, Character> characters;
+    [SerializeField] List<Character> charactersList;
+    private List<CharacterName> names = new List<CharacterName>();
+
+    public static TouristManager instance;
+
+    void Awake()
     {
-        
+        if (instance) Destroy(gameObject);
+        instance = this;
+
+        GenerateDictionary();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GenerateDictionary()
     {
-        
+        foreach(CharacterName _characterName in System.Enum.GetValues(typeof(CharacterName)))
+            names.Add(_characterName);
+
+        characters = new Dictionary<CharacterName, Character>();
+        for (int i = 0; i < charactersList.Count; i++)
+        {
+            characters.Add(names[i], charactersList[i]);
+        }
+    }
+    
+    public Character GenerateCharacter()
+    {
+        int _nameIndex = Random.Range(0, names.Count);
+
+        CharacterName _name = names[_nameIndex];
+        names.RemoveAt(_nameIndex);
+
+        return characters[_name];
     }
 }

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 4536841238337140453}
   - component: {fileID: 4536841238337140452}
   - component: {fileID: 9214588583078909179}
+  - component: {fileID: -3297808165115975958}
   m_Layer: 0
   m_Name: RTSAgent
   m_TagString: Untagged
@@ -153,6 +154,24 @@ MonoBehaviour:
   alwaysFaceTarget: 0
   minSpeedAllowed: 0.5
   speedCheckTime: 1
+--- !u!114 &-3297808165115975958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536841238337140458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c971123cab87d44b609bc6597e7fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightAnswers: 0
+  wrongAnswers: 0
+  emptyAnswers: 0
+  character: {fileID: 0}
+  targeted: 0
+  kidnapped: 0
 --- !u!1 &4536841239354028284
 GameObject:
   m_ObjectHideFlags: 0

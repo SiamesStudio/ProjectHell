@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Monument : MonoBehaviour
 {
-    enum monument { PutoJudas, PacoPorros}; //This should probably be in the GameManager
+    public enum MonumentType { PutoJudas, PacoPorros};
 
-    [SerializeField] private monument id;
+    public MonumentType id;
     private int answersDone;
     [SerializeField] private int totalAnswers;
 
@@ -19,5 +19,15 @@ public class Monument : MonoBehaviour
         Debug.Log("Monument: Adding Answer");
         //PARTICLES AND SHIT!
         return ++answersDone >= totalAnswers;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RTSZone")) LevelManager.instance.isQuestionable = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("RTSZone")) LevelManager.instance.isQuestionable = false;
     }
 }

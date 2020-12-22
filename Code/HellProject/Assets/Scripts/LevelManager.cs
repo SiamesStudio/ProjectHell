@@ -12,16 +12,20 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
+    [HideInInspector] public List<GameObject> tourists;
+
+
+    [Header("Spawner")]
+    public float spawnTime = 2.0f;
+    [SerializeField] private List<GameObject> spawnPoint;
+    [SerializeField] private List<GameObject> rocks;
     public EarthDemon earthD;
     public AirDemon airD;
     private int numDemons = 0;
-    public List<GameObject> tourists = null;
-    public float spawnTime = 2.0f;
-    [SerializeField] private List<GameObject> spawnPoint;
-
-    [SerializeField] private List<GameObject> rocks = null;
     private System.Random r;
     #endregion
+
+
     #region methods
 
     private void Awake()
@@ -41,9 +45,17 @@ public class LevelManager : MonoBehaviour
     public void UpdateMonument()
     {
         Debug.Log("Level Manager: Monument Updated!");
+        //AQUI SE GENERA EL PODER AVANZAR
+        currentMonument = monuments[monuments.IndexOf(currentMonument) + 1];
     }
 
-    private void spawner()
+    private void Update()
+    {
+        //Questionable -> RTSZone OnTrigger MonumentZone
+        //Visible -> Player OnTrigger RTSZone
+    }
+
+    private void Spawner()
     {
         numDemons = GameObject.FindGameObjectsWithTag("Demon").Length;
         Demon aux = null;

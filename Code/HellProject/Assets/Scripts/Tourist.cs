@@ -7,82 +7,80 @@ using System.Linq;
 
 public class Tourist : MonoBehaviour
 {
-    [HideInInspector] public float waitTime;
-
     [HideInInspector] public int rightAnswers = 0;
     [HideInInspector] public int wrongAnswers = 0;
     [HideInInspector] public int emptyAnswers = 0;
-    // Start is called before the first frame update
+
     #region variables
 
     #region variablesUpdatedManager
-    private string name;
-    string path = "Assets/TXT/test.txt";
-    private TextAsset genericQuestions;
-    private TextAsset monumentQuestions;
-    private TextAsset emptyRating;
-    private List<Question> currentQuestions;
+
+    public Character character;
+    public List<Question> currentQuestions;
+    private int currentQuestionId = 0;
     #endregion
 
     #region variablesUpdatedGame
-    public bool targeted;
-    public bool kidnapped;
+    [HideInInspector] public bool targeted;
+    [HideInInspector]public bool kidnapped;
     private bool dying;
     private float questionsCooldown;
     private float happiness;
     #endregion
+
+
     #endregion
+
 
     #region methods
     void Start()
     {
-        targeted = false;
-        dying = false;
-        kidnapped = false;
-        happiness = 1.0f;
-        rightAnswers = 0;
-        wrongAnswers = 0;
-        emptyAnswers = 0;
-     //   ReadString(path, name);
-
+        character = TouristManager.instance.GenerateCharacter();
+        character.GenerateDictionary();
+        GenerateQuestions();
     }
+
     void Update()
     {
-        die();
+        Die();
+
+        DebugInput();
     }
+
     public void GenerateQuestions()
     {
-
+        currentQuestions = character.QuestionsToList(this);
     }
 
     public void AskQuestion()
     {
-
+        Debug.Log("Question Asked");
+        if (currentQuestionId >= currentQuestions.Count) currentQuestionId = 0;
+        QuestionManager.instance.questions.Enqueue(currentQuestions[currentQuestionId]);
+        currentQuestionId++;
     }
+
     public void GenerateRating()
     {
-
+        Debug.Log("Right: " + rightAnswers);
+        Debug.Log("Wrong: " + wrongAnswers);
+        Debug.Log("Empty: " + emptyAnswers);
     }
-  /*  static void ReadString(String path, String name)
-    {
-        StreamReader reader = new StreamReader(path);
-        name = reader.ReadLine();
-        Debug.Log(name);
-        reader.Close();
-    }*/
+
     public void Leave()
-    { // cuanto de felicidad se va el personaje
+    {
 
     }
-    public void die()
+
+    public void Die()
     {
         if (dying)
         {
             Destroy(this.gameObject);
-
         }
     }
     #endregion
+
     #region getters and setters
     public bool GetTargeted()
     {
@@ -108,5 +106,14 @@ public class Tourist : MonoBehaviour
     {
         dying = newDying;
     }
+    #endregion
+
+    #region Debug
+    private void DebugInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) AskQuestion();
+        if (Input.GetKeyDown(KeyCode.Return)) GenerateRating();
+    }
+
     #endregion
 }

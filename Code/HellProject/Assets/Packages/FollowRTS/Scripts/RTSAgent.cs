@@ -54,7 +54,6 @@ public class RTSAgent : PointMovement
         if(pos0 != null)
         {
             speed = Vector3.Magnitude(transform.position - pos0);
-            Debug.Log(speed);
             if (speed < minSpeedAllowed) targetLocalPos = myRTSZone.GetRootPosition() - transform.position;
         }
         pos0 = transform.position;
