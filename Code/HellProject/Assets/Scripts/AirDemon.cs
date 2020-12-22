@@ -6,17 +6,12 @@ public class AirDemon : Demon
 {
     public override void Attack()
     {
-        // preguntar que hace
         if (tourist)
         {
-
-
             tourist.gameObject.GetComponent<Tourist>().SetDying(true);
             tourist = null;
-            ToHome();
-            Debug.Log("Estoy aquí");
-        }
-        else { Debug.Log("To home"); ToHome(); }
+            ToHome();        }
+        else {  ToHome(); }
 
 
         }

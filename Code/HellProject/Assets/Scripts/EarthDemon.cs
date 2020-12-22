@@ -36,9 +36,9 @@ public override void collisionDemTou()
     {
             collisionT = true;
             tourist.gameObject.GetComponent<Tourist>().SetKidnapped(true);
-                haveTourist = true;
             lm.tourists.Remove(tourist);
-        
-    } 
+            haveTourist = true;
+
+        } 
 }
 }

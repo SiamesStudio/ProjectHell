@@ -657,15 +657,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 339229240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45cfb2d2be9e4341a77cb253369a715, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fb36be6f0276a74e92d11ee73c4af96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothRotation: 1
+  smoothRotation: 0
   completeRotationTime: 0.5
   anglesToStop: 90
   myCamera: {fileID: 0}
   particlesPrefab: {fileID: 6538269905315355070, guid: 1e51749476059b4458def2356ab051f2,
     type: 3}
+  lm: {fileID: 0}
+  distance: 2
 --- !u!195 &339229242
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1693,7 +1695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842593429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: -0.42, z: 1.5}
+  m_LocalPosition: {x: -10.6, y: -0.42, z: 0.9}
   m_LocalScale: {x: 8.7223, y: 1.0074257, z: 46.738686}
   m_Children: []
   m_Father: {fileID: 0}

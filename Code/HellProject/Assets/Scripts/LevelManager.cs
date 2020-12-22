@@ -26,10 +26,10 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance) Destroy(instance);
+      /*  if (instance) Destroy(instance);
         instance = this;
         currentMonument = monuments[0];
-
+        */
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
 
         InvokeRepeating("spawner", 1, spawnTime);
