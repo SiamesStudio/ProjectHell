@@ -56,7 +56,7 @@ public class Character : ScriptableObject
         for (int i = 0; i < _genericQuestions.Count; i += 3)
         {
             string[] _answers = { _genericQuestions[i + 1], _genericQuestions[i + 2] };
-            _genericQuestionsList.Add(new Question(_genericQuestions[i], new List<string>(_answers), _tourist, true));
+            _genericQuestionsList.Add(new Question(_genericQuestions[i], new List<string>(_answers), _tourist, false));
         }
 
         for(int i = 0; i < _numGenQuestions && i < _genericQuestionsList.Count; i++)

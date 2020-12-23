@@ -49,6 +49,7 @@ public class QuestionManager : MonoBehaviour
         if (LevelManager.instance.isQuestionVisible) MakeVisible();
         else MakeInvisible();
 
+        currentQuestion.coolDown -= Time.deltaTime;
         if(debugOptions && !freezeCoolDown) currentQuestion.coolDown -= Time.deltaTime;
         timeSlider.value = currentQuestion.coolDown;
         if (currentQuestion.coolDown < 0) ReceiveAnswer(-1);

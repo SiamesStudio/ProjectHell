@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tom
   m_EditorClassIdentifier: 
   name: Tom
-  waitTime: 2
+  waitTime: 10
   monRelatedPerc: 80
   genericQuestions: {fileID: 4900000, guid: d194b5fcdc111fc47a27b9f7cf0a6bb9, type: 3}
   monumentQuestionsList:
