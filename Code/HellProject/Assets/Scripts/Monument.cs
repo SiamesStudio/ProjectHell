@@ -23,11 +23,20 @@ public class Monument : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("RTSZone")) LevelManager.instance.isQuestionable = true;
+        if (other.CompareTag("RTSZone"))
+        {
+            LevelManager.instance.isQuestionable = true;
+            DemonManager.instance.AuxMethod(0);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("RTSZone")) LevelManager.instance.isQuestionable = false;
+        if (other.CompareTag("RTSZone"))
+        {
+            LevelManager.instance.isQuestionable = false;
+           // DemonManager.instance.AuxMethod(1);
+            
+        }
     }
 }

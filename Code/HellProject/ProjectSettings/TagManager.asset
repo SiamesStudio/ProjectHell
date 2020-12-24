@@ -5,11 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Demon
-  - Turista
   - LevelManager
   - SpawnPoint
-  - rock
   - RTSZone
+  - Tourist
   layers:
   - Default
   - TransparentFX

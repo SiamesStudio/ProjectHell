@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using static LevelManager;
 
 public class Demon : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class Demon : MonoBehaviour
     protected Vector3 newPosition;
     public float velocityToGo;
     public float velocityToComeBack;
-    public LevelManager lm;
+    
     #endregion
     #region methods
      public void Start()
@@ -26,7 +25,7 @@ public class Demon : MonoBehaviour
         collisionT = false;
         haveTourist = false;
         tourist = null;
-        lm = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+     
         if (!tourist)
         {
 
@@ -36,7 +35,7 @@ public class Demon : MonoBehaviour
     public void Update()
     {
 
-        collisionDemTou();
+        CollisionDemTou();
 
         if (!collisionT && !haveTourist) GoTo();
         else if (collisionT && haveTourist) Attack();
@@ -78,21 +77,21 @@ public class Demon : MonoBehaviour
 
     protected  void LookingForTourist()
     {
-        if (lm.tourists.Count > 0)
+        if (DemonManager.instance.tourists.Count > 0)
         {
 
             var visited = new List<GameObject>();
-            int i = (int)UnityEngine.Random.Range(0, lm.tourists.Count);
-            while (lm.tourists.Count > 0 && lm.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() && !visited.Contains(lm.tourists[i]) && visited.Count != lm.tourists.Count)
+            int i = (int)UnityEngine.Random.Range(0, DemonManager.instance.tourists.Count);
+            while (DemonManager.instance.tourists.Count > 0 && DemonManager.instance.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() && !visited.Contains(DemonManager.instance.tourists[i]) && visited.Count != DemonManager.instance.tourists.Count)
             {
-                i = (int)UnityEngine.Random.Range(0, lm.tourists.Count);
-                visited.Add(lm.tourists[i]);
+                i = (int)UnityEngine.Random.Range(0, DemonManager.instance.tourists.Count);
+                visited.Add(DemonManager.instance.tourists[i]);
             }
-            if (visited.Count == lm.tourists.Count)
+            if (visited.Count == DemonManager.instance.tourists.Count)
             {
                 ToHome();
             }
-            tourist = lm.tourists[i];
+            tourist = DemonManager.instance.tourists[i];
 
             if (tourist)
             {
@@ -108,7 +107,7 @@ public class Demon : MonoBehaviour
 
 
     }
-    public virtual void collisionDemTou() { }
+    public virtual void CollisionDemTou() { }
     #endregion
     #region getters and setters
     public GameObject GetTourist()

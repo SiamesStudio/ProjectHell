@@ -30,13 +30,14 @@ public class EarthDemon : Demon
 
    
 
-public override void collisionDemTou()
+public override void CollisionDemTou()
 {
     if (tourist && Vector3.Distance(tourist.gameObject.GetComponent<Tourist>().transform.position, transform.position) <= distance)
     {
             collisionT = true;
             tourist.gameObject.GetComponent<Tourist>().SetKidnapped(true);
-            lm.tourists.Remove(tourist);
+
+            DemonManager.instance.tourists.Remove(tourist);
             haveTourist = true;
 
         } 

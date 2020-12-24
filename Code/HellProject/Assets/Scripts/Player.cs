@@ -13,11 +13,10 @@ public class Player : PointMovement
     [SerializeField] private SmokeBomb particlesPrefab;
     private SmokeBomb particles;
     private bool targeted;
-    public LevelManager lm;
 
     [SerializeField] private float distance;
 
-
+    
 
 
     Ray ray;
@@ -28,7 +27,6 @@ public class Player : PointMovement
         if (!myCamera) myCamera = Camera.main;
         particles = Instantiate(particlesPrefab);
 
-        lm = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
     }
 
 
@@ -64,14 +62,11 @@ public class Player : PointMovement
 
         if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("Dentro del if");
             collisionObject = rayHit.collider.gameObject;
-            Debug.Log("Collision Object es" + collisionObject.tag);
 
             switch (collisionObject.tag)
             {
                 case "Demon":
-                    Debug.Log("switch");
                     targeted = true;
 
                     break;
@@ -87,7 +82,7 @@ public class Player : PointMovement
         {
             aux.gameObject.GetComponent<Tourist>().SetKidnapped(false);
             aux.gameObject.GetComponent<Tourist>().SetTargeted(false);
-            lm.tourists.Add(aux);
+            DemonManager.instance.tourists.Add(aux);
         }
         Destroy(demon);
 

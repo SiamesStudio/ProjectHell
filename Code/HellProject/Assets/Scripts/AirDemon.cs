@@ -16,14 +16,14 @@ public class AirDemon : Demon
 
         }
 
-    public override void collisionDemTou()
+    public override void CollisionDemTou()
     {
 
         if (tourist && Vector3.Distance(tourist.transform.position, transform.position) <= distance)
         {
             haveTourist = true;
             collisionT = true;
-            lm.tourists.Remove(tourist);
+            DemonManager.instance.tourists.Remove(tourist);
         }
 
 

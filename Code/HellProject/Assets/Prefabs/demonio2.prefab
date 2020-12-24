@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5977547440288016601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,11 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf28841d24d20144fa458a5924c1fd7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: 0
+  kind: 1
   tourist: {fileID: 0}
   haveTourist: 0
   distance: 3
   home: {x: 0, y: 0, z: 0}
   velocityToGo: 2
   velocityToComeBack: 0.5
-  lm: {fileID: 0}

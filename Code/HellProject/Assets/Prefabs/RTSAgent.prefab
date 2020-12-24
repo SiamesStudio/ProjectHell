@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: -8995573773854991091}
   m_Layer: 0
   m_Name: RTSAgent
-  m_TagString: Turista
+  m_TagString: Tourist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c971123cab87d44b609bc6597e7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0
   rightAnswers: 0
   wrongAnswers: 0
   emptyAnswers: 0
+  character: {fileID: 0}
   targeted: 0
   kidnapped: 0
 --- !u!1 &4536841239354028284
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 5193496075815688859}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Tourist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,9 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c971123cab87d44b609bc6597e7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0
   rightAnswers: 0
   wrongAnswers: 0
   emptyAnswers: 0
+  character: {fileID: 0}
   targeted: 0
   kidnapped: 0
