@@ -122,7 +122,7 @@ MonoBehaviour:
   distance: 2
   home: {x: 0, y: 0, z: 0}
   velocityToGo: 2
-  velocityToComeBack: 0.5
+  velocityToComeBack: 1
 --- !u!65 &3863863226289507545
 BoxCollider:
   m_ObjectHideFlags: 0

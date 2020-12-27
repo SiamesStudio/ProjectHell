@@ -35,8 +35,8 @@ public class Monument : MonoBehaviour
         if (other.CompareTag("RTSZone"))
         {
             LevelManager.instance.isQuestionable = false;
-           // DemonManager.instance.AuxMethod(1);
-            
+
+            DemonManager.instance.AuxMethod(1);
         }
     }
 }

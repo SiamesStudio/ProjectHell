@@ -21,26 +21,33 @@ public class DemonManager : MonoBehaviour
 
     #endregion
     #region Methods
-    void Start()
+    void Awake()
     {
-       // if (instance) Destroy(instance);
+        //if (instance) Destroy(instance);
         instance = this;
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
         tourists = GameObject.FindGameObjectsWithTag("Tourist").ToList<GameObject>();
-        InvokeRepeating("Spawner", 1, spawnTime);
+         
+        
+
+    }
+    void Update()
+    {
 
     }
 
-    // Update is called once per frame
-    /*   void Update()
-       {
-           if (tourists.Count == 0)
+    
 
-               SceneManager.LoadScene("Menu");
-       }*/
-
-    public void AuxMethod(int inOut)
+    public void AuxMethod( int inOut)
     {
+        if(inOut==0)
+        {
+            InvokeRepeating("Spawner", 1, spawnTime);
+        }
+        else if (inOut == 1) CancelInvoke();
+
+
+
         Debug.Log("Aquí quiero meter la llamada al spawner");
         
 
@@ -48,24 +55,26 @@ public class DemonManager : MonoBehaviour
     }
     private void Spawner()
     {
+        tourists = GameObject.FindGameObjectsWithTag("Tourist").ToList();
         numDemons = GameObject.FindGameObjectsWithTag("Demon").Length;
         Demon aux = null;
-        foreach (GameObject point in spawnPoint)
+                foreach (GameObject point in spawnPoint)
         {
 
-            if (numDemons < 3 && tourists.Count > 0)
+            if (numDemons < 3 && tourists.Count > 0 )
             {
 
                 int i = (int)UnityEngine.Random.Range(0, 2);
                 if (i == 0)
                 {
                     aux = Instantiate(earthD, new Vector3(point.transform.position.x, earthD.transform.position.y, point.transform.position.z), point.transform.rotation);
+               
                 }
                 else if (i == 1)
                 {
 
                     aux = Instantiate(airD, new Vector3(point.transform.position.x, airD.transform.position.y, point.transform.position.z), point.transform.rotation);
-
+                  
                 }
 
                 aux.SetHome(point.transform.position);

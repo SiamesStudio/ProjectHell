@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5977547440288016601
+--- !u!1 &2629291172504631510
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8085736611897688935}
-  - component: {fileID: 3861829965390262511}
-  - component: {fileID: 4903140314154894526}
-  - component: {fileID: 5749703780704473342}
-  - component: {fileID: 5851817963338457412}
-  m_Layer: 8
-  m_Name: demonio2
-  m_TagString: Demon
+  - component: {fileID: 1834918891555800991}
+  - component: {fileID: 6779295812196287811}
+  - component: {fileID: 6309777860040755802}
+  - component: {fileID: 1016583383214331758}
+  m_Layer: 0
+  m_Name: rock
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8085736611897688935
+--- !u!4 &1834918891555800991
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977547440288016601}
+  m_GameObject: {fileID: 2629291172504631510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.837999, y: 1.171e-41, z: 1.047891e-39}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3861829965390262511
+--- !u!33 &6779295812196287811
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977547440288016601}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4903140314154894526
+  m_GameObject: {fileID: 2629291172504631510}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6309777860040755802
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977547440288016601}
+  m_GameObject: {fileID: 2629291172504631510}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,38 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5749703780704473342
-SphereCollider:
+--- !u!136 &1016583383214331758
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977547440288016601}
+  m_GameObject: {fileID: 2629291172504631510}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5851817963338457412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977547440288016601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf28841d24d20144fa458a5924c1fd7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kind: 1
-  tourist: {fileID: 0}
-  haveTourist: 0
-  distance: 5
-  home: {x: 0, y: 0, z: 0}
-  velocityToGo: 2
-  velocityToComeBack: 1
-  shadow: {fileID: 4111010241996150910, guid: 2ea4657be38d5e1499115563ffb72788, type: 3}
-  rock: {fileID: 2629291172504631510, guid: 0cf709ba6b5d98649a15d9271958ce27, type: 3}
-  stopFollowing: 0
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

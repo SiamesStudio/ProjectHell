@@ -36,12 +36,9 @@ public class Demon : MonoBehaviour
     {
 
         CollisionDemTou();
-
         if (!collisionT && !haveTourist) GoTo();
         else if (collisionT && haveTourist) Attack();
-
-
-
+        
     }
     protected void AtHome()
     {
