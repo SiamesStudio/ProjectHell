@@ -45,6 +45,7 @@ public class Smoke : MonoBehaviour
             material.SetFloat("AlphaTreshold", _alphaTreshold);
             yield return null;
         }
+        Destroy(transform.parent.gameObject);
         Destroy(gameObject);
     }
 }

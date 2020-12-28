@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18710f23c61fc704580f6bea528f9de6, type: 3}
+  m_Name: Marina
+  m_EditorClassIdentifier: 
+  name: Marina
+  waitTime: 10
+  monRelatedPerc: 80
+  genericQuestions: {fileID: 4900000, guid: 29956aaf00441eb41a20872912de5978, type: 3}
+  monumentQuestionsList:
+  - {fileID: 4900000, guid: 5ab1e73d7aa31d241adca95db8081480, type: 3}
+  - {fileID: 4900000, guid: b33d081b06a2f9d4fa2ca01bb9d8a072, type: 3}
+  emptyRating: {fileID: 4900000, guid: a5de1979a53ae1041819d6c67d5dfc68, type: 3}
+  rightRating: {fileID: 4900000, guid: cd16923d65f502f4f938be1ca342da86, type: 3}
+  wrongRating: {fileID: 4900000, guid: 61cae727cf3bbd543937d1357ec9a7af, type: 3}

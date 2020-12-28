@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18710f23c61fc704580f6bea528f9de6, type: 3}
+  m_Name: Juliet
+  m_EditorClassIdentifier: 
+  name: Juliet
+  waitTime: 10
+  monRelatedPerc: 25
+  genericQuestions: {fileID: 4900000, guid: 47f74740c1de47b4bbb6c881d60981bc, type: 3}
+  monumentQuestionsList:
+  - {fileID: 4900000, guid: 1490eba9664250c4088426ad71d0d12d, type: 3}
+  - {fileID: 4900000, guid: 0a9388c9283477c48b09a5dc7ff4c8dc, type: 3}
+  emptyRating: {fileID: 4900000, guid: 92a092b2917f8c94ba09067ec2b639d6, type: 3}
+  rightRating: {fileID: 4900000, guid: 06b028315ec029246b2f958d9b546b01, type: 3}
+  wrongRating: {fileID: 4900000, guid: c2b7e9b506e8f404b9febfdaab5cf297, type: 3}

@@ -24,8 +24,7 @@ public class Tourist : MonoBehaviour
     [HideInInspector] public bool targeted;
     [HideInInspector]public bool kidnapped;
     private bool dying;
-    private float questionsCooldown;
-    private float happiness;
+    public float happiness = 100;
     #endregion
 
 
@@ -36,6 +35,7 @@ public class Tourist : MonoBehaviour
     void Start()
     {
         character = TouristManager.instance.GenerateCharacter();
+        name = character.name;
         character.GenerateDictionary();
         GenerateQuestions();
     }
@@ -54,7 +54,6 @@ public class Tourist : MonoBehaviour
 
     public void AskQuestion()
     {
-        Debug.Log("Question Asked");
         if (currentQuestionId >= currentQuestions.Count) currentQuestionId = 0;
         QuestionManager.instance.questions.Enqueue(currentQuestions[currentQuestionId]);
         currentQuestionId++;
@@ -65,6 +64,33 @@ public class Tourist : MonoBehaviour
         Debug.Log("Right: " + rightAnswers);
         Debug.Log("Wrong: " + wrongAnswers);
         Debug.Log("Empty: " + emptyAnswers);
+
+        int _totalAnswers = rightAnswers + wrongAnswers + wrongAnswers + emptyAnswers;
+        int _random = UnityEngine.Random.Range(0, _totalAnswers);
+        if (_random < rightAnswers) //RIGHT ANSWERS FILE
+        {
+
+        }
+        else if (_random < rightAnswers + wrongAnswers) //WRONG ANSWERS FILE
+        {
+
+        }
+        else if (_random < _totalAnswers) //EMPTY ANSWERS FILE
+        {
+
+        }
+    }
+
+    public void AddHappiness(int _happQuantity)
+    {
+        happiness += _happQuantity;
+        if(_happQuantity < 0)
+        {
+            _happQuantity = 0;
+            Leave();
+        }
+        if (_happQuantity > 100)
+            _happQuantity = 100;
     }
 
     public void Leave()

@@ -20,7 +20,6 @@ public class Character : ScriptableObject
     public void GenerateDictionary()
     {
         List<Monument.MonumentType> _monuments = new List<Monument.MonumentType>();
-        Debug.Log(System.Enum.GetValues(typeof(Monument.MonumentType)).Length);
 
         foreach (Monument.MonumentType _monumentType in System.Enum.GetValues(typeof(Monument.MonumentType)))
             _monuments.Add(_monumentType);
@@ -68,8 +67,6 @@ public class Character : ScriptableObject
 
         return _questions;
     }
-
-
 
     //METODO PARA HACER SHUFFLE DE LA LISTA
     private void ShuffleList<T>(List<T> _list)

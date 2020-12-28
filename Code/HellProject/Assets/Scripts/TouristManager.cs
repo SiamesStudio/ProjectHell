@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TouristManager : MonoBehaviour
 {
-    public enum CharacterName {Tom, Tom1, Tom2, Tom3, Tom4, Tom5};
+    public enum CharacterName {Tom, Eva, Daniel, Marina, Juliet, Leo};
 
     public Dictionary<CharacterName, Character> characters;
     [SerializeField] List<Character> charactersList;

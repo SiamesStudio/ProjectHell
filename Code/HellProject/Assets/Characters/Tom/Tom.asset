@@ -18,6 +18,7 @@ MonoBehaviour:
   genericQuestions: {fileID: 4900000, guid: d194b5fcdc111fc47a27b9f7cf0a6bb9, type: 3}
   monumentQuestionsList:
   - {fileID: 4900000, guid: 514148373ce1e1f409ed08158ad3d4d6, type: 3}
+  - {fileID: 4900000, guid: 9674413eb94f75c4bb0b7284d1ece1d7, type: 3}
   emptyRating: {fileID: 4900000, guid: 1621e2af636ad354091b185ff52eb020, type: 3}
   rightRating: {fileID: 4900000, guid: d645bd2134c43ff47b572c7cad24bf53, type: 3}
   wrongRating: {fileID: 4900000, guid: c09d1e8965bc16144a8969e21f57236d, type: 3}

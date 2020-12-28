@@ -25,17 +25,17 @@ public class Question
         {
             case -1:
                 tourist.emptyAnswers++;
-                Debug.Log("Not Answered!");
+                tourist.AddHappiness(-40);  
                 break;
             case 0:
                 tourist.rightAnswers++;
-                Debug.Log("Correct!");
+                tourist.AddHappiness(20);
                 tourist.currentQuestions.Remove(this);
                 break;
             default:
                 tourist.wrongAnswers++;
-                Debug.Log("Incorrect!");
                 tourist.currentQuestions.Remove(this);
+                tourist.AddHappiness(-20);
                 break;
         }
     }

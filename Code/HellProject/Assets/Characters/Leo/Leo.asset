@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18710f23c61fc704580f6bea528f9de6, type: 3}
+  m_Name: Leo
+  m_EditorClassIdentifier: 
+  name: Leo
+  waitTime: 10
+  monRelatedPerc: 80
+  genericQuestions: {fileID: 4900000, guid: 230e8f43ed26a6145a2e90be801d2aa9, type: 3}
+  monumentQuestionsList:
+  - {fileID: 4900000, guid: 85333aefff6016147b474f68086c37b2, type: 3}
+  - {fileID: 4900000, guid: cf2c2f7d96c02f645aef15fb382043af, type: 3}
+  emptyRating: {fileID: 4900000, guid: a1e834c6f54297d42ae35447578a336f, type: 3}
+  rightRating: {fileID: 4900000, guid: 04d064a7a1c700a4497efe12d8764368, type: 3}
+  wrongRating: {fileID: 4900000, guid: 5fb5d3341c169714aaace404c2ce71c4, type: 3}

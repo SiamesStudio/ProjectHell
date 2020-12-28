@@ -6,13 +6,12 @@ public class SmokeBomb : MonoBehaviour
 {
     [SerializeField] GameObject smokePrefab;
     [SerializeField] int numSmokes;
-    [SerializeField] Transform platform;
 
     public void Play()
     {
         float _degrees = 360 / numSmokes;
         GameObject _parent = Instantiate(new GameObject(), transform.position, transform.rotation);
-        _parent.transform.parent = platform;
+        _parent.name = "Parent Smoke";
 
         for(float i = 0; i < 360; i += _degrees)
         {
@@ -22,6 +21,7 @@ public class SmokeBomb : MonoBehaviour
             GameObject _smoke = Instantiate(smokePrefab, transform.position, _quaternion);
             _smoke.transform.SetParent(_parent.transform);
             _smoke.GetComponent<Smoke>().dir = _dir;
+            _smoke.name = "Smoke";
         }
     }
 }
