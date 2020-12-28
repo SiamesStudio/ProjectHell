@@ -20,6 +20,7 @@ public class DemonManager : MonoBehaviour
     //DemonManager.instance
 
     #endregion
+
     #region Methods
     void Awake()
     {
@@ -27,60 +28,43 @@ public class DemonManager : MonoBehaviour
         instance = this;
         spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList<GameObject>();
         tourists = GameObject.FindGameObjectsWithTag("Tourist").ToList<GameObject>();
-         
-        
+    }    
 
-    }
-    void Update()
+    public void SetSpawning(bool _spawning)
     {
-
-    }
-
-    
-
-    public void AuxMethod( int inOut)
-    {
-        if(inOut==0)
+        if(_spawning)
         {
-            InvokeRepeating("Spawner", 1, spawnTime);
+            InvokeRepeating("Spawn", 1, spawnTime);
         }
-        else if (inOut == 1) CancelInvoke();
-
-
-
-        Debug.Log("Aquí quiero meter la llamada al spawner");
-        
-
-
+        else CancelInvoke();
     }
-    private void Spawner()
+
+    private void Spawn()
     {
         tourists = GameObject.FindGameObjectsWithTag("Tourist").ToList();
         numDemons = GameObject.FindGameObjectsWithTag("Demon").Length;
-        Demon aux = null;
-                foreach (GameObject point in spawnPoint)
+        Demon _demon = null;
+        foreach (GameObject point in spawnPoint)
         {
 
             if (numDemons < 3 && tourists.Count > 0 )
             {
-
-                int i = (int)UnityEngine.Random.Range(0, 2);
-                if (i == 0)
+                int _random = UnityEngine.Random.Range(0, 2);
+                if (_random == 0)
                 {
-                    aux = Instantiate(earthD, new Vector3(point.transform.position.x, earthD.transform.position.y, point.transform.position.z), point.transform.rotation);
+                    _demon = Instantiate(earthD, new Vector3(point.transform.position.x, earthD.transform.position.y, point.transform.position.z), point.transform.rotation);
                
                 }
-                else if (i == 1)
+                else if (_random == 1)
                 {
 
-                    aux = Instantiate(airD, new Vector3(point.transform.position.x, airD.transform.position.y, point.transform.position.z), point.transform.rotation);
+                    _demon = Instantiate(airD, new Vector3(point.transform.position.x, airD.transform.position.y, point.transform.position.z), point.transform.rotation);
                   
                 }
 
-                aux.SetHome(point.transform.position);
+                _demon.SetHome(point.transform.position);
                 numDemons++;
             }
-
         }
     }
 

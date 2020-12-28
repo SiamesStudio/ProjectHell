@@ -26,7 +26,7 @@ public class Monument : MonoBehaviour
         if (other.CompareTag("RTSZone"))
         {
             LevelManager.instance.isQuestionable = true;
-            DemonManager.instance.AuxMethod(0);
+            DemonManager.instance.SetSpawning(false);
         }
     }
 
@@ -36,7 +36,7 @@ public class Monument : MonoBehaviour
         {
             LevelManager.instance.isQuestionable = false;
 
-            DemonManager.instance.AuxMethod(1);
+            DemonManager.instance.SetSpawning(true);
         }
     }
 }
