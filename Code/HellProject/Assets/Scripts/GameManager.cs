@@ -8,7 +8,7 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    List<Tourist> tourists;
+    [HideInInspector] public List<Tourist> tourists = new List<Tourist>();
     private int currentLevel;
     private int playerCoins;
     private int playerGems;
@@ -19,10 +19,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        //if (instance){ Destroy(instance); instance = this; }
         DontDestroyOnLoad(gameObject);
         Save();
 
-        if (instance != null){ Destroy(instance); instance = this; }
     }
 
     private void Start()

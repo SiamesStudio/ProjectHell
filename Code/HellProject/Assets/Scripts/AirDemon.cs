@@ -8,7 +8,7 @@ public class AirDemon : Demon
     public GameObject shadow;
 
     public GameObject rock;
-    public bool stopFollowing;
+    [HideInInspector] public bool stopFollowing;
     GameObject instanceShadow;
     GameObject instanceRock;
     void Awake()
@@ -72,15 +72,12 @@ public class AirDemon : Demon
     }
     public void RockDown()
     {
-
-
-
         instanceRock.transform.position = Vector3.Lerp(instanceRock.transform.position, new Vector3(instanceRock.transform.position.x, 0, instanceRock.transform.position.z), Time.deltaTime * 0.75f);
         if (Vector3.Distance(tourist.transform.position, instanceRock.transform.position) <= 2)
         {
             tourist.gameObject.GetComponent<Tourist>().SetDying(true);
 
-            DemonManager.instance.tourists.Remove(tourist);
+            GameManager.instance.tourists.Remove(tourist);
             tourist = null;
             ToHome();
             Destroy(instanceRock);
@@ -93,9 +90,5 @@ public class AirDemon : Demon
             Destroy(instanceShadow);
             ToHome();
         }
-
-
     }
-
-
 }

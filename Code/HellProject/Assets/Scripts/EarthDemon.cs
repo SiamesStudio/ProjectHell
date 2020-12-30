@@ -37,10 +37,9 @@ public override void CollisionDemTou()
             collisionT = true;
             tourist.gameObject.GetComponent<Tourist>().SetKidnapped(true);
             haveTourist = true;
-            DemonManager.instance.tourists.Remove(tourist);
+            GameManager.instance.tourists.Remove(tourist);
 
-            
-
+           
         } 
 }
 }
