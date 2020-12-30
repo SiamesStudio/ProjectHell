@@ -469,7 +469,6 @@ GameObject:
   m_Component:
   - component: {fileID: 339229243}
   - component: {fileID: 339229242}
-  - component: {fileID: 339229241}
   - component: {fileID: 339229244}
   m_Layer: 0
   m_Name: Player
@@ -478,27 +477,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &339229241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339229240}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45cfb2d2be9e4341a77cb253369a715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothRotation: 1
-  completeRotationTime: 0.5
-  anglesToStop: 90
-  myCamera: {fileID: 0}
-  particlesPrefab: {fileID: 0}
-  m_Raycaster:
-  - {fileID: 1002131995}
-  m_EventSystem:
-  - {fileID: 1002131999}
 --- !u!195 &339229242
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -506,7 +484,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339229240}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -559,6 +537,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   interactive: {fileID: 0}
+  m_Raycaster:
+  - {fileID: 1002131995}
+  m_EventSystem:
+  - {fileID: 1002131999}
 --- !u!1 &351675984
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,12 +579,12 @@ MonoBehaviour:
   - {fileID: 2138298523}
   - {fileID: 594732598}
   monumentsUnlockAt: 0000000003000000
-  spawnTime: 2
+  spawnTime: 1e+17
   spawnPoint:
   - {fileID: 964016140}
   - {fileID: 1075007852}
   - {fileID: 518607772}
-  maxDemons: 3
+  maxDemons: 0
   earthD: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452, type: 3}
   airD: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607, type: 3}
   numDemons: 0
@@ -1131,39 +1113,30 @@ Transform:
   m_Father: {fileID: 1443951983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1002131992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6594342495020288485, guid: 51dc5968118df8b45bd9286a9cddaf0e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2133144740}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1002131995 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6594342495020288487, guid: 51dc5968118df8b45bd9286a9cddaf0e,
     type: 3}
   m_PrefabInstance: {fileID: 2133144740}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002131992}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1002131999
+--- !u!114 &1002131999 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4737152826373911223, guid: 51dc5968118df8b45bd9286a9cddaf0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133144740}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002131992}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1 &1044573591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2239,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6594342495020288485, guid: 51dc5968118df8b45bd9286a9cddaf0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6594342495613233406, guid: 51dc5968118df8b45bd9286a9cddaf0e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594342495704470295, guid: 51dc5968118df8b45bd9286a9cddaf0e,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

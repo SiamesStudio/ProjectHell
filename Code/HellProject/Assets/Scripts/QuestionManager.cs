@@ -11,6 +11,7 @@ public class QuestionManager : MonoBehaviour
     public Queue<Question> questions = new Queue<Question>();
     [SerializeField] private Text touristNameDisplay;
     [SerializeField] private Text questionDisplay;
+    [SerializeField] private Button showButton;
     [SerializeField] private List<Text> answersDisplay;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private Vector2 timeBetweenQuestions;
@@ -30,6 +31,8 @@ public class QuestionManager : MonoBehaviour
     {
         if (instance) Destroy(instance);
         instance = this;
+        showButton.gameObject.SetActive(false);
+        touristNameDisplay.gameObject.SetActive(false);
 
         if (!TryGetComponent(out anim))
             Debug.LogError("QuestionManager error: No Animator Controller found in " + name);
@@ -39,6 +42,14 @@ public class QuestionManager : MonoBehaviour
     {
         questionCountDown -= Time.deltaTime;
         if (debugOptions) DebugOptions();
+
+        if (LevelManager.instance.isQuestionVisible) showButton.gameObject.SetActive(true); //MakeVisible();
+        else
+        {
+            showButton.gameObject.SetActive(false);
+            touristNameDisplay.gameObject.SetActive(false);
+            MakeInvisible();
+        }
         if (currentQuestion == null)
         {
             if(questions.Count > 0 && LevelManager.instance.isQuestionable && questionCountDown < 0) 
@@ -46,9 +57,8 @@ public class QuestionManager : MonoBehaviour
             else return;
         }
 
-        if (LevelManager.instance.isQuestionVisible) MakeVisible();
-        else MakeInvisible();
 
+            
         currentQuestion.coolDown -= Time.deltaTime;
         if(debugOptions && !freezeCoolDown) currentQuestion.coolDown -= Time.deltaTime;
         timeSlider.value = currentQuestion.coolDown;
@@ -75,6 +85,13 @@ public class QuestionManager : MonoBehaviour
         for (int i = 0; i < currentQuestion.answers.Count; i++)
             answersDisplay[i].text = currentQuestion.answers[i];
 
+    }
+
+    public void ShowPerformed()
+    {
+        isVisible = !isVisible;
+        touristNameDisplay.gameObject.SetActive(isVisible);
+        anim.SetBool("isVisible", isVisible);
     }
 
     /// <summary>
