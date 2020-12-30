@@ -2,25 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System;
 
-public class Demon : MonoBehaviour
+public class Demon : Interactive
 {
     #region variables 
     public int kind;
-    public GameObject tourist;
-    public bool haveTourist;
+    [HideInInspector] public Tourist tourist;
+    [HideInInspector] public bool haveTourist;
     protected bool collisionT;
     public float distance;
-    public Vector3 home = Vector3.zero;
+    [HideInInspector] public Vector3 home = Vector3.zero;
     protected Vector3 newPosition;
     public float velocityToGo;
     public float velocityToComeBack;
+    [HideInInspector] public Monument myMonument;
+    private NavMeshAgent agent;
     
     #endregion
     #region methods
-     public void Start()
+
+    void Awake()
     {
+        if (!TryGetComponent(out agent))
+            Debug.LogError("Demon error: NavMeshAgent component not found in " + name);
+    }
+     public void Start()
+     {
         newPosition = transform.position;
         collisionT = false;
         haveTourist = false;
@@ -31,7 +40,7 @@ public class Demon : MonoBehaviour
 
             LookingForTourist();
         }
-    }
+     }
     public void Update()
     {
 
@@ -47,48 +56,47 @@ public class Demon : MonoBehaviour
 
     protected void ToHome()
     {
-
-        newPosition = home;
-        tourist = null;
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToComeBack / 5);
+        agent.SetDestination(home);
         if (Vector3.Distance(home, transform.position) <= distance) AtHome();
+        tourist = null;
     }
 
     public virtual void Attack() { }
 
     public virtual void GoTo() {
 
-        bool prueba = tourist && tourist.gameObject.GetComponent<Tourist>().GetTargeted() == true && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == false ? true : false;
+        bool _hasTarget = tourist && tourist.gameObject.GetComponent<Tourist>().GetTargeted() == true && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == false ? true : false;
 
-        if (prueba)
+        if (_hasTarget)
         {
             newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
+            agent.SetDestination(newPosition);
         }
         else
         {
-            LookingForTourist();
-            
+            LookingForTourist();          
         }
     }
 
     protected  void LookingForTourist()
     {
-        if (DemonManager.instance.tourists.Count > 0)
+        if (GameManager.instance.tourists.Count > 0)
         {
 
-            var visited = new List<GameObject>();
-            int i = (int)UnityEngine.Random.Range(0, DemonManager.instance.tourists.Count);
-            while (DemonManager.instance.tourists.Count > 0 && DemonManager.instance.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() && !visited.Contains(DemonManager.instance.tourists[i]) && visited.Count != DemonManager.instance.tourists.Count)
+            var visited = new List<Tourist>();
+            int i = (int)UnityEngine.Random.Range(0, GameManager.instance.tourists.Count);
+            while (GameManager.instance.tourists.Count > 0 
+                && GameManager.instance.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() 
+                && !visited.Contains(GameManager.instance.tourists[i]) && visited.Count != GameManager.instance.tourists.Count)
             {
-                i = (int)UnityEngine.Random.Range(0, DemonManager.instance.tourists.Count);
-                visited.Add(DemonManager.instance.tourists[i]);
+                i = (int)UnityEngine.Random.Range(0, GameManager.instance.tourists.Count);
+                visited.Add(GameManager.instance.tourists[i]);
             }
-            if (visited.Count == DemonManager.instance.tourists.Count)
+            if (visited.Count == GameManager.instance.tourists.Count)
             {
                 ToHome();
             }
-            tourist = DemonManager.instance.tourists[i];
+            tourist = GameManager.instance.tourists[i];
 
             if (tourist)
             {
@@ -102,16 +110,32 @@ public class Demon : MonoBehaviour
             ToHome();
         }
 
+    }
 
+    public override void Interact()
+    {
+        base.Interact();
+        if (tourist && haveTourist)
+        {
+            tourist.SetKidnapped(false);
+            tourist.SetTargeted(false);
+            GameManager.instance.tourists.Add(tourist);
+        }
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (myMonument) myMonument.numDemons--;
     }
     public virtual void CollisionDemTou() { }
     #endregion
     #region getters and setters
-    public GameObject GetTourist()
+    public Tourist GetTourist()
     {
         return tourist;
     }
-    public void SetTourist(GameObject tourist)
+    public void SetTourist(Tourist tourist)
     {
         this.tourist = tourist;
     }

@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Interactive : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Interact()
     {
-        
+        Debug.Log("Interacting with " + name);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //private void Update()
+    //{
+        //Raycast desde el raton -> iluminar objeto
+    //}
 }

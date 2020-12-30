@@ -32,8 +32,10 @@ public class Tourist : MonoBehaviour
 
 
     #region methods
+
     void Start()
     {
+        GameManager.instance.tourists.Add(this);
         character = TouristManager.instance.GenerateCharacter();
         name = character.name;
         character.GenerateDictionary();

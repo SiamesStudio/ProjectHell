@@ -8,24 +8,18 @@ public class Player : PointMovement
     //tart is called before the first frame update
     //variable para update movimiento
     //
-    GameObject collisionObject;
     [SerializeField] protected Camera myCamera;
     [SerializeField] private SmokeBomb particlesPrefab;
     private SmokeBomb particles;
-    private bool targeted;
 
-    [SerializeField] private float distance;
+    [SerializeField] private float interactDistance;
+    [SerializeField] private LayerMask interactiveLayer;
+    public Interactive interactive;
 
-    
-
-
-    Ray ray;
-    RaycastHit rayHit;
     private new void Awake()
     {    base.Awake();
-        targeted = false;
         if (!myCamera) myCamera = Camera.main;
-        particles = Instantiate(particlesPrefab);
+        if(particles) particles = Instantiate(particlesPrefab);
 
     }
 
@@ -33,59 +27,41 @@ public class Player : PointMovement
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) InteractWith();//left
-        if (targeted && collisionObject)
+        if (Input.GetMouseButtonDown(0))
         {
-            Move(collisionObject.transform.position);
-            if(Vector3.Distance(collisionObject.transform.position, transform.position) <= distance)
+            ThrowRayCast();
+            InteractWith();//left
+        }
+
+        if (interactive)
+        {
+            myAgent.SetDestination(interactive.transform.position);
+            if(Vector3.Distance(interactive.transform.position, transform.position) <= interactDistance)
             {
-                AttackDemon(collisionObject);
+                interactive.Interact();
             }
         }
            
     }
      void ThrowRayCast()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit _hit))
         {
-            particles.transform.position = _hit.point;
-            particles.Play();
+            if (particles) particles.transform.position = _hit.point;
+            if (particles) particles.Play();
             Move(_hit.point);
-            targeted = false;
-
         }
     }
     void InteractWith()
     {
-        int layerMask = 1 << 8;
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //int layerMask = 1 << 8;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out rayHit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit rayHit, Mathf.Infinity, interactiveLayer))
         {
-            collisionObject = rayHit.collider.gameObject;
-
-            switch (collisionObject.tag)
-            {
-                case "Demon":
-                    targeted = true;
-
-                    break;
-            }
+            interactive = rayHit.collider.gameObject.GetComponent<Interactive>();
         }
-        else ThrowRayCast();
+        else interactive = null;
     }
-    private void AttackDemon(GameObject demon)
-    {
-        
-        GameObject aux = demon.gameObject.GetComponent<Demon>().tourist;
-        if (aux && demon.gameObject.GetComponent<Demon>().haveTourist)
-        {
-            aux.gameObject.GetComponent<Tourist>().SetKidnapped(false);
-            aux.gameObject.GetComponent<Tourist>().SetTargeted(false);
-            DemonManager.instance.tourists.Add(aux);
-        }
-        Destroy(demon);
-
-    }
-    //metodo pegar solo si está cerca y lo destruye. 
 }

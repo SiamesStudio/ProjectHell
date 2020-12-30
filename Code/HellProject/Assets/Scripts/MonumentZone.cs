@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class MonumentZone : MonoBehaviour
 {
+    [SerializeField] private Monument myMonument;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("RTSZone"))
         {
             LevelManager.instance.isQuestionable = true;
-            DemonManager.instance.SetSpawning(false);
+            myMonument.SetSpawning(true);
         }
     }
 
@@ -18,7 +20,7 @@ public class MonumentZone : MonoBehaviour
         if (other.CompareTag("RTSZone"))
         {
             LevelManager.instance.isQuestionable = false;
-            DemonManager.instance.SetSpawning(true);
+            myMonument.SetSpawning(false);
         }
     }
 }
