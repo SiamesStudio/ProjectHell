@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 13ca789ec71cebe4da187626989d5d6d
-  - enabled: 1
-    path: Assets/Scenes/PATRI Y LUU PRUEBITAS.unity
-    guid: d0ad2c89322fe58429c01cd1a5c40c5b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
