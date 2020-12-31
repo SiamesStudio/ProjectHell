@@ -67,15 +67,13 @@ public class AirDemon : Demon
 
             attackTourist = true;
 
-            instanceParticles = Instantiate(particles, new Vector3(transform.position.x, 0, transform.position.z), transform.rotation);
-            instanceParticles.Play();
+            Instantiate(particles, new Vector3(transform.position.x, 0, transform.position.z), transform.rotation);
             tourist = null;
             this.transform.LookAt(home);
 
             ToHome();
 
             attackTourist = true;
-
         }
         else { ToHome(); }
     }

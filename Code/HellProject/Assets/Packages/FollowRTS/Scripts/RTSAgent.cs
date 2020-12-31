@@ -19,6 +19,7 @@ public class RTSAgent : PointMovement
     private Vector3 pos0;
     private float speed;
     private bool isPositioned;
+    public bool isActive = true;
 
     #endregion
 
@@ -30,6 +31,7 @@ public class RTSAgent : PointMovement
 
     private void Update()
     {
+        if (!isActive) return;
         if (!myRTSZone) return;
         isPositioned = myAgent.remainingDistance < .2f;
 
