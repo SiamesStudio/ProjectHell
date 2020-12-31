@@ -172,6 +172,7 @@ MonoBehaviour:
   character: {fileID: 0}
   targeted: 0
   kidnapped: 0
+  happiness: 100
 --- !u!1 &4536841239354028284
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,3 +272,4 @@ MonoBehaviour:
   character: {fileID: 0}
   targeted: 0
   kidnapped: 0
+  happiness: 100

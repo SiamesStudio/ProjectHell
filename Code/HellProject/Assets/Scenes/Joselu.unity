@@ -579,12 +579,12 @@ MonoBehaviour:
   - {fileID: 2138298523}
   - {fileID: 594732598}
   monumentsUnlockAt: 0000000003000000
-  spawnTime: 1e+17
+  spawnTime: 3
   spawnPoint:
   - {fileID: 964016140}
   - {fileID: 1075007852}
   - {fileID: 518607772}
-  maxDemons: 0
+  maxDemons: 1
   earthD: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452, type: 3}
   airD: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607, type: 3}
   numDemons: 0
@@ -836,7 +836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518607771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.581, y: 0, z: -0.739}
+  m_LocalPosition: {x: 0.581, y: 1, z: -0.739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443951983}
@@ -1107,7 +1107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964016139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.156, y: 0, z: 0}
+  m_LocalPosition: {x: 0.156, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443951983}
@@ -1210,7 +1210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075007851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 0, z: -0.254}
+  m_LocalPosition: {x: -0.22, y: 1, z: -0.254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443951983}

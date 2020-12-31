@@ -13,12 +13,13 @@ public class Demon : Interactive
     [HideInInspector] public bool haveTourist;
     protected bool collisionT;
     public float distance;
-    [HideInInspector] public Vector3 home = Vector3.zero;
+    [HideInInspector] public Transform home;
     protected Vector3 newPosition;
     public float velocityToGo;
     public float velocityToComeBack;
     [HideInInspector] public Monument myMonument;
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
+    protected bool attackTourist;
     
     #endregion
     #region methods
@@ -28,7 +29,16 @@ public class Demon : Interactive
         if (!TryGetComponent(out agent))
             Debug.LogError("Demon error: NavMeshAgent component not found in " + name);
     }
-     public void Start()
+    public void Update()
+    {
+
+        CollisionDemTou();
+        if (!collisionT && !haveTourist) GoTo();
+        else if (collisionT && haveTourist && !attackTourist) Attack();
+       
+
+    }
+    public void Start()
      {
         newPosition = transform.position;
         collisionT = false;
@@ -41,25 +51,15 @@ public class Demon : Interactive
             LookingForTourist();
         }
      }
-    public void Update()
-    {
-
-        CollisionDemTou();
-        if (!collisionT && !haveTourist) GoTo();
-        else if (collisionT && haveTourist) Attack();
-        
-    }
+    
     protected void AtHome()
     {
+        Debug.Log("Estoy  en casa");
+        if (tourist) tourist.SetDying ( true);
         Destroy(this.gameObject);
     }
 
-    protected void ToHome()
-    {
-        agent.SetDestination(home);
-        if (Vector3.Distance(home, transform.position) <= distance) AtHome();
-        tourist = null;
-    }
+    protected virtual void ToHome() { }
 
     public virtual void Attack() { }
 
@@ -139,11 +139,11 @@ public class Demon : Interactive
     {
         this.tourist = tourist;
     }
-    public Vector3 GetHome()
+    public Transform GetHome()
     {
         return home;
     }
-    public void SetHome(Vector3 home)
+    public void SetHome(Transform home)
     {
         this.home = home;
     }

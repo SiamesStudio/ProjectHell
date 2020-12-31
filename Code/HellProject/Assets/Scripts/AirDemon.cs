@@ -5,41 +5,54 @@ using UnityEngine;
 public class AirDemon : Demon
 {
 
-    public GameObject shadow;
 
-    public GameObject rock;
+    public Rock rock;
     [HideInInspector] public bool stopFollowing;
-    GameObject instanceShadow;
-    GameObject instanceRock;
+   private Rock instanceRock;
+
+    public ParticleSystem particles;
+    private ParticleSystem instanceParticles;
+    
     void Awake()
     {
+        instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y, transform.position.z), transform.rotation);
+    }
+    public void LateUpdate()
+    {
 
-        instanceShadow = Instantiate(shadow, new Vector3(transform.position.x, shadow.transform.position.y, transform.position.z), shadow.transform.rotation);
+        if (attackTourist)
+        {
+            if (Vector3.Distance(transform.position, home.position) <= 10) AtHome();
+            ToHome();
+        }
 
-        instanceRock = Instantiate(rock, new Vector3(transform.position.x, 4, transform.position.z), transform.rotation);
+    }
+    protected override void ToHome()
+    {
+        newPosition =home.position;
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
 
     }
 
     public override void GoTo()
     {
+        
+        bool condition = tourist && tourist.gameObject.GetComponent<Tourist>().GetTargeted() == true && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == false ? true : false;
 
-        bool prueba = tourist && tourist.gameObject.GetComponent<Tourist>().GetTargeted() == true && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == false ? true : false;
-
-        if (stopFollowing == false)
+        
+        if (condition)
         {
-            instanceShadow.transform.position = Vector3.Lerp(new Vector3(transform.position.x, 0.2f, transform.position.z), newPosition, Time.deltaTime * velocityToGo / 5);
-            instanceRock.transform.position = Vector3.Lerp(new Vector3(transform.position.x, 4, transform.position.z), newPosition, Time.deltaTime * velocityToGo / 5);
+            this.transform.LookAt(tourist.transform);
 
-        }
-
-
-        if (prueba)
-        {
             newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
+            instanceRock.transform.position = Vector3.Lerp(new Vector3(transform.position.x, rock.transform.position.y, transform.position.z), newPosition, Time.deltaTime * velocityToGo / 5);
+
         }
         else
         {
+
+            this.transform.LookAt(home);
             LookingForTourist();
 
         }
@@ -48,20 +61,30 @@ public class AirDemon : Demon
     {
         if (tourist && collisionT && haveTourist && !tourist.gameObject.GetComponent<Tourist>().GetKidnapped())
         {
-            stopFollowing = true;
-            RockDown();
+            instanceRock.touristR=tourist;
+
+            instanceRock.RockDown();
+
+            attackTourist = true;
+
+            instanceParticles = Instantiate(particles, new Vector3(transform.position.x, 0, transform.position.z), transform.rotation);
+            instanceParticles.Play();
+            tourist = null;
+            this.transform.LookAt(home);
+
+            ToHome();
+
+            attackTourist = true;
 
         }
         else { ToHome(); }
-
-
     }
 
     public override void CollisionDemTou()
     {
 
 
-        if (tourist && Vector3.Distance(tourist.transform.position, transform.position) <= distance)
+        if (tourist && Vector2.Distance((new Vector2(tourist.transform.position.x, tourist.transform.position.z)), (new Vector2(transform.position.x, transform.position.z))) <= 0.3)//Vector3.Distance(tourist.transform.position, transform.position) <= 4)
         {
             haveTourist = true;
             collisionT = true;
@@ -69,26 +92,5 @@ public class AirDemon : Demon
 
 
 
-    }
-    public void RockDown()
-    {
-        instanceRock.transform.position = Vector3.Lerp(instanceRock.transform.position, new Vector3(instanceRock.transform.position.x, 0, instanceRock.transform.position.z), Time.deltaTime * 0.75f);
-        if (Vector3.Distance(tourist.transform.position, instanceRock.transform.position) <= 2)
-        {
-            tourist.gameObject.GetComponent<Tourist>().SetDying(true);
-
-            GameManager.instance.tourists.Remove(tourist);
-            tourist = null;
-            ToHome();
-            Destroy(instanceRock);
-            Destroy(instanceShadow);
-        }
-        else if (instanceRock.transform.position.y < 1)
-        {
-
-            Destroy(instanceRock);
-            Destroy(instanceShadow);
-            ToHome();
-        }
     }
 }
