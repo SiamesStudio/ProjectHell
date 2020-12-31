@@ -9,11 +9,7 @@ public class AirDemon : Demon
     public Rock rock;
     [HideInInspector] public bool stopFollowing;
    private Rock instanceRock;
-
-    public ParticleSystem particles;
-    private ParticleSystem instanceParticles;
-    
-    void Awake()
+        void Awake()
     {
         instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y, transform.position.z), transform.rotation);
     }
@@ -67,7 +63,6 @@ public class AirDemon : Demon
 
             attackTourist = true;
 
-            Instantiate(particles, new Vector3(transform.position.x, 0, transform.position.z), transform.rotation);
             tourist = null;
             this.transform.LookAt(home);
 

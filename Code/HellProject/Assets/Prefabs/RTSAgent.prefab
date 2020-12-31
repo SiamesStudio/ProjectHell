@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4536841237898263178}
   - component: {fileID: 4536841237898263172}
   - component: {fileID: 4536841237898263179}
-  m_Layer: 0
+  - component: {fileID: 9202981867474185120}
+  m_Layer: 10
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &9202981867474185120
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536841237898263177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.0000001
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4536841238337140458
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +106,7 @@ GameObject:
   - component: {fileID: 4536841238337140452}
   - component: {fileID: 9214588583078909179}
   - component: {fileID: -8995573773854991091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RTSAgent
   m_TagString: Tourist
   m_Icon: {fileID: 0}
@@ -154,6 +169,7 @@ MonoBehaviour:
   alwaysFaceTarget: 0
   minSpeedAllowed: 0.5
   speedCheckTime: 1
+  isActive: 1
 --- !u!114 &-8995573773854991091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +201,8 @@ GameObject:
   - component: {fileID: 4536841239354028287}
   - component: {fileID: 4536841239354028286}
   - component: {fileID: 5193496075815688859}
-  m_Layer: 0
+  - component: {fileID: 2292401279553417496}
+  m_Layer: 10
   m_Name: Model
   m_TagString: Tourist
   m_Icon: {fileID: 0}
@@ -273,3 +290,17 @@ MonoBehaviour:
   targeted: 0
   kidnapped: 0
   happiness: 100
+--- !u!136 &2292401279553417496
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536841239354028284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

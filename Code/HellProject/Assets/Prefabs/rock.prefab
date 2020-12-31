@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1834918891555800991}
   - component: {fileID: 6779295812196287811}
   - component: {fileID: 6309777860040755802}
-  - component: {fileID: 1016583383214331758}
   - component: {fileID: -948047972632459092}
   - component: {fileID: 4279163510265856109}
+  - component: {fileID: 6240801161031708816}
   m_Layer: 0
   m_Name: rock
   m_TagString: Untagged
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1016583383214331758
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2629291172504631510}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &-948047972632459092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c2f0d85a07d264b888c6159b737192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadow: {fileID: 4111010241996150910, guid: 2ea4657be38d5e1499115563ffb72788, type: 3}
   touristR: {fileID: 0}
+  point4Particles: {fileID: 0}
+  shadow: {fileID: 4111010241996150910, guid: 2ea4657be38d5e1499115563ffb72788, type: 3}
   particles: {fileID: 8166187566760175173, guid: 3c823b64e7774194a98d9ceb7adecc9e,
     type: 3}
 --- !u!54 &4279163510265856109
@@ -128,3 +115,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &6240801161031708816
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2629291172504631510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

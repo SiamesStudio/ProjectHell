@@ -9,6 +9,8 @@ TagManager:
   - SpawnPoint
   - RTSZone
   - Tourist
+  - Monument
+  - Plane
   layers:
   - Default
   - TransparentFX

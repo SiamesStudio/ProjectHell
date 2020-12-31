@@ -119,6 +119,8 @@ public class Demon : Interactive
         {
             tourist.SetKidnapped(false);
             tourist.SetTargeted(false);
+
+            tourist.gameObject.GetComponent<RTSAgent>().isActive = true;
             GameManager.instance.tourists.Add(tourist);
         }
         Destroy(gameObject);

@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11567708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Position (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 254168526}
   - component: {fileID: 254168525}
   - component: {fileID: 254168529}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RTS Zone
   m_TagString: RTSZone
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 351675985}
   m_Layer: 2
   m_Name: Monument
-  m_TagString: Untagged
+  m_TagString: Monument
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +584,7 @@ MonoBehaviour:
   - {fileID: 964016140}
   - {fileID: 1075007852}
   - {fileID: 518607772}
-  maxDemons: 1
+  maxDemons: 3
   earthD: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452, type: 3}
   airD: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607, type: 3}
   numDemons: 0
@@ -791,7 +791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443285668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 1349133482}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -1363,7 +1363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1357445196}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Position (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1388906449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Position (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4903140314154894526}
   - component: {fileID: 5749703780704473342}
   - component: {fileID: 5851817963338457412}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: demonio2
   m_TagString: Demon
   m_Icon: {fileID: 0}
@@ -116,5 +116,3 @@ MonoBehaviour:
   myMonument: {fileID: 0}
   rock: {fileID: -948047972632459092, guid: 0cf709ba6b5d98649a15d9271958ce27, type: 3}
   stopFollowing: 0
-  particles: {fileID: 8166187566760175173, guid: 3c823b64e7774194a98d9ceb7adecc9e,
-    type: 3}

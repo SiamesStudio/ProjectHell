@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    
+
+    [HideInInspector] public Tourist touristR;
+    public Transform point4Particles;
     void Start()
-    {
-        
+    {//Ignore the collisions between layer 0 (default) and layer 8 (custom layer you set in Inspector window)
+
     }
 
     // Update is called once per frame
@@ -17,16 +19,17 @@ public class Projectile : MonoBehaviour
     }
     //no me funciona
  
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<Tourist>())
+    private void OnCollisionEnter(Collision other)
+    {/*
+        Debug.Log("Other" + other.gameObject.ToString());
+
+        if (other.gameObject.GetComponent<RTSAgent>())
         {
-            other.enabled = true;
-        }
-       else if (other.gameObject.GetComponent<Tourist>())
-        {
-            
-        }
+            GameManager.instance.tourists.Remove(touristR);
+            touristR.SetDying(true);
+            touristR = null;
+        }*/
+        
     }
 
 }

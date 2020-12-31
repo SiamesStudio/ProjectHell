@@ -8,9 +8,9 @@ public class Rock : Projectile
     #region Variables
     public GameObject shadow;
     private GameObject instanceShadow;
-    [HideInInspector] public Tourist touristR;
     private bool rockDown;
-
+    public ParticleSystem particles;
+    private ParticleSystem instanceParticles;
     #endregion
     #region Methods
     void Start()
@@ -25,27 +25,30 @@ public class Rock : Projectile
     {
         instanceShadow.transform.position = new Vector3(this.transform.position.x, shadow.transform.position.y, this.transform.position.z);
 
-        if (rockDown)
-            if (touristR && Vector3.Distance(transform.position, touristR.transform.position) <= 1)
+        if (rockDown && this.transform.position.y <= 1)
             {
-                GameManager.instance.tourists.Remove(touristR);
-                touristR.SetDying(true);
-                touristR = null;
-            }
-            else if (this.transform.position.y <= 1)
+            
+            if (instanceParticles)
             {
-                Destroy(this.gameObject);
+                 Destroy(this.gameObject);
                 Destroy(instanceShadow);
-            }
+            }else ActiveParticles();
+        }
 
     }
-
+  
     public void RockDown()
     {
         this.gameObject.GetComponent<Collider>().attachedRigidbody.useGravity = true;
         rockDown = true;
+
     }
 
+    public void ActiveParticles()
+    {
 
+        instanceParticles =Instantiate(particles, touristR.transform.position, transform.rotation);
+     
+    }
     #endregion
 }

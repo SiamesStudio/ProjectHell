@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EarthDemon : Demon
 {
-
+    public Transform touristBag;
     public void LateUpdate()
     {
 
         if (attackTourist)
         {
             if (Vector3.Distance(transform.position, home.position) <= 10) AtHome();
-           
-          
+            MoveTourist();
+
+
         }
 
     }
@@ -25,10 +26,10 @@ public class EarthDemon : Demon
     }
     public void MoveTourist()
     {
-       // tourist.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-       // tourist.transform.SetParent(transform);
-       tourist.transform.position =tourist.transform.parent.localPosition;
-        
+        tourist.transform.position = touristBag.position;
+        tourist.transform.rotation = touristBag.rotation;
+        tourist.transform.parent = touristBag;
+        tourist.gameObject.GetComponent<RTSAgent>().isActive = false;
         Debug.Log("posicion del demonio" + tourist.transform.position);
 
     }
@@ -37,10 +38,7 @@ public class EarthDemon : Demon
 
         if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true && haveTourist)
         {
-            //tourist.gameObject.transform.SetParent(agent.gameObject.transform);
-            // tourist.gameObject.transform.parent= this.transform;
-            // tourist.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-            tourist.transform.SetParent(transform);
+            
             ToHome();
             attackTourist = true;
         }
@@ -56,6 +54,7 @@ public class EarthDemon : Demon
 
         if (_hasTarget)
         {
+
             newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
             agent.SetDestination(newPosition);
         }
