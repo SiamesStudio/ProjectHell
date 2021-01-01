@@ -43,7 +43,7 @@ public class QuestionManager : MonoBehaviour
         questionCountDown -= Time.deltaTime;
         if (debugOptions) DebugOptions();
 
-        if (LevelManager.instance.isQuestionVisible) showButton.gameObject.SetActive(true); //MakeVisible();
+        if (LevelManager.instance.isQuestionVisible && currentQuestion != null) showButton.gameObject.SetActive(true); //MakeVisible();
         else
         {
             showButton.gameObject.SetActive(false);

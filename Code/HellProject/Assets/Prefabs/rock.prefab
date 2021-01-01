@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2629291172504631510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 8.2, z: 0}
+  m_LocalScale: {x: 2.2743, y: 0.27907, z: 2.3891}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c2f0d85a07d264b888c6159b737192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touristR: {fileID: 0}
   point4Particles: {fileID: 0}
   shadow: {fileID: 4111010241996150910, guid: 2ea4657be38d5e1499115563ffb72788, type: 3}
   particles: {fileID: 8166187566760175173, guid: 3c823b64e7774194a98d9ceb7adecc9e,

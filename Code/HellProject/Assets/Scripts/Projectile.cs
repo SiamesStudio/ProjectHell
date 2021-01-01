@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particles;
 
-    [HideInInspector] public Tourist touristR;
-    public Transform point4Particles;
     void Start()
     {//Ignore the collisions between layer 0 (default) and layer 8 (custom layer you set in Inspector window)
 
@@ -20,16 +19,37 @@ public class Projectile : MonoBehaviour
     //no me funciona
  
     private void OnCollisionEnter(Collision other)
-    {/*
+    {
         Debug.Log("Other" + other.gameObject.ToString());
 
-        if (other.gameObject.GetComponent<RTSAgent>())
+        if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
-            GameManager.instance.tourists.Remove(touristR);
-            touristR.SetDying(true);
-            touristR = null;
-        }*/
-        
+            GameManager.instance.tourists.Remove(_tourist);
+            _tourist.Die();
+            _tourist = null;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }    
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Other" + other.gameObject.ToString());
+
+        if (other.gameObject.TryGetComponent(out Tourist _tourist))
+        {
+            GameManager.instance.tourists.Remove(_tourist);
+            _tourist.Die();
+            _tourist = null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (!particles) return;
+        Instantiate(particles, transform.position, Quaternion.identity);
     }
 
 }

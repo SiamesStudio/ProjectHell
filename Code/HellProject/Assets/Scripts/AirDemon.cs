@@ -57,7 +57,6 @@ public class AirDemon : Demon
     {
         if (tourist && collisionT && haveTourist && !tourist.gameObject.GetComponent<Tourist>().GetKidnapped())
         {
-            instanceRock.touristR=tourist;
 
             instanceRock.RockDown();
 

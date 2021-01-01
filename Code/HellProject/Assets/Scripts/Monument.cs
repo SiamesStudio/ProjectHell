@@ -73,13 +73,13 @@ public class Monument : MonoBehaviour
                 int _random = UnityEngine.Random.Range(0, 2);
                 if (_random == 0)
                 {
-                    _demon = Instantiate(earthD, new Vector3(point.position.x, earthD.transform.position.y, point.position.z), Quaternion.identity);
+                    _demon = Instantiate(earthD, new Vector3(point.position.x, earthD.transform.position.y, point.position.z), point.transform.rotation);
                     defHome = point;
                 }
                 else if (_random == 1)
                 {
 
-                    _demon = Instantiate(airD, new Vector3(point.position.x, airD.transform.position.y, point .position.z), Quaternion.identity);
+                    _demon = Instantiate(airD, new Vector3(point.position.x, airD.transform.position.y, point .position.z), point.transform.rotation);
                     defHome = point;
                     defHome.position = new Vector3(point.position.x, airD.transform.position.y, point.position.z);
                         }

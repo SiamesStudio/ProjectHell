@@ -23,7 +23,6 @@ public class Tourist : MonoBehaviour
     #region variablesUpdatedGame
     [HideInInspector] public bool targeted;
     [HideInInspector]public bool kidnapped;
-    private bool dying;
     public float happiness = 100;
     #endregion
 
@@ -44,8 +43,6 @@ public class Tourist : MonoBehaviour
 
     void Update()
     {
-        Die();
-
         DebugInput();
     }
 
@@ -102,10 +99,7 @@ public class Tourist : MonoBehaviour
 
     public void Die()
     {
-        if (dying)
-        {
             Destroy(this.gameObject);
-        }
     }
     #endregion
 
@@ -125,14 +119,6 @@ public class Tourist : MonoBehaviour
     public void SetKidnapped(bool newKidnapped)
     {
         kidnapped = newKidnapped;
-    }
-    public bool GetDying()
-    {
-        return dying;
-    }
-    public void SetDying(bool newDying)
-    {
-        dying = newDying;
     }
     #endregion
 

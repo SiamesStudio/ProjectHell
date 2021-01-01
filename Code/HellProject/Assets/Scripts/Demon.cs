@@ -55,7 +55,7 @@ public class Demon : Interactive
     protected void AtHome()
     {
         Debug.Log("Estoy  en casa");
-        if (tourist) tourist.SetDying ( true);
+        if (tourist) tourist.Die();
         Destroy(this.gameObject);
     }
 

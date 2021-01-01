@@ -584,7 +584,7 @@ MonoBehaviour:
   - {fileID: 964016140}
   - {fileID: 1075007852}
   - {fileID: 518607772}
-  maxDemons: 3
+  maxDemons: 1
   earthD: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452, type: 3}
   airD: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607, type: 3}
   numDemons: 0
@@ -1106,13 +1106,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964016139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.9985542, z: -0, w: 0.053754248}
   m_LocalPosition: {x: 0.156, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443951983}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -173.837, z: 0}
 --- !u!114 &1002131995 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6594342495020288487, guid: 51dc5968118df8b45bd9286a9cddaf0e,
@@ -1585,7 +1585,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.3966361, b: 0.3443396, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1642,13 +1642,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712405521}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.68044686, y: -0.18369763, z: 0.18232518, w: 0.68556905}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.57201, y: -30.000002, z: 0}
 --- !u!1 &1715797621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2124,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4846568543751606099, guid: 51dc5968118df8b45bd9286a9cddaf0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6594342495020288480, guid: 51dc5968118df8b45bd9286a9cddaf0e,
         type: 3}
       propertyPath: m_Pivot.x

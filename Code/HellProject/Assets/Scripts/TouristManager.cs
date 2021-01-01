@@ -34,6 +34,7 @@ public class TouristManager : MonoBehaviour
     
     public Character GenerateCharacter()
     {
+        if (names.Count < 1) return null;
         int _nameIndex = Random.Range(0, names.Count);
 
         CharacterName _name = names[_nameIndex];
