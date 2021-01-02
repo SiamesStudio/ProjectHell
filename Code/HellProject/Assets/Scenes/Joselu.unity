@@ -443,7 +443,7 @@ Transform:
   - {fileID: 11567708}
   - {fileID: 1357445196}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &254168529
 CapsuleCollider:
@@ -2036,13 +2036,14 @@ GameObject:
   - component: {fileID: 2027489573}
   - component: {fileID: 2027489572}
   - component: {fileID: 2027489571}
+  - component: {fileID: 2027489575}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Testing Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &2027489571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2110,13 +2111,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027489570}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 0, z: 6.6}
+  m_LocalRotation: {x: 0.50186664, y: -0.31763184, z: -0.1680392, w: 0.78676724}
+  m_LocalPosition: {x: 1.67, y: 15.2, z: 8.77}
   m_LocalScale: {x: 8.8166, y: 8.8166, z: 8.8166}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 43.075, y: -66.225006, z: -52.982002}
+--- !u!114 &2027489575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027489570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa30c9494fdb9a141afe64dace9385f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: af8aba4ec4a84894189ece29a1645126, type: 2}
+  debugShortCuts: 1
 --- !u!1001 &2133144740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2142,7 +2157,7 @@ PrefabInstance:
     - target: {fileID: 6594342495020288480, guid: 51dc5968118df8b45bd9286a9cddaf0e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6594342495020288480, guid: 51dc5968118df8b45bd9286a9cddaf0e,
         type: 3}
