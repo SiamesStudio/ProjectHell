@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6922793111485457660}
   - component: {fileID: 6560445430236112230}
   m_Layer: 8
-  m_Name: demonio
+  m_Name: DemonMelee
   m_TagString: Demon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,16 +115,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2371584536683798509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754c032e2ad01439e33e494e8f03a6, type: 3}
+  m_Script: {fileID: 11500000, guid: bf8b635da4643ce4c88c43c3ebbd89a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   kind: 0
   tourist: {fileID: 0}
   haveTourist: 0
-  distance: 2
+  distance: 3
   home: {fileID: 0}
-  velocityToGo: 2
-  velocityToComeBack: 1
+  velocityToGo: 5
+  velocityToComeBack: 3
   myMonument: {fileID: 0}
   touristBag: {fileID: 4031805392506029615}
 --- !u!136 &6560445430236112230

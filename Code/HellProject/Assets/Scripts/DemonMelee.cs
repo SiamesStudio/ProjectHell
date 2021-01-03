@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthDemon : Demon
+public class DemonMelee : Demon
 {
     public Transform touristBag;
     public void LateUpdate()
@@ -10,19 +10,15 @@ public class EarthDemon : Demon
 
         if (attackTourist)
         {
-            if (Vector3.Distance(transform.position, home.position) <= 10) AtHome();
-            MoveTourist();
-
-
+            if (Vector3.Distance(transform.position, home.position) <= 3) AtHome();
+            if(tourist)MoveTourist();
         }
 
     }
+
     protected override void ToHome()
     {
-        Debug.Log("ToHome" + home.position);
-        agent.SetDestination(home.position);
-        MoveTourist();
-
+        agent.SetDestination(home.position);   
     }
     public void MoveTourist()
     {
@@ -30,7 +26,6 @@ public class EarthDemon : Demon
         tourist.transform.rotation = touristBag.rotation;
         tourist.transform.parent = touristBag;
         tourist.gameObject.GetComponent<RTSAgent>().isActive = false;
-        Debug.Log("posicion del demonio" + tourist.transform.position);
 
     }
     public override void Attack()
@@ -38,7 +33,7 @@ public class EarthDemon : Demon
 
         if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true && haveTourist)
         {
-            
+
             ToHome();
             attackTourist = true;
         }
@@ -63,8 +58,6 @@ public class EarthDemon : Demon
             LookingForTourist();
         }
     }
-
-
 
     public override void CollisionDemTou()
     {

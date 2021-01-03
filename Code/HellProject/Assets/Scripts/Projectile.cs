@@ -28,10 +28,11 @@ public class Projectile : MonoBehaviour
             _tourist.Die();
             _tourist = null;
         }
-        else
+        else if (!other.gameObject.TryGetComponent(out Demon demon))
         {
             Destroy(gameObject);
-        }    
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +44,7 @@ public class Projectile : MonoBehaviour
             GameManager.instance.tourists.Remove(_tourist);
             _tourist.Die();
             _tourist = null;
+
         }
     }
 

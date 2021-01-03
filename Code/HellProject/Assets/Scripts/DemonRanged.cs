@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AirDemon : Demon
+public class DemonRanged : Demon
 {
 
 
@@ -11,7 +11,7 @@ public class AirDemon : Demon
    private Rock instanceRock;
         void Awake()
     {
-        instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y, transform.position.z), transform.rotation);
+        instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y , transform.position.z), transform.rotation);
     }
     public void LateUpdate()
     {
@@ -23,6 +23,7 @@ public class AirDemon : Demon
         }
 
     }
+
     protected override void ToHome()
     {
         newPosition =home.position;
