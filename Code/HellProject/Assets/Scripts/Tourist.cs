@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System.IO;
 using System.Linq;
 
@@ -24,6 +25,7 @@ public class Tourist : MonoBehaviour
     [HideInInspector] public bool targeted;
     [HideInInspector]public bool kidnapped;
     public float happiness = 100;
+    private bool leaving;
     #endregion
 
 
@@ -58,7 +60,7 @@ public class Tourist : MonoBehaviour
         currentQuestionId++;
     }
 
-    public void GenerateRating()
+    public float GenerateRating()
     {
         Debug.Log("Right: " + rightAnswers);
         Debug.Log("Wrong: " + wrongAnswers);
@@ -78,6 +80,9 @@ public class Tourist : MonoBehaviour
         {
 
         }
+
+        float _rating = Mathf.Round(10 * rightAnswers / emptyAnswers); //0 - 10
+        return _rating;
     }
 
     public void AddHappiness(int _happQuantity)
@@ -94,14 +99,25 @@ public class Tourist : MonoBehaviour
 
     public void Leave()
     {
-
+        GetComponent<RTSAgent>().enabled = false;
+        GetComponent<NavMeshAgent>().SetDestination(LevelManager.instance.startPoint.position);
+        leaving = true;
     }
 
     public void Die()
     {
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
     #endregion
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!leaving) return;
+        if(other.CompareTag("Entrance"))
+        {
+            Die();
+        }
+    }
 
     #region getters and setters
     public bool GetTargeted()
@@ -127,6 +143,7 @@ public class Tourist : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) AskQuestion();
         if (Input.GetKeyDown(KeyCode.Return)) GenerateRating();
+        if (Input.GetKeyDown(KeyCode.L)) Leave();
     }
 
     #endregion

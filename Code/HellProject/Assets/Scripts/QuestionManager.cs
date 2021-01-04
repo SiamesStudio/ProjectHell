@@ -14,12 +14,15 @@ public class QuestionManager : MonoBehaviour
     [SerializeField] private Button showButton;
     [SerializeField] private List<Text> answersDisplay;
     [SerializeField] private Slider timeSlider;
+    [SerializeField] private Text happinessDisplay;
     [SerializeField] private Vector2 timeBetweenQuestions;
     private float questionCountDown = 0;
     private Animator anim;
     private int correctAnswer;
     private Question currentQuestion;
     private bool isVisible;
+
+    [SerializeField] string[] happinessIndicators;
 
     [SerializeField] private bool debugOptions;
     [HideInInspector] [SerializeField] private Tourist tourist;
@@ -84,6 +87,11 @@ public class QuestionManager : MonoBehaviour
 
         for (int i = 0; i < currentQuestion.answers.Count; i++)
             answersDisplay[i].text = currentQuestion.answers[i];
+
+        int _discreteHappiness = Mathf.FloorToInt(currentQuestion.tourist.happiness / (100 / happinessIndicators.Length));
+        if (_discreteHappiness > happinessIndicators.Length) _discreteHappiness =  happinessIndicators.Length;
+        Debug.Log(_discreteHappiness);
+        happinessDisplay.text = happinessIndicators[_discreteHappiness];
 
     }
 
