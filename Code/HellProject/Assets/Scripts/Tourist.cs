@@ -8,6 +8,7 @@ using System.Linq;
 
 public class Tourist : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     [HideInInspector] public int rightAnswers = 0;
     [HideInInspector] public int wrongAnswers = 0;
     [HideInInspector] public int emptyAnswers = 0;
@@ -49,7 +50,8 @@ public class Tourist : MonoBehaviour
 
     void Update()
     {
-        DebugInput();
+        anim.SetBool("isWalking", !GetComponent<RTSAgent>().isPositioned);
+        //DebugInput();
     }
 
     public void GenerateQuestions()

@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 3e9bb980bf4821d4491341324eeb04c1, type: 3}
   - {fileID: 4900000, guid: 9f54ebbb263223d4db29819592656607, type: 3}
   hair: 3
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: 50afb61e293c910449aa77c20bbdf077, type: 2}
