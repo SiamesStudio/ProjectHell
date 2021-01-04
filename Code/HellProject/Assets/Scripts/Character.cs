@@ -12,6 +12,7 @@ public class Character : ScriptableObject
     [SerializeField] private TextAsset[] monumentQuestionsList;
 
     public TouristManager.SkinPart hair;
+    public Material material;
 
     //[SerializeField] private TextAsset emptyRating;
     //[SerializeField] private TextAsset rightRating;

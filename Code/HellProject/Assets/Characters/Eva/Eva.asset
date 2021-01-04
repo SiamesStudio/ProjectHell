@@ -19,6 +19,5 @@ MonoBehaviour:
   monumentQuestionsList:
   - {fileID: 4900000, guid: 982d72e6652e8664b8e0abf60982ef22, type: 3}
   - {fileID: 4900000, guid: cae27f64eb38a5c4c834c77a76ff46b7, type: 3}
-  emptyRating: {fileID: 4900000, guid: 002940659bc87d246b240d24e17498f4, type: 3}
-  rightRating: {fileID: 4900000, guid: 3b1d9c38b1e8d5b478c8d635f4e853e5, type: 3}
-  wrongRating: {fileID: 4900000, guid: 4e6dd1232ed5e0a49a45aa5922478d20, type: 3}
+  hair: 6
+  material: {fileID: 0}

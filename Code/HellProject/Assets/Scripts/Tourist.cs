@@ -28,7 +28,9 @@ public class Tourist : MonoBehaviour
     private bool leaving;
     #endregion
 
-    public SkinnedMeshRenderer hairMeshRenderer;
+    [SerializeField] private SkinnedMeshRenderer hairMeshRenderer;
+    [SerializeField] private SkinnedMeshRenderer[] applyMaterialTo;
+
 
     #endregion
 
@@ -154,5 +156,12 @@ public class Tourist : MonoBehaviour
     public void PrintCharacter()
     {
         hairMeshRenderer.sharedMesh = TouristManager.instance.skinParts[character.hair];
+        foreach(SkinnedMeshRenderer _renderer in applyMaterialTo)
+        {
+            _renderer.material = character.material;
+        }
+        //material.SetTexture("_MainTex", character.materialTex);
+        //material.mainTexture = character.materialTex;
+        //material.color = new Color(UnityEngine.Random.Range(0, 255), UnityEngine.Random.Range(0, 255), UnityEngine.Random.Range(0, 255));
     }
 }

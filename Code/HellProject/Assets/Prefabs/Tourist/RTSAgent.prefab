@@ -177,6 +177,12 @@ MonoBehaviour:
   kidnapped: 0
   happiness: 100
   hairMeshRenderer: {fileID: 4942493210527438521}
+  applyMaterialTo:
+  - {fileID: 1873194086380157676}
+  - {fileID: 3813958861052323829}
+  - {fileID: 4984518565036737007}
+  - {fileID: 2539182662963835516}
+  - {fileID: 4942493210527438521}
 --- !u!136 &7591951431775165251
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -393,6 +399,30 @@ PrefabInstance:
 --- !u!4 &6510102571797093670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e3abe513c6162748a3c99055cac66ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6760534922545330893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1873194086380157676 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4310839117192445919, guid: 8e3abe513c6162748a3c99055cac66ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6760534922545330893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3813958861052323829 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7584019789339024696, guid: 8e3abe513c6162748a3c99055cac66ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6760534922545330893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4984518565036737007 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1801069902744075042, guid: 8e3abe513c6162748a3c99055cac66ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6760534922545330893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2539182662963835516 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9146462970973636785, guid: 8e3abe513c6162748a3c99055cac66ee,
     type: 3}
   m_PrefabInstance: {fileID: 6760534922545330893}
   m_PrefabAsset: {fileID: 0}
