@@ -28,6 +28,7 @@ public class Tourist : MonoBehaviour
     private bool leaving;
     #endregion
 
+    public SkinnedMeshRenderer hairMeshRenderer;
 
     #endregion
 
@@ -41,6 +42,7 @@ public class Tourist : MonoBehaviour
         name = character.name;
         character.GenerateDictionary();
         GenerateQuestions();
+        PrintCharacter();
     }
 
     void Update()
@@ -144,7 +146,13 @@ public class Tourist : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) AskQuestion();
         if (Input.GetKeyDown(KeyCode.Return)) GenerateRating();
         if (Input.GetKeyDown(KeyCode.L)) Leave();
+        if (Input.GetKeyDown(KeyCode.P)) PrintCharacter();
     }
 
     #endregion
+
+    public void PrintCharacter()
+    {
+        hairMeshRenderer.sharedMesh = TouristManager.instance.skinParts[character.hair];
+    }
 }

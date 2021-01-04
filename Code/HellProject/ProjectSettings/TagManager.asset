@@ -11,6 +11,7 @@ TagManager:
   - Tourist
   - Monument
   - Plane
+  - Entrance
   layers:
   - Default
   - TransparentFX

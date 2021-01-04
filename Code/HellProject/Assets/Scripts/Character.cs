@@ -11,6 +11,8 @@ public class Character : ScriptableObject
     [SerializeField] private TextAsset genericQuestions;
     [SerializeField] private TextAsset[] monumentQuestionsList;
 
+    public TouristManager.SkinPart hair;
+
     //[SerializeField] private TextAsset emptyRating;
     //[SerializeField] private TextAsset rightRating;
     //[SerializeField] private TextAsset wrongRating;
@@ -67,6 +69,7 @@ public class Character : ScriptableObject
 
         return _questions;
     }
+
 
     //METODO PARA HACER SHUFFLE DE LA LISTA
     private void ShuffleList<T>(List<T> _list)
