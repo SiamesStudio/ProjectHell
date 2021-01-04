@@ -20,6 +20,7 @@ public class Demon : Interactive
     [HideInInspector] public Monument myMonument;
     protected NavMeshAgent agent;
     protected bool attackTourist;
+    [SerializeField]protected Animator animator;
     //[HideInInspector]
 
     #endregion
@@ -57,8 +58,8 @@ public class Demon : Interactive
     protected void AtHome()
     {
         Debug.Log("Estoy  en casa");
-        if (tourist !=null && haveTourist) tourist.Die();
-       else Destroy(this.gameObject);
+        tourist.Die();
+       Destroy(this.gameObject);
     }
 
     protected virtual void ToHome() { }
@@ -128,7 +129,21 @@ public class Demon : Interactive
             
     
     }
-        Destroy(this.gameObject);
+        agent.Stop();
+        animator.SetBool("die", true);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <1.0f)
+        {
+            Debug.Log("hiii");
+            animator.SetBool("default", true);
+            Debug.Log("prueba" + animator.GetCurrentAnimatorStateInfo(0).IsName("default"));
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("default") )
+            {
+                Debug.Log("dentro del else");
+                Destroy(this.gameObject);
+            }
+       
+        //
         
 
     }

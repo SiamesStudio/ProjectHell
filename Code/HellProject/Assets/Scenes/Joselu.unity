@@ -584,7 +584,7 @@ MonoBehaviour:
   - {fileID: 964016140}
   - {fileID: 1075007852}
   - {fileID: 518607772}
-  maxDemons: 0
+  maxDemons: 1
   demonMelee: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452,
     type: 3}
   demonRanged: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607,
@@ -2237,7 +2237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027489570}
   m_LocalRotation: {x: 0.50186664, y: -0.31763184, z: -0.1680392, w: 0.78676724}
-  m_LocalPosition: {x: 1.67, y: 15.2, z: 8.77}
+  m_LocalPosition: {x: -18, y: 15.2, z: 8.77}
   m_LocalScale: {x: 8.8166, y: 8.8166, z: 8.8166}
   m_Children: []
   m_Father: {fileID: 0}

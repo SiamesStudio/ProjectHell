@@ -18,7 +18,8 @@ public class DemonMelee : Demon
 
     protected override void ToHome()
     {
-        agent.SetDestination(home.position);   
+        agent.SetDestination(home.position);
+        animator.SetBool("haveTourist", true);
     }
     public void MoveTourist()
     {
