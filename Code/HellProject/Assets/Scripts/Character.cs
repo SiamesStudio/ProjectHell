@@ -11,9 +11,9 @@ public class Character : ScriptableObject
     [SerializeField] private TextAsset genericQuestions;
     [SerializeField] private TextAsset[] monumentQuestionsList;
 
-    [SerializeField] private TextAsset emptyRating;
-    [SerializeField] private TextAsset rightRating;
-    [SerializeField] private TextAsset wrongRating;
+    //[SerializeField] private TextAsset emptyRating;
+    //[SerializeField] private TextAsset rightRating;
+    //[SerializeField] private TextAsset wrongRating;
 
     public Dictionary<Monument.MonumentType, TextAsset> monumentQuestions;
 
