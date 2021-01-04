@@ -12,6 +12,7 @@ public class MenuLogic : MonoBehaviour
     [SerializeField] Button playButton;
     [SerializeField] GameObject shopUI;
     [SerializeField] GameObject upgradesUI;
+    [SerializeField] GameObject levelsUI;
     void Start()
     {
         
@@ -23,6 +24,7 @@ public class MenuLogic : MonoBehaviour
         
     }
 
+    #region Store
     public void OnChaptersButton()
     {
 
@@ -38,9 +40,11 @@ public class MenuLogic : MonoBehaviour
 
     }
 
+    #endregion
+
     public void OnPlayButton()
     {
-
+        GameManager.instance.LoadGame("Joselu");
     }
 
     public void OnMenuButton()
@@ -51,6 +55,18 @@ public class MenuLogic : MonoBehaviour
     public void OnNextButton()
     {
 
+    }
+
+    public void OnStoreButton()
+    {
+        shopUI.SetActive(true);
+        levelsUI.SetActive(false);
+    }
+
+    public void OnLevelsButton()
+    {
+        shopUI.SetActive(false);
+        levelsUI.SetActive(true);
     }
 
 }
