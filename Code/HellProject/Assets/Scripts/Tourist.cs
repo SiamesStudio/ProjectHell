@@ -26,7 +26,8 @@ public class Tourist : MonoBehaviour
     [HideInInspector] public bool targeted;
     [HideInInspector]public bool kidnapped;
     public float happiness = 100;
-    private bool leaving;
+    private bool isLeaving;
+    private float questionTimeOut;
     #endregion
 
     [SerializeField] private SkinnedMeshRenderer hairMeshRenderer;
@@ -46,12 +47,19 @@ public class Tourist : MonoBehaviour
         character.GenerateDictionary();
         GenerateQuestions();
         PrintCharacter();
+        questionTimeOut = UnityEngine.Random.Range(character.questionCoolDown.x, character.questionCoolDown.y);
     }
 
     void Update()
     {
-        anim.SetBool("isWalking", !GetComponent<RTSAgent>().isPositioned);
+        anim.SetBool("isWalking", !GetComponent<RTSAgent>().isPositioned || isLeaving);
         //DebugInput();
+        questionTimeOut -= Time.deltaTime;
+        if (questionTimeOut <= 0)
+        {
+            questionTimeOut = UnityEngine.Random.Range(character.questionCoolDown.x, character.questionCoolDown.y);
+            AskQuestion();
+        }
     }
 
     public void GenerateQuestions()
@@ -107,7 +115,7 @@ public class Tourist : MonoBehaviour
     {
         GetComponent<RTSAgent>().enabled = false;
         GetComponent<NavMeshAgent>().SetDestination(LevelManager.instance.startPoint.position);
-        leaving = true;
+        isLeaving = true;
     }
 
     public void Die()
@@ -118,7 +126,7 @@ public class Tourist : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!leaving) return;
+        if (!isLeaving) return;
         if(other.CompareTag("Entrance"))
         {
             Die();

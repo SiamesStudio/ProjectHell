@@ -8,6 +8,7 @@ public class Character : ScriptableObject
     public new string name;
     public float waitTime;
     [SerializeField] [Range(0, 100)] float monRelatedPerc;
+    public Vector2 questionCoolDown = new Vector2(10, 40);
     [SerializeField] private TextAsset genericQuestions;
     [SerializeField] private TextAsset[] monumentQuestionsList;
 

@@ -584,7 +584,7 @@ MonoBehaviour:
   - {fileID: 964016140}
   - {fileID: 1075007852}
   - {fileID: 518607772}
-  maxDemons: 1
+  maxDemons: 0
   demonMelee: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452,
     type: 3}
   demonRanged: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607,

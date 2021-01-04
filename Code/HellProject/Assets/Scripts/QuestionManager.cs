@@ -89,7 +89,7 @@ public class QuestionManager : MonoBehaviour
             answersDisplay[i].text = currentQuestion.answers[i];
 
         int _discreteHappiness = Mathf.FloorToInt(currentQuestion.tourist.happiness / (100 / happinessIndicators.Length));
-        if (_discreteHappiness > happinessIndicators.Length) _discreteHappiness =  happinessIndicators.Length;
+        if (_discreteHappiness >= happinessIndicators.Length) _discreteHappiness =  happinessIndicators.Length - 1;
         Debug.Log(_discreteHappiness);
         happinessDisplay.text = happinessIndicators[_discreteHappiness];
 
