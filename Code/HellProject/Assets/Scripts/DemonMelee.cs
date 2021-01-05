@@ -9,6 +9,7 @@ public class DemonMelee : Demon
     [Header("Sound")]
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip draggingSound;
+    [SerializeField] AudioClip freeingTouristSound;
     private AudioSource audioSource;
 
 
@@ -86,6 +87,12 @@ public class DemonMelee : Demon
 
 
         }
+    }
+
+    public override void PlayFreeingSound()
+    {
+        audioSource.clip = freeingTouristSound;
+        audioSource.Play();
     }
 
     private void OnDestroy()

@@ -126,7 +126,7 @@ public class Demon : Interactive
             tourist = null;
             haveTourist = false;
             AnimController();
-
+            PlayFreeingSound();
         }
         else
         {
@@ -150,6 +150,8 @@ public class Demon : Interactive
         if (myMonument) myMonument.numDemons--;
     }
     public virtual void CollisionDemTou() { }
+
+    public virtual void PlayFreeingSound() { }
     #endregion
     #region getters and setters
     public Tourist GetTourist()

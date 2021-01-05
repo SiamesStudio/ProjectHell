@@ -14,6 +14,12 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip lavaSound;
+    [SerializeField] AudioSource lavaSource;
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioClip[] musicList;
+    private int currentSongId=-1;
     #endregion
 
 
@@ -26,6 +32,45 @@ public class LevelManager : MonoBehaviour
         currentMonument = monuments[0];
 
     }
+
+    private void Start()
+    {
+        lavaSource.clip = lavaSound;
+        lavaSource.loop = true;
+        lavaSource.Play();
+        lavaSource.volume = 0.5f;
+
+        musicSource.volume = 0.6f;
+        InvokeRepeating("CheckIfSongEnded", 0.25f, 2);
+    }
+
+    private void CheckIfSongEnded()
+    {
+        if (!musicSource.isPlaying)
+        {
+            PlayNewSong();
+        }
+    }
+
+    private void PlayNewSong()
+    {
+        AudioClip _clip = GetSongFromList(musicList);
+        musicSource.clip = _clip;
+        musicSource.Play();
+    }
+
+    private AudioClip GetSongFromList(AudioClip[] musicList)
+    {
+        int songId;
+        do
+        {
+            songId = Random.Range(0, musicList.Length);
+        } while (songId == currentSongId);
+        currentSongId = songId;
+
+        return musicList[songId];
+    }
+
     public void UpdateMonument()
     {
         Debug.Log("Level Manager: Monument Updated!");

@@ -131,6 +131,7 @@ MonoBehaviour:
   touristBag: {fileID: 4031805392506029615}
   deathSound: {fileID: 8300000, guid: 242099214b1fe2c4c8c13de2ba6edc30, type: 3}
   draggingSound: {fileID: 8300000, guid: 04dad2ef5f640e0488ab6ee98a24ac85, type: 3}
+  freeingTouristSound: {fileID: 8300000, guid: 9a2bf49505352c542a5210df48437976, type: 3}
 --- !u!136 &6560445430236112230
 CapsuleCollider:
   m_ObjectHideFlags: 0
