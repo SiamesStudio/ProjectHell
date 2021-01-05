@@ -23,22 +23,24 @@ public class DemonMelee : Demon
         if (attackTourist)
         {
             if (Vector3.Distance(transform.position, home.position) <= 3) AtHome();
-            if(tourist)MoveTourist();
+
+            if (tourist && attackTourist) MoveTourist();
         }
 
     }
 
     protected override void ToHome()
     {
-        agent.SetDestination(home.position);
         animator.SetBool("haveTourist", true);
+        // agent.speed = velocityToComeBack;
+        agent.SetDestination(home.position);
+        tourist.transform.parent = touristBag.transform.parent;
+        MoveTourist();
     }
     public void MoveTourist()
     {
         tourist.transform.position = touristBag.position;
         tourist.transform.rotation = touristBag.rotation;
-        tourist.transform.parent = touristBag;
-        tourist.gameObject.GetComponent<RTSAgent>().isActive = false;
         if(!audioSource.isPlaying)
         {
             audioSource.clip = draggingSound;
@@ -50,8 +52,8 @@ public class DemonMelee : Demon
 
         if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true && haveTourist)
         {
-
-            ToHome();
+            tourist.gameObject.GetComponent<RTSAgent>().isActive = false;
+             ToHome();
             attackTourist = true;
         }
         else

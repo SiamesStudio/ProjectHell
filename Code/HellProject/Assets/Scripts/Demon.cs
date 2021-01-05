@@ -38,7 +38,21 @@ public class Demon : Interactive
         CollisionDemTou();
         if (!collisionT && !haveTourist) GoTo();
         else if (collisionT && haveTourist && !attackTourist) Attack();
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f))
+        {
+            if (tourist != null && haveTourist)
+            {
+                GameManager.instance.tourists.Add(tourist);
+                tourist.gameObject.GetComponent<RTSAgent>().isActive = true;
+                tourist.SetKidnapped(false);
+                tourist.SetTargeted(false);
+                tourist.transform.SetParent(null);
+                tourist = null;
+                haveTourist = false;
 
+            }
+            Destroy(this.gameObject);
+        }
 
     }
     public void Start()
@@ -56,7 +70,6 @@ public class Demon : Interactive
     }
     protected void AtHome()
     {
-        Debug.Log("Estoy  en casa");
         tourist.Die();
         Destroy(this.gameObject);
     }
@@ -116,34 +129,9 @@ public class Demon : Interactive
     public override void Interact()
     {
         base.Interact();
-        if (tourist !=null && haveTourist)
-        {
-            GameManager.instance.tourists.Add(tourist);
-            tourist.gameObject.GetComponent<RTSAgent>().isActive = true;
-            tourist.SetKidnapped(false);
-            tourist.SetTargeted(false);
-            tourist.transform.SetParent(null);
-            tourist = null;
-            haveTourist = false;
-            AnimController();
-            PlayFreeingSound();
-        }
-        else
-        {
-            AnimController();
-        }
-       
-    }
-    public void AnimController()
-    {
-        agent.speed = 0;
+        agent.Stop();
         animator.SetBool("die", true);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            Debug.Log("normalizedTime2   " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
-                Destroy(this.gameObject);
-        }
+
     }
     private void OnDestroy()
     {
