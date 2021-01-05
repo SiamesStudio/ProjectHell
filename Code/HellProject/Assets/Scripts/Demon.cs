@@ -54,7 +54,6 @@ public class Demon : Interactive
             LookingForTourist();
         }
     }
-    protected virtual void AnimatorController() { }
     protected void AtHome()
     {
         Debug.Log("Estoy  en casa");
@@ -126,28 +125,26 @@ public class Demon : Interactive
             tourist.transform.SetParent(null);
             tourist = null;
             haveTourist = false;
-            
-    
-    }
-        agent.Stop();
-        animator.SetBool("die", true);
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <1.0f)
-        {
-            Debug.Log("hiii");
-            animator.SetBool("default", true);
-            Debug.Log("prueba" + animator.GetCurrentAnimatorStateInfo(0).IsName("default"));
+            AnimController();
+
         }
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("default") )
-            {
-                Debug.Log("dentro del else");
-                Destroy(this.gameObject);
-            }
+        else
+        {
+            AnimController();
+        }
        
-        //
-        
-
     }
-
+    public void AnimController()
+    {
+        agent.speed = 0;
+        animator.SetBool("die", true);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            Debug.Log("normalizedTime2   " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
+                Destroy(this.gameObject);
+        }
+    }
     private void OnDestroy()
     {
         if (myMonument) myMonument.numDemons--;
