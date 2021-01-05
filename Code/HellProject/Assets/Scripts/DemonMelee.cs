@@ -5,6 +5,17 @@ using UnityEngine;
 public class DemonMelee : Demon
 {
     public Transform touristBag;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip draggingSound;
+    private AudioSource audioSource;
+
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void LateUpdate()
     {
 
@@ -27,7 +38,11 @@ public class DemonMelee : Demon
         tourist.transform.rotation = touristBag.rotation;
         tourist.transform.parent = touristBag;
         tourist.gameObject.GetComponent<RTSAgent>().isActive = false;
-
+        if(!audioSource.isPlaying)
+        {
+            audioSource.clip = draggingSound;
+            audioSource.Play();
+        }
     }
     public override void Attack()
     {
@@ -71,5 +86,11 @@ public class DemonMelee : Demon
 
 
         }
+    }
+
+    private void OnDestroy()
+    {
+        audioSource.clip = deathSound;
+        audioSource.Play();
     }
 }

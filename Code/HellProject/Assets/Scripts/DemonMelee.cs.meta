@@ -3,7 +3,14 @@ guid: bf8b635da4643ce4c88c43c3ebbd89a7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tourist: {instanceID: 0}
+  - home: {instanceID: 0}
+  - myMonument: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - touristBag: {instanceID: 0}
+  - deathSound: {fileID: 8300000, guid: 242099214b1fe2c4c8c13de2ba6edc30, type: 3}
+  - draggingSound: {fileID: 8300000, guid: 04dad2ef5f640e0488ab6ee98a24ac85, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

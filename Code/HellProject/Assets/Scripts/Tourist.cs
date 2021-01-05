@@ -33,6 +33,12 @@ public class Tourist : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer hairMeshRenderer;
     [SerializeField] private SkinnedMeshRenderer[] applyMaterialTo;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip freeSound;
+    [SerializeField] AudioClip agreeSound;
+    [SerializeField] AudioClip disagreeSound;
+    [SerializeField] AudioClip notReceivingAnswerSound;
+    private AudioSource audioSource;
 
     #endregion
 
@@ -48,6 +54,8 @@ public class Tourist : MonoBehaviour
         GenerateQuestions();
         PrintCharacter();
         questionTimeOut = UnityEngine.Random.Range(character.questionCoolDown.x, character.questionCoolDown.y);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -131,6 +139,24 @@ public class Tourist : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void PlayDisagreementSound()
+    {
+        audioSource.clip = disagreeSound;
+        audioSource.Play();
+    }
+
+    public void PlayAgreementSound()
+    {
+        audioSource.clip = agreeSound;
+        audioSource.Play();
+    }
+
+    public void PlayIgnoredSound()
+    {
+        audioSource.clip = notReceivingAnswerSound;
+        audioSource.Play();
     }
 
     #region getters and setters

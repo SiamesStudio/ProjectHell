@@ -30,6 +30,11 @@ public class QuestionManager : MonoBehaviour
 
     public static QuestionManager instance;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip appearSound;
+    [SerializeField] AudioClip disappearSound;
+    private AudioSource audioSource;
+
     private void Awake()
     {
         if (instance) Destroy(instance);
@@ -39,6 +44,8 @@ public class QuestionManager : MonoBehaviour
 
         if (!TryGetComponent(out anim))
             Debug.LogError("QuestionManager error: No Animator Controller found in " + name);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -110,6 +117,8 @@ public class QuestionManager : MonoBehaviour
         if (isVisible) return;
         isVisible = true;
         anim.SetBool("isVisible", isVisible);
+        audioSource.clip = appearSound;
+        audioSource.Play();
     }
 
     /// <summary>
@@ -120,6 +129,8 @@ public class QuestionManager : MonoBehaviour
         if (!isVisible) return;
         isVisible = false;
         anim.SetBool("isVisible", isVisible);
+        audioSource.clip = disappearSound;
+        audioSource.Play();
     }
 
     /// <summary>

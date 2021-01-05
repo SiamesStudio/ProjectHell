@@ -25,17 +25,20 @@ public class Question
         {
             case -1:
                 tourist.emptyAnswers++;
-                tourist.AddHappiness(-40);  
+                tourist.AddHappiness(-40);
+                tourist.PlayIgnoredSound();
                 break;
             case 0:
                 tourist.rightAnswers++;
                 tourist.AddHappiness(20);
                 tourist.currentQuestions.Remove(this);
+                tourist.PlayAgreementSound();
                 break;
             default:
                 tourist.wrongAnswers++;
                 tourist.currentQuestions.Remove(this);
                 tourist.AddHappiness(-20);
+                tourist.PlayDisagreementSound();
                 break;
         }
     }

@@ -8,10 +8,16 @@ public class DemonRanged : Demon
 
     public Rock rock;
     [HideInInspector] public bool stopFollowing;
-   private Rock instanceRock;
-        void Awake()
+    private Rock instanceRock;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip deathSound;
+    private AudioSource audioSource;
+
+    void Start()
     {
         instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y , transform.position.z), transform.rotation);
+        audioSource = GetComponent<AudioSource>();
     }
     public void LateUpdate()
     {
@@ -76,14 +82,17 @@ public class DemonRanged : Demon
     public override void CollisionDemTou()
     {
 
-
         if (tourist && Vector2.Distance((new Vector2(tourist.transform.position.x, tourist.transform.position.z)), (new Vector2(transform.position.x, transform.position.z))) <= 0.3)//Vector3.Distance(tourist.transform.position, transform.position) <= 4)
         {
             haveTourist = true;
             collisionT = true;
         }
 
+    }
 
-
+    private void OnDestroy()
+    {
+        audioSource.clip = deathSound;
+        audioSource.Play();
     }
 }

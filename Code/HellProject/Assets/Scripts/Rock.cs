@@ -9,36 +9,46 @@ public class Rock : Projectile
     //public GameObject shadow;
     //private GameObject instanceShadow;
     private bool rockDown;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip fallingSound;
+    [SerializeField] AudioClip hitSound;
+    private AudioSource audioSource;
+
     #endregion
+
     #region Methods
     void Start()
     {
         //instanceShadow = Instantiate(shadow, new Vector3(transform.position.x, shadow.transform.position.y, transform.position.z), shadow.transform.rotation);
+        audioSource = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
+    
     /*
     void Update()
     {
         instanceShadow.transform.position = new Vector3(this.transform.position.x, shadow.transform.position.y, this.transform.position.z);
 
         if (rockDown && this.transform.position.y <= 1)
-            {
-            
+        {
+            audioSource.Stop();
+            audioSource.clip = hitSound;
+            audioSource.Play();
             if (instanceParticles)
             {
-                 Destroy(this.gameObject);
+                Destroy(this.gameObject);
                 Destroy(instanceShadow);
             }else ActiveParticles();
         }
 
-    }*/
-  
+    }
+    */
     public void RockDown()
     {
         this.gameObject.GetComponent<Collider>().attachedRigidbody.useGravity = true;
         rockDown = true;
-
+        audioSource.clip = fallingSound;
+        audioSource.Play();
     }
 
     /*
