@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ca824f0c32a25bc46a730a4d7efefe39
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - tourist: {instanceID: 0}
+  - home: {instanceID: 0}
+  - myMonument: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - rock: {instanceID: 0}
+  - deathSound: {fileID: 8300000, guid: 242099214b1fe2c4c8c13de2ba6edc30, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,12 +8,16 @@ public class Character : ScriptableObject
     public new string name;
     public float waitTime;
     [SerializeField] [Range(0, 100)] float monRelatedPerc;
+    public Vector2 questionCoolDown = new Vector2(10, 40);
     [SerializeField] private TextAsset genericQuestions;
     [SerializeField] private TextAsset[] monumentQuestionsList;
 
-    [SerializeField] private TextAsset emptyRating;
-    [SerializeField] private TextAsset rightRating;
-    [SerializeField] private TextAsset wrongRating;
+    public TouristManager.SkinPart hair;
+    public Material material;
+
+    //[SerializeField] private TextAsset emptyRating;
+    //[SerializeField] private TextAsset rightRating;
+    //[SerializeField] private TextAsset wrongRating;
 
     public Dictionary<Monument.MonumentType, TextAsset> monumentQuestions;
 
@@ -67,6 +71,7 @@ public class Character : ScriptableObject
 
         return _questions;
     }
+
 
     //METODO PARA HACER SHUFFLE DE LA LISTA
     private void ShuffleList<T>(List<T> _list)

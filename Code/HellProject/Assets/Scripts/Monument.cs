@@ -19,8 +19,8 @@ public class Monument : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoint;
     [SerializeField] private int maxDemons;
     [Header("Kind of Demons")]
-    [SerializeField] private EarthDemon earthD;
-    [SerializeField] private AirDemon airD;
+    [SerializeField] private DemonMelee demonMelee;
+    [SerializeField] private DemonRanged demonRanged;
     [HideInInspector] public int numDemons;
 
 
@@ -70,18 +70,18 @@ public class Monument : MonoBehaviour
 
             if (numDemons < maxDemons && GameManager.instance.tourists.Count > 0)
             {
-                int _random = UnityEngine.Random.Range(0, 2);
+                int _random = UnityEngine.Random.Range(0, 1);
                 if (_random == 0)
                 {
-                    _demon = Instantiate(earthD, new Vector3(point.position.x, earthD.transform.position.y, point.position.z), point.transform.rotation);
+                    _demon = Instantiate(demonMelee, new Vector3(point.position.x, demonMelee.transform.position.y, point.position.z), point.transform.rotation);
                     defHome = point;
                 }
                 else if (_random == 1)
                 {
 
-                    _demon = Instantiate(airD, new Vector3(point.position.x, airD.transform.position.y, point .position.z), point.transform.rotation);
+                    _demon = Instantiate(demonRanged, new Vector3(point.position.x, demonRanged.transform.position.y, point .position.z), point.transform.rotation);
                     defHome = point;
-                    defHome.position = new Vector3(point.position.x, airD.transform.position.y, point.position.z);
+                    defHome.position = new Vector3(point.position.x, demonRanged.transform.position.y, point.position.z);
                         }
 
                 _demon.SetHome(defHome);

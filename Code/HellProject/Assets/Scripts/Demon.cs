@@ -13,14 +13,16 @@ public class Demon : Interactive
     [HideInInspector] public bool haveTourist;
     protected bool collisionT;
     public float distance;
-    [HideInInspector] public Transform home;
+    public Transform home;
     protected Vector3 newPosition;
     public float velocityToGo;
     public float velocityToComeBack;
     [HideInInspector] public Monument myMonument;
     protected NavMeshAgent agent;
     protected bool attackTourist;
-    
+    [SerializeField]protected Animator animator;
+    //[HideInInspector]
+
     #endregion
     #region methods
 
@@ -28,6 +30,7 @@ public class Demon : Interactive
     {
         if (!TryGetComponent(out agent))
             Debug.LogError("Demon error: NavMeshAgent component not found in " + name);
+        agent.speed = velocityToGo;
     }
     public void Update()
     {
@@ -35,27 +38,39 @@ public class Demon : Interactive
         CollisionDemTou();
         if (!collisionT && !haveTourist) GoTo();
         else if (collisionT && haveTourist && !attackTourist) Attack();
-       
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f))
+        {
+            if (tourist != null && haveTourist)
+            {
+                GameManager.instance.tourists.Add(tourist);
+                tourist.gameObject.GetComponent<RTSAgent>().isActive = true;
+                tourist.SetKidnapped(false);
+                tourist.SetTargeted(false);
+                tourist.transform.SetParent(null);
+                tourist = null;
+                haveTourist = false;
+
+            }
+            Destroy(this.gameObject);
+        }
 
     }
     public void Start()
-     {
+    {
         newPosition = transform.position;
         collisionT = false;
         haveTourist = false;
         tourist = null;
-     
+
         if (!tourist)
         {
 
             LookingForTourist();
         }
-     }
-    
+    }
     protected void AtHome()
     {
-        Debug.Log("Estoy  en casa");
-        if (tourist) tourist.Die();
+        tourist.Die();
         Destroy(this.gameObject);
     }
 
@@ -74,19 +89,19 @@ public class Demon : Interactive
         }
         else
         {
-            LookingForTourist();          
+            LookingForTourist();
         }
     }
 
-    protected  void LookingForTourist()
+    protected void LookingForTourist()
     {
         if (GameManager.instance.tourists.Count > 0)
         {
 
             var visited = new List<Tourist>();
             int i = (int)UnityEngine.Random.Range(0, GameManager.instance.tourists.Count);
-            while (GameManager.instance.tourists.Count > 0 
-                && GameManager.instance.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped() 
+            while (GameManager.instance.tourists.Count > 0
+                && GameManager.instance.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped()
                 && !visited.Contains(GameManager.instance.tourists[i]) && visited.Count != GameManager.instance.tourists.Count)
             {
                 i = (int)UnityEngine.Random.Range(0, GameManager.instance.tourists.Count);
@@ -111,26 +126,20 @@ public class Demon : Interactive
         }
 
     }
-
     public override void Interact()
     {
         base.Interact();
-        if (tourist && haveTourist)
-        {
-            tourist.SetKidnapped(false);
-            tourist.SetTargeted(false);
+        agent.Stop();
+        animator.SetBool("die", true);
 
-            tourist.gameObject.GetComponent<RTSAgent>().isActive = true;
-            GameManager.instance.tourists.Add(tourist);
-        }
-        Destroy(gameObject);
     }
-
     private void OnDestroy()
     {
         if (myMonument) myMonument.numDemons--;
     }
     public virtual void CollisionDemTou() { }
+
+    public virtual void PlayFreeingSound() { }
     #endregion
     #region getters and setters
     public Tourist GetTourist()

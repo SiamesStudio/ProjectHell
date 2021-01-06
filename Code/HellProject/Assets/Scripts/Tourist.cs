@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System.IO;
 using System.Linq;
 
 public class Tourist : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     [HideInInspector] public int rightAnswers = 0;
     [HideInInspector] public int wrongAnswers = 0;
     [HideInInspector] public int emptyAnswers = 0;
@@ -24,8 +26,19 @@ public class Tourist : MonoBehaviour
     [HideInInspector] public bool targeted;
     [HideInInspector]public bool kidnapped;
     public float happiness = 100;
+    private bool isLeaving;
+    private float questionTimeOut;
     #endregion
 
+    [SerializeField] private SkinnedMeshRenderer hairMeshRenderer;
+    [SerializeField] private SkinnedMeshRenderer[] applyMaterialTo;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip freeSound;
+    [SerializeField] AudioClip agreeSound;
+    [SerializeField] AudioClip disagreeSound;
+    [SerializeField] AudioClip notReceivingAnswerSound;
+    private AudioSource audioSource;
 
     #endregion
 
@@ -39,11 +52,22 @@ public class Tourist : MonoBehaviour
         name = character.name;
         character.GenerateDictionary();
         GenerateQuestions();
+        PrintCharacter();
+        questionTimeOut = UnityEngine.Random.Range(character.questionCoolDown.x, character.questionCoolDown.y);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        DebugInput();
+        anim.SetBool("isWalking", !GetComponent<RTSAgent>().isPositioned || isLeaving);
+        //DebugInput();
+        questionTimeOut -= Time.deltaTime;
+        if (questionTimeOut <= 0)
+        {
+            questionTimeOut = UnityEngine.Random.Range(character.questionCoolDown.x, character.questionCoolDown.y);
+            AskQuestion();
+        }
     }
 
     public void GenerateQuestions()
@@ -58,7 +82,7 @@ public class Tourist : MonoBehaviour
         currentQuestionId++;
     }
 
-    public void GenerateRating()
+    public float GenerateRating()
     {
         Debug.Log("Right: " + rightAnswers);
         Debug.Log("Wrong: " + wrongAnswers);
@@ -78,6 +102,9 @@ public class Tourist : MonoBehaviour
         {
 
         }
+
+        float _rating = Mathf.Round(10 * rightAnswers / emptyAnswers); //0 - 10
+        return _rating;
     }
 
     public void AddHappiness(int _happQuantity)
@@ -94,14 +121,43 @@ public class Tourist : MonoBehaviour
 
     public void Leave()
     {
-
+        GetComponent<RTSAgent>().enabled = false;
+        GetComponent<NavMeshAgent>().SetDestination(LevelManager.instance.startPoint.position);
+        isLeaving = true;
     }
 
     public void Die()
     {
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
     #endregion
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isLeaving) return;
+        if(other.CompareTag("Entrance"))
+        {
+            Die();
+        }
+    }
+
+    public void PlayDisagreementSound()
+    {
+        audioSource.clip = disagreeSound;
+        audioSource.Play();
+    }
+
+    public void PlayAgreementSound()
+    {
+        audioSource.clip = agreeSound;
+        audioSource.Play();
+    }
+
+    public void PlayIgnoredSound()
+    {
+        audioSource.clip = notReceivingAnswerSound;
+        audioSource.Play();
+    }
 
     #region getters and setters
     public bool GetTargeted()
@@ -127,7 +183,21 @@ public class Tourist : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) AskQuestion();
         if (Input.GetKeyDown(KeyCode.Return)) GenerateRating();
+        if (Input.GetKeyDown(KeyCode.L)) Leave();
+        if (Input.GetKeyDown(KeyCode.P)) PrintCharacter();
     }
 
     #endregion
+
+    public void PrintCharacter()
+    {
+        hairMeshRenderer.sharedMesh = TouristManager.instance.skinParts[character.hair];
+        foreach(SkinnedMeshRenderer _renderer in applyMaterialTo)
+        {
+            _renderer.material = character.material;
+        }
+        //material.SetTexture("_MainTex", character.materialTex);
+        //material.mainTexture = character.materialTex;
+        //material.color = new Color(UnityEngine.Random.Range(0, 255), UnityEngine.Random.Range(0, 255), UnityEngine.Random.Range(0, 255));
+    }
 }

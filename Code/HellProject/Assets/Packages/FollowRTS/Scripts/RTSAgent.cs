@@ -18,7 +18,7 @@ public class RTSAgent : PointMovement
     private float speedCheckCoolDown;
     private Vector3 pos0;
     private float speed;
-    private bool isPositioned;
+    public bool isPositioned;
     public bool isActive = true;
 
     #endregion
