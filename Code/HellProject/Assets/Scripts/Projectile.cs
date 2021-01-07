@@ -24,17 +24,16 @@ public class Projectile : MonoBehaviour
 
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
+
             GameManager.instance.tourists.Remove(_tourist);
             _tourist.Die();
             _tourist = null;
-        }
-        else if (!other.gameObject.TryGetComponent(out Demon demon))
-        {
-            Destroy(gameObject);
+
+            Destroy(this.gameObject);
         }
         
+        
     }
-
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Other" + other.gameObject.ToString());
@@ -43,15 +42,16 @@ public class Projectile : MonoBehaviour
         {
             GameManager.instance.tourists.Remove(_tourist);
             _tourist.Die();
-            _tourist = null;
-
+            Destroy(this.gameObject);
         }
+        
     }
-
+    
     private void OnDestroy()
     {
         if (!particles) return;
         Instantiate(particles, transform.position, Quaternion.identity);
+        
     }
 
 }

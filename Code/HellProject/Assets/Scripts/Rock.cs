@@ -6,8 +6,6 @@ public class Rock : Projectile
 {
     // Start is called before the first frame update
     #region Variables
-    //public GameObject shadow;
-    //private GameObject instanceShadow;
     private bool rockDown;
 
     [Header("Sound")]
@@ -19,9 +17,7 @@ public class Rock : Projectile
 
     #region Methods
     void Start()
-    {
-        //instanceShadow = Instantiate(shadow, new Vector3(transform.position.x, shadow.transform.position.y, transform.position.z), shadow.transform.rotation);
-        audioSource = GetComponent<AudioSource>();
+    {audioSource = GetComponent<AudioSource>();
     }
     
     /*
@@ -51,12 +47,5 @@ public class Rock : Projectile
         audioSource.Play();
     }
 
-    /*
-    public void ActiveParticles()
-    {
-
-        instanceParticles =Instantiate(particles, transform.position, transform.rotation);
-     
-    }*/
-    #endregion
+        #endregion
 }

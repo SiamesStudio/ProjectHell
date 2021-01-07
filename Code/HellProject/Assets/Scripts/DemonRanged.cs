@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DemonRanged : Demon
 {
@@ -18,6 +19,7 @@ public class DemonRanged : Demon
     {
         instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y , transform.position.z), transform.rotation);
         audioSource = GetComponent<AudioSource>();
+
     }
     public void LateUpdate()
     {
@@ -33,6 +35,7 @@ public class DemonRanged : Demon
     protected override void ToHome()
     {
         newPosition =home.position;
+        this.transform.LookAt(home.transform);
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
 
     }
@@ -82,7 +85,9 @@ public class DemonRanged : Demon
     public override void CollisionDemTou()
     {
 
-        if (tourist && Vector2.Distance((new Vector2(tourist.transform.position.x, tourist.transform.position.z)), (new Vector2(transform.position.x, transform.position.z))) <= 0.3)//Vector3.Distance(tourist.transform.position, transform.position) <= 4)
+        if (tourist && 
+            Vector2.Distance((new Vector2(tourist.transform.position.x, tourist.transform.position.z)), (new Vector2(transform.position.x, transform.position.z))) <= 0.3 &&
+                tourist.GetTargeted())
         {
             haveTourist = true;
             collisionT = true;
@@ -92,6 +97,7 @@ public class DemonRanged : Demon
 
     private void OnDestroy()
     {
+        if (myMonument) myMonument.numDemons--;
         audioSource.clip = deathSound;
         audioSource.Play();
     }

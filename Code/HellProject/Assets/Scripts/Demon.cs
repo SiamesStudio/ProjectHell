@@ -26,33 +26,14 @@ public class Demon : Interactive
     #endregion
     #region methods
 
-    void Awake()
-    {
-        if (!TryGetComponent(out agent))
-            Debug.LogError("Demon error: NavMeshAgent component not found in " + name);
-        agent.speed = velocityToGo;
-    }
+    
     public void Update()
     {
 
         CollisionDemTou();
         if (!collisionT && !haveTourist) GoTo();
         else if (collisionT && haveTourist && !attackTourist) Attack();
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f))
-        {
-            if (tourist != null && haveTourist)
-            {
-                GameManager.instance.tourists.Add(tourist);
-                tourist.gameObject.GetComponent<RTSAgent>().isActive = true;
-                tourist.SetKidnapped(false);
-                tourist.SetTargeted(false);
-                tourist.transform.SetParent(null);
-                tourist = null;
-                haveTourist = false;
-
-            }
-            Destroy(this.gameObject);
-        }
+       
 
     }
     public void Start()
@@ -70,7 +51,7 @@ public class Demon : Interactive
     }
     protected void AtHome()
     {
-        tourist.Die();
+        if(tourist)tourist.Die();
         Destroy(this.gameObject);
     }
 
@@ -129,14 +110,11 @@ public class Demon : Interactive
     public override void Interact()
     {
         base.Interact();
-        agent.Stop();
+        if (this.GetComponent<NavMeshAgent>())agent.Stop();
         animator.SetBool("die", true);
 
     }
-    private void OnDestroy()
-    {
-        if (myMonument) myMonument.numDemons--;
-    }
+   
     public virtual void CollisionDemTou() { }
 
     public virtual void PlayFreeingSound() { }

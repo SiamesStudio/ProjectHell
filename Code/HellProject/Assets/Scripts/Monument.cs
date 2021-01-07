@@ -70,7 +70,7 @@ public class Monument : MonoBehaviour
 
             if (numDemons < maxDemons && GameManager.instance.tourists.Count > 0)
             {
-                int _random = UnityEngine.Random.Range(0, 1);
+                int _random = UnityEngine.Random.Range(0, 2);
                 if (_random == 0)
                 {
                     _demon = Instantiate(demonMelee, new Vector3(point.position.x, demonMelee.transform.position.y, point.position.z), point.transform.rotation);
@@ -82,7 +82,7 @@ public class Monument : MonoBehaviour
                     _demon = Instantiate(demonRanged, new Vector3(point.position.x, demonRanged.transform.position.y, point .position.z), point.transform.rotation);
                     defHome = point;
                     defHome.position = new Vector3(point.position.x, demonRanged.transform.position.y, point.position.z);
-                        }
+                }
 
                 _demon.SetHome(defHome);
                 _demon.myMonument = this;

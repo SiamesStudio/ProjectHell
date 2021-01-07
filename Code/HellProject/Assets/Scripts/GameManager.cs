@@ -8,7 +8,7 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public List<Tourist> tourists = new List<Tourist>();
+     public List<Tourist> tourists = new List<Tourist>();
     private int currentLevel;
     private int playerCoins;
     private int playerGems;
