@@ -1474,6 +1474,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tourists: []
+  playerCoins: 0
+  playerGems: 0
+  playerTimeLeft: 0
+  playerNumTourists: 0
+  isDebugging: 1
 --- !u!4 &1313367971
 Transform:
   m_ObjectHideFlags: 0

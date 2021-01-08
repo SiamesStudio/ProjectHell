@@ -8,13 +8,15 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-     public List<Tourist> tourists = new List<Tourist>();
+    public List<Tourist> tourists = new List<Tourist>();
     private int currentLevel;
-    private int playerCoins;
-    private int playerGems;
-    private float timeLeft;
+    [HideInInspector] public int playerCoins;
+    [HideInInspector] public int playerGems;
+    [HideInInspector] public float playerTimeLeft;
+    [HideInInspector] public int playerNumTourists;
 
     public static GameManager instance;
+    [SerializeField] bool isDebugging;
     //Ratings
 
     private void Awake()
@@ -22,8 +24,6 @@ public class GameManager : MonoBehaviour
         instance = this;
         //if (instance){ Destroy(instance); instance = this; }
         DontDestroyOnLoad(gameObject);
-        Save();
-
     }
 
     private void Start()
@@ -31,6 +31,20 @@ public class GameManager : MonoBehaviour
         Load();
     }
 
+    public void Update()
+    {
+        if(isDebugging)
+        {
+            if(Input.GetKeyDown(KeyCode.D))
+            {
+                OnPlayerDeath();
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                playerCoins+=10;
+            }
+        }
+    }
 
     public void LoadGame(string name)
     {
@@ -49,7 +63,8 @@ public class GameManager : MonoBehaviour
         {
             coins = playerCoins,
             gems = playerGems,
-            timeLeft = timeLeft
+            timeLeft = playerTimeLeft,
+            numTourists = tourists.Count
         };
         string saveJSON = JsonUtility.ToJson(playerData);
         string filepath = Application.persistentDataPath + "/playerStats.json";
@@ -62,7 +77,8 @@ public class GameManager : MonoBehaviour
         {
             coins = 0,
             gems = 0,
-            timeLeft = 0
+            timeLeft = 0,
+            numTourists = 0
         };
         string saveJSON = JsonUtility.ToJson(playerData);
         string filepath = Application.persistentDataPath + "/playerStats.json";
@@ -79,13 +95,21 @@ public class GameManager : MonoBehaviour
             Debug.Log(savedData);
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(savedData);
             Debug.Log(playerData.ToString());
-
+            playerCoins = playerData.coins;
+            playerGems = playerData.gems;
+            playerTimeLeft = playerData.timeLeft;
+            playerNumTourists = playerData.numTourists;
         }
         else
         {
             Debug.Log("There is no data saved");
         }
-        
+    }
+
+    public void OnPlayerDeath()
+    {
+        Save();
+        LoadGame("Menu");
     }
 
     private class PlayerData
@@ -93,11 +117,12 @@ public class GameManager : MonoBehaviour
         public int coins;
         public int gems;
         public float timeLeft;
+        public int numTourists;
 
         override
         public String ToString()
         {
-            return "Coins:  " + coins + "\nGems: " + gems;
+            return "Coins:  " + coins + "\nGems: " + gems + "\ntimeLeft: " + timeLeft + "\nnumTourists: " + numTourists;
         }
     }
 }
