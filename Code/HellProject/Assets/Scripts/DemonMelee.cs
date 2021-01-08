@@ -30,7 +30,7 @@ public class DemonMelee : Demon
 
         if (attackTourist)
         {
-            if (Vector3.Distance(transform.position, home.position) <= 3) AtHome();
+            if (Vector3.Distance(transform.position, home.position) <= 5) AtHome();
 
             if (tourist && attackTourist) MoveTouristSound();
         }

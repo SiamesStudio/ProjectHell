@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -587,7 +587,7 @@ MonoBehaviour:
   maxDemons: 0
   demonMelee: {fileID: 6922793111485457660, guid: e76bfa41c39d93c4c86d59e1b5132452,
     type: 3}
-  demonRanged: {fileID: 5851817963338457412, guid: d71956397ec3ed543a73e9a45b661607,
+  demonRanged: {fileID: 4950615421160476634, guid: d71956397ec3ed543a73e9a45b661607,
     type: 3}
   numDemons: 0
 --- !u!136 &351675986

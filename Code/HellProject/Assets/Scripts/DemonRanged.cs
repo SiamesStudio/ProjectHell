@@ -10,6 +10,7 @@ public class DemonRanged : Demon
     public Rock rock;
     [HideInInspector] public bool stopFollowing;
     private Rock instanceRock;
+    public Transform rockBag;
 
     [Header("Sound")]
     [SerializeField] AudioClip deathSound;
@@ -17,7 +18,7 @@ public class DemonRanged : Demon
 
     void Start()
     {
-        instanceRock = Instantiate(rock, new Vector3(transform.position.x, rock.transform.position.y , transform.position.z), transform.rotation);
+        instanceRock = Instantiate(rock, rockBag.position, transform.rotation);
         audioSource = GetComponent<AudioSource>();
 
     }
@@ -48,11 +49,11 @@ public class DemonRanged : Demon
         
         if (condition)
         {
-            this.transform.LookAt(tourist.transform);
+            this.transform.LookAt(new Vector3(tourist.transform.position.x, transform.position.y,tourist.transform.position.z));
 
             newPosition = new Vector3(tourist.transform.position.x, transform.position.y, tourist.transform.position.z);
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
-            instanceRock.transform.position = Vector3.Lerp(new Vector3(transform.position.x, rock.transform.position.y, transform.position.z), newPosition, Time.deltaTime * velocityToGo / 5);
+            instanceRock.transform.position = Vector3.Lerp(rockBag.position, newPosition, Time.deltaTime * velocityToGo / 5);
 
         }
         else
@@ -69,6 +70,8 @@ public class DemonRanged : Demon
         {
 
             instanceRock.RockDown();
+
+            animator.SetBool("withRock", true);
 
             attackTourist = true;
 

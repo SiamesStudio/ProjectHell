@@ -42,9 +42,9 @@ public class Projectile : MonoBehaviour
         {
             GameManager.instance.tourists.Remove(_tourist);
             _tourist.Die();
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
         }
-        
+
     }
     
     private void OnDestroy()
