@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
 
-            GameManager.instance.tourists.Remove(_tourist);
+            GameManager.instance.touristsAvailable.Remove(_tourist);
             _tourist.Die();
             _tourist = null;
 
@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
 
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
-            GameManager.instance.tourists.Remove(_tourist);
+            GameManager.instance.touristsAvailable.Remove(_tourist);
             _tourist.Die();
         Destroy(this.gameObject);
         }

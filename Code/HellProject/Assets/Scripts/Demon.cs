@@ -9,7 +9,7 @@ public class Demon : Interactive
 {
     #region variables 
     public int kind;
-    [HideInInspector] public Tourist tourist;
+    /*[HideInInspector]*/ public Tourist tourist;
     [HideInInspector] public bool haveTourist;
     protected bool collisionT;
     public float distance;
@@ -24,17 +24,17 @@ public class Demon : Interactive
     //[HideInInspector]
 
     #endregion
+
     #region methods
 
     
     public void Update()
     {
-
+        if (!tourist) LookingForTourist();
+        if (tourist.isLeaving) LookingForTourist();
         CollisionDemTou();
-        if (!collisionT && !haveTourist) GoTo();
+        if (!collisionT && !haveTourist && tourist.GetTargeted()) GoTo();
         else if (collisionT && haveTourist && !attackTourist) Attack();
-       
-
     }
     public void Start()
     {
@@ -45,14 +45,13 @@ public class Demon : Interactive
 
         if (!tourist)
         {
-
             LookingForTourist();
         }
     }
-    protected void AtHome()
+    protected virtual void AtHome()
     {
-        if(tourist)tourist.Die();
-        Destroy(this.gameObject);
+        if(tourist) tourist.Die();
+        Destroy(gameObject);
     }
 
     protected virtual void ToHome() { }
@@ -76,30 +75,35 @@ public class Demon : Interactive
 
     protected void LookingForTourist()
     {
-        if (GameManager.instance.tourists.Count > 0)
+        if (GameManager.instance.touristsAvailable.Count > 0)
         {
 
-            var visited = new List<Tourist>();
-            int i = (int)UnityEngine.Random.Range(0, GameManager.instance.tourists.Count);
-            while (GameManager.instance.tourists.Count > 0
-                && GameManager.instance.tourists[i].gameObject.GetComponent<Tourist>().GetKidnapped()
-                && !visited.Contains(GameManager.instance.tourists[i]) && visited.Count != GameManager.instance.tourists.Count)
-            {
-                i = (int)UnityEngine.Random.Range(0, GameManager.instance.tourists.Count);
-                visited.Add(GameManager.instance.tourists[i]);
-            }
-            if (visited.Count == GameManager.instance.tourists.Count)
-            {
-                ToHome();
-            }
-            tourist = GameManager.instance.tourists[i];
+            //var visited = new List<Tourist>();
+            int i = (int)UnityEngine.Random.Range(0, GameManager.instance.touristsAvailable.Count);
+            //while (GameManager.instance.touristsAvailable[i].gameObject.GetComponent<Tourist>().GetKidnapped()
+            //    && !visited.Contains(GameManager.instance.touristsAvailable[i]) && visited.Count != GameManager.instance.touristsAvailable.Count)
+            //{
+            //    i = (int)UnityEngine.Random.Range(0, GameManager.instance.touristsAvailable.Count);
+            //    visited.Add(GameManager.instance.touristsAvailable[i]);
+            //}
+            //if (visited.Count == GameManager.instance.touristsAvailable.Count)
+            //{
+            //    ToHome();
+            //    return;
+            //}
+            tourist = GameManager.instance.touristsAvailable[i];
 
-            if (tourist)
+            if(tourist)
             {
-                tourist.gameObject.GetComponent<Tourist>().SetTargeted(true);
-                visited = null;
+                if (!tourist.GetTargeted())
+                {
+                    tourist.gameObject.GetComponent<Tourist>().SetTargeted(true);
+                    return;
+                    //visited = null;
+                }
             }
-            else ToHome();
+
+            ToHome();
         }
         else
         {
@@ -110,8 +114,21 @@ public class Demon : Interactive
     public override void Interact()
     {
         base.Interact();
-        if (this.GetComponent<NavMeshAgent>())agent.Stop();
+        if (GetComponent<NavMeshAgent>()) agent.Stop();
         animator.SetBool("die", true);
+        if (tourist != null)
+        {
+            tourist.SetKidnapped(false);
+            tourist.SetTargeted(false);
+            tourist.gameObject.GetComponent<RTSAgent>().enabled = true;
+            tourist.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+            tourist.GetComponent<Collider>().enabled = true;
+            tourist.transform.SetParent(null);
+            tourist.isQuestionable = true;
+            //tourist = null;
+            haveTourist = false;
+
+        }
 
     }
    
@@ -119,6 +136,7 @@ public class Demon : Interactive
 
     public virtual void PlayFreeingSound() { }
     #endregion
+
     #region getters and setters
     public Tourist GetTourist()
     {

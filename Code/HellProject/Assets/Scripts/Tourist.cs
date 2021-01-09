@@ -12,6 +12,7 @@ public class Tourist : MonoBehaviour
     [HideInInspector] public int rightAnswers = 0;
     [HideInInspector] public int wrongAnswers = 0;
     [HideInInspector] public int emptyAnswers = 0;
+    public bool isQuestionable = true;
 
     #region variables
 
@@ -26,7 +27,7 @@ public class Tourist : MonoBehaviour
     [HideInInspector] public bool targeted;
     [HideInInspector]public bool kidnapped;
     public float happiness = 100;
-    private bool isLeaving;
+    public bool isLeaving;
     private float questionTimeOut;
     #endregion
 
@@ -60,6 +61,7 @@ public class Tourist : MonoBehaviour
 
     void Update()
     {
+        isQuestionable = !isLeaving && !kidnapped;
         anim.SetBool("isWalking", !GetComponent<RTSAgent>().isPositioned || isLeaving);
         //DebugInput();
         questionTimeOut -= Time.deltaTime;
@@ -124,11 +126,13 @@ public class Tourist : MonoBehaviour
         GetComponent<RTSAgent>().enabled = false;
         GetComponent<NavMeshAgent>().SetDestination(LevelManager.instance.startPoint.position);
         isLeaving = true;
+        isQuestionable = false;
     }
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        GameManager.instance.tourists.Remove(this);
+        Destroy(gameObject);
     }
     #endregion
 
@@ -149,8 +153,8 @@ public class Tourist : MonoBehaviour
 
     public void PlayAgreementSound()
     {
-        audioSource.clip = agreeSound;
-        audioSource.Play();
+        //audioSource.clip = agreeSound;
+        //audioSource.Play();
     }
 
     public void PlayIgnoredSound()
@@ -172,9 +176,10 @@ public class Tourist : MonoBehaviour
     {
         return kidnapped;
     }
-    public void SetKidnapped(bool newKidnapped)
+    public void SetKidnapped(bool isKidnapped)
     {
-        kidnapped = newKidnapped;
+        isQuestionable = !isKidnapped;
+        kidnapped = isKidnapped;
     }
     #endregion
 

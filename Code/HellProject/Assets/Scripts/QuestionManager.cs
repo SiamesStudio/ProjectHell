@@ -53,7 +53,10 @@ public class QuestionManager : MonoBehaviour
         questionCountDown -= Time.deltaTime;
         if (debugOptions) DebugOptions();
 
-        if (LevelManager.instance.isQuestionVisible && currentQuestion != null) showButton.gameObject.SetActive(true); //MakeVisible();
+        if (LevelManager.instance.isQuestionVisible && currentQuestion != null)
+        {
+            showButton.gameObject.SetActive(true); //MakeVisible();
+        }
         else
         {
             showButton.gameObject.SetActive(false);
@@ -66,8 +69,9 @@ public class QuestionManager : MonoBehaviour
                 PrintQuestion();
             else return;
         }
-
-
+        if (currentQuestion == null) return;
+        if (!currentQuestion.tourist) return;
+        if (!currentQuestion.tourist.isQuestionable) return;
             
         currentQuestion.coolDown -= Time.deltaTime;
         if(debugOptions && !freezeCoolDown) currentQuestion.coolDown -= Time.deltaTime;

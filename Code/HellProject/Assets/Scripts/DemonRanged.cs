@@ -33,11 +33,17 @@ public class DemonRanged : Demon
 
     }
 
+
+    protected override void AtHome()
+    {
+        Destroy(gameObject);
+    }
+
     protected override void ToHome()
     {
-        newPosition =home.position;
+        newPosition = home.position;
         this.transform.LookAt(home.transform);
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo / 5);
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * velocityToGo);
 
     }
 
@@ -76,13 +82,13 @@ public class DemonRanged : Demon
             attackTourist = true;
 
             tourist = null;
-            this.transform.LookAt(home);
+            transform.LookAt(home);
 
             ToHome();
 
             attackTourist = true;
         }
-        else { ToHome(); }
+        else { tourist = null; ToHome(); }
     }
 
     public override void CollisionDemTou()
@@ -101,7 +107,7 @@ public class DemonRanged : Demon
     private void OnDestroy()
     {
         if (myMonument) myMonument.numDemons--;
-        audioSource.clip = deathSound;
-        audioSource.Play();
+        //audioSource.clip = deathSound;
+        //audioSource.Play();
     }
 }

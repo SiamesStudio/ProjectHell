@@ -15,7 +15,7 @@ public class Monument : MonoBehaviour
     private int currentZoneId = 0;
 
     [Header("Spawner")]
-    public float spawnTime;
+    public Vector2 spawnTime;
     [SerializeField] private List<Transform> spawnPoint;
     [SerializeField] private int maxDemons;
     [Header("Kind of Demons")]
@@ -53,7 +53,7 @@ public class Monument : MonoBehaviour
     {
         if (_spawning)
         {
-            InvokeRepeating("Spawn", 1, spawnTime);
+            InvokeRepeating("Spawn", Random.Range(spawnTime.x, spawnTime.y), Random.Range(spawnTime.x, spawnTime.y));
         }
         else CancelInvoke();
     }
@@ -68,7 +68,7 @@ public class Monument : MonoBehaviour
         foreach (Transform point in spawnPoint)
         {
 
-            if (numDemons < maxDemons && GameManager.instance.tourists.Count > 0)
+            if (numDemons < maxDemons && GameManager.instance.touristsAvailable.Count > 0)
             {
                 int _random = UnityEngine.Random.Range(0, 1);
                 if (_random == 0)

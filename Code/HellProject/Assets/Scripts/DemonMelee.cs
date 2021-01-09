@@ -21,10 +21,12 @@ public class DemonMelee : Demon
             Debug.LogError("Demon error: NavMeshAgent component not found in " + name);
         agent.speed = velocityToGo;
     }
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     public void LateUpdate()
     {
 
@@ -36,21 +38,9 @@ public class DemonMelee : Demon
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f))
         {
-            if (tourist != null && haveTourist)
-            {
-                GameManager.instance.tourists.Add(tourist);
-                tourist.SetKidnapped(false);
-                tourist.SetTargeted(false);
-                tourist.gameObject.GetComponent<RTSAgent>().enabled = true;
-                tourist.gameObject.GetComponent<NavMeshAgent>().enabled = true;
-                tourist.GetComponent<Collider>().enabled = true;
-                tourist.transform.SetParent(null);
-                tourist = null;
-                haveTourist = false;
 
-            }
             animator.SetBool("default", true);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
     }
@@ -60,12 +50,8 @@ public class DemonMelee : Demon
         Debug.Log("ToHome");
         animator.SetBool("haveTourist", true);
 
-        tourist.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         agent.SetDestination(home.position);
-        tourist.transform.position = touristBag.position;
-        tourist.transform.rotation = touristBag.rotation;
-        tourist.transform.parent = touristBag.transform.parent;
-        tourist.GetComponent<Collider>().enabled = false;
+
     }
     public void MoveTouristSound()
     {
@@ -81,7 +67,11 @@ public class DemonMelee : Demon
         if (tourist && tourist.gameObject.GetComponent<Tourist>().GetKidnapped() == true && haveTourist)
         {
             tourist.gameObject.GetComponent<RTSAgent>().enabled = false;
-            Debug.Log("atack");
+            tourist.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            tourist.transform.position = touristBag.position;
+            tourist.transform.rotation = touristBag.rotation;
+            tourist.transform.parent = touristBag.transform.parent;
+            tourist.GetComponent<Collider>().enabled = false;
             ToHome();
             attackTourist = true;
         }
@@ -114,9 +104,6 @@ public class DemonMelee : Demon
             collisionT = true;
             tourist.gameObject.GetComponent<Tourist>().SetKidnapped(true);
             haveTourist = true;
-            GameManager.instance.tourists.Remove(tourist);
-
-
         }
     }
 
@@ -131,5 +118,6 @@ public class DemonMelee : Demon
         if (myMonument) myMonument.numDemons--;
         audioSource.clip = deathSound;
         audioSource.Play();
+        if (tourist) tourist.transform.parent = null;
     }
 }

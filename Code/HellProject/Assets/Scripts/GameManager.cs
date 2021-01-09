@@ -9,6 +9,7 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public List<Tourist> tourists = new List<Tourist>();
+    public List<Tourist> touristsAvailable = new List<Tourist>();
     private int currentLevel;
     [HideInInspector] public int playerCoins;
     [HideInInspector] public int playerGems;
@@ -44,6 +45,17 @@ public class GameManager : MonoBehaviour
                 playerCoins+=10;
             }
         }
+        UpdateTourists();
+
+    }
+
+    private void UpdateTourists()
+    {
+        touristsAvailable.Clear();
+        foreach(Tourist _tourist in tourists)
+        {
+            if (_tourist.isQuestionable) touristsAvailable.Add(_tourist);
+        }
     }
 
     public void LoadGame(string name)
@@ -64,7 +76,7 @@ public class GameManager : MonoBehaviour
             coins = playerCoins,
             gems = playerGems,
             timeLeft = playerTimeLeft,
-            numTourists = tourists.Count
+            numTourists = touristsAvailable.Count
         };
         string saveJSON = JsonUtility.ToJson(playerData);
         string filepath = Application.persistentDataPath + "/playerStats.json";
