@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 2371584536683798509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0291, y: 2.0291, z: 2.0291}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4021321891504176786}
   - {fileID: 3414349646551492149}
@@ -232,7 +232,7 @@ MonoBehaviour:
   kind: 0
   tourist: {fileID: 0}
   haveTourist: 0
-  distance: 3
+  distance: 5
   home: {fileID: 0}
   velocityToGo: 5
   velocityToComeBack: 3

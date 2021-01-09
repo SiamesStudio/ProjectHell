@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 4536841238337140458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 6510102571797093670}
   - {fileID: 4536841239354028285}
@@ -175,10 +175,12 @@ MonoBehaviour:
   rightAnswers: 0
   wrongAnswers: 0
   emptyAnswers: 0
+  isQuestionable: 1
   character: {fileID: 0}
   targeted: 0
   kidnapped: 0
   happiness: 100
+  isLeaving: 0
   hairMeshRenderer: {fileID: 4942493210527438521}
   applyMaterialTo:
   - {fileID: 1873194086380157676}
@@ -415,17 +417,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8e3abe513c6162748a3c99055cac66ee,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 60.2031
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e3abe513c6162748a3c99055cac66ee,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 60.2031
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e3abe513c6162748a3c99055cac66ee,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 60.2031
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e3abe513c6162748a3c99055cac66ee,
         type: 3}
