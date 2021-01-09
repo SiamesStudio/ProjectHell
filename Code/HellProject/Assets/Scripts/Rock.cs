@@ -17,28 +17,10 @@ public class Rock : Projectile
 
     #region Methods
     void Start()
-    {audioSource = GetComponent<AudioSource>();
+    {
+        audioSource = GetComponent<AudioSource>();
     }
     
-    /*
-    void Update()
-    {
-        instanceShadow.transform.position = new Vector3(this.transform.position.x, shadow.transform.position.y, this.transform.position.z);
-
-        if (rockDown && this.transform.position.y <= 1)
-        {
-            audioSource.Stop();
-            audioSource.clip = hitSound;
-            audioSource.Play();
-            if (instanceParticles)
-            {
-                Destroy(this.gameObject);
-                Destroy(instanceShadow);
-            }else ActiveParticles();
-        }
-
-    }
-    */
     public void RockDown()
     {
         this.gameObject.GetComponent<Collider>().attachedRigidbody.useGravity = true;

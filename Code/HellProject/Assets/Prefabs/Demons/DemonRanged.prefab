@@ -5619,7 +5619,7 @@ MonoBehaviour:
   kind: 0
   tourist: {fileID: 0}
   haveTourist: 0
-  distance: 0
+  distance: 3
   home: {fileID: 0}
   velocityToGo: 4
   velocityToComeBack: 3
@@ -5628,6 +5628,7 @@ MonoBehaviour:
   rock: {fileID: -948047972632459092, guid: 0cf709ba6b5d98649a15d9271958ce27, type: 3}
   stopFollowing: 0
   rockBag: {fileID: 4785633296664756885}
+  distance4Attack: {x: 0.8, y: 3}
   deathSound: {fileID: 8300000, guid: 242099214b1fe2c4c8c13de2ba6edc30, type: 3}
 --- !u!1 &6047279727783499849
 GameObject:

@@ -11,6 +11,7 @@ public class DemonRanged : Demon
     [HideInInspector] public bool stopFollowing;
     private Rock instanceRock;
     public Transform rockBag;
+    public Vector2 distance4Attack;
 
     [Header("Sound")]
     [SerializeField] AudioClip deathSound;
@@ -95,7 +96,7 @@ public class DemonRanged : Demon
     {
 
         if (tourist && 
-            Vector2.Distance((new Vector2(tourist.transform.position.x, tourist.transform.position.z)), (new Vector2(transform.position.x, transform.position.z))) <= 0.3 &&
+            Vector2.Distance((new Vector2(tourist.transform.position.x, tourist.transform.position.z)), (new Vector2(transform.position.x, transform.position.z))) <= Random.Range(distance4Attack.x, distance4Attack.y) &&
                 tourist.GetTargeted())
         {
             haveTourist = true;

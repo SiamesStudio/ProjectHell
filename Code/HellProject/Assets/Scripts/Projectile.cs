@@ -5,10 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particles;
-
     void Start()
     {//Ignore the collisions between layer 0 (default) and layer 8 (custom layer you set in Inspector window)
-
+               
     }
 
     // Update is called once per frame
@@ -21,7 +20,8 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Other" + other.gameObject.ToString());
-
+        if (other.gameObject.TryGetComponent(out Rock rock))
+            Physics.IgnoreCollision(other.gameObject.GetComponent<Rock>().GetComponent<Collider>(), GetComponent<Collider>(), true);
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
 
@@ -34,10 +34,12 @@ public class Projectile : MonoBehaviour
         
         
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Other" + other.gameObject.ToString());
-
+        if(other.gameObject.TryGetComponent(out Rock rock))
+        Physics.IgnoreCollision(other.gameObject.GetComponent<Rock>().GetComponent<Collider>(), GetComponent<Collider>(), true);
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
             GameManager.instance.touristsAvailable.Remove(_tourist);
