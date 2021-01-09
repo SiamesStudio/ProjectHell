@@ -153,8 +153,9 @@ public class Tourist : MonoBehaviour
 
     public void PlayAgreementSound()
     {
-        //audioSource.clip = agreeSound;
-        //audioSource.Play();
+        if (!audioSource) return;
+        audioSource.clip = agreeSound;
+        audioSource.Play();
     }
 
     public void PlayIgnoredSound()

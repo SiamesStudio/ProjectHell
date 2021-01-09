@@ -24,17 +24,15 @@ public class Projectile : MonoBehaviour
             Physics.IgnoreCollision(other.gameObject.GetComponent<Rock>().GetComponent<Collider>(), GetComponent<Collider>(), true);
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
-
+            PlayHitSound();
             GameManager.instance.touristsAvailable.Remove(_tourist);
             _tourist.Die();
             _tourist = null;
-
             Destroy(this.gameObject);
         }
-        
-        
     }
     
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Other" + other.gameObject.ToString());
@@ -42,13 +40,19 @@ public class Projectile : MonoBehaviour
         Physics.IgnoreCollision(other.gameObject.GetComponent<Rock>().GetComponent<Collider>(), GetComponent<Collider>(), true);
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
         {
+            PlayHitSound();
             GameManager.instance.touristsAvailable.Remove(_tourist);
             _tourist.Die();
-        Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
 
     }
     
+    public virtual void PlayHitSound()
+    {
+
+    }
+
     private void OnDestroy()
     {
         if (!particles) return;

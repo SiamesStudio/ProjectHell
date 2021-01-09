@@ -12,6 +12,8 @@ public class Rock : Projectile
     [SerializeField] AudioClip fallingSound;
     [SerializeField] AudioClip hitSound;
     private AudioSource audioSource;
+    private Rigidbody rigidBody;
+    private bool checkingGrounded = false;
 
     #endregion
 
@@ -19,15 +21,45 @@ public class Rock : Projectile
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        rigidBody = GetComponent<Rigidbody>();
     }
-    
+
+    private void Update()
+    {
+        if(checkingGrounded)
+        {
+            CheckIfFalling();
+        }
+    }
+
     public void RockDown()
     {
         this.gameObject.GetComponent<Collider>().attachedRigidbody.useGravity = true;
         rockDown = true;
         audioSource.clip = fallingSound;
         audioSource.Play();
+        StartCoroutine(EnableCheckingGrounded());
     }
 
-        #endregion
+    private IEnumerator EnableCheckingGrounded()
+    {
+        yield return new WaitForSeconds(0.7f);
+        checkingGrounded = true;
+    }
+
+    private void CheckIfFalling()
+    {
+        if (rigidBody.velocity.magnitude <= 0.2)
+        {
+            PlayHitSound();
+        }
+    }
+
+    public override void PlayHitSound()
+    {
+        AudioSource.PlayClipAtPoint(hitSound, transform.position, 4);
+        Destroy(this.gameObject);
+    }
+
+    #endregion
 }
