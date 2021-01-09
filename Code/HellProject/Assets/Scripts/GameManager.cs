@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     [SerializeField] bool isDebugging;
+
+    public Animator animator;
+    private int levelToLoad;
     //Ratings
 
     private void Awake()
@@ -57,12 +60,17 @@ public class GameManager : MonoBehaviour
             if (_tourist.isQuestionable) touristsAvailable.Add(_tourist);
         }
     }
-
-    public void LoadGame(string name)
+    public void FadeToLevel(int level)
     {
-        SceneManager.LoadScene(name);
+        levelToLoad = level;
+        animator.SetTrigger("FadeOut");
     }
 
+    public void OnFadeOutComplete()
+    {
+        SceneManager.LoadScene(levelToLoad);
+        animator.SetTrigger("FadeOut");
+    }
     public void ResetScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -121,7 +129,7 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         Save();
-        LoadGame("Menu");
+        FadeToLevel(0);
     }
 
     private class PlayerData

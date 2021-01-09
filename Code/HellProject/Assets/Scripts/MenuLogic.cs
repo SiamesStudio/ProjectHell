@@ -44,7 +44,7 @@ public class MenuLogic : MonoBehaviour
 
     public void OnPlayButton()
     {
-        GameManager.instance.LoadGame("Joselu");
+        GameManager.instance.FadeToLevel(1);
     }
 
     public void OnMenuButton()
