@@ -34,8 +34,7 @@ public class ShopAux : MonoBehaviour
         money = 20;
         playerGems = 40;
         totalTime = 120.0f;
-        UpdateText();
-        
+        UpdateText();    
     }
 
     void Update()
@@ -43,22 +42,22 @@ public class ShopAux : MonoBehaviour
         //LoseWinSelection();
     }
 
-    public void incrementPlayerCoins(int increment)
+    public void IncrementPlayerCoins(int increment)
     {
         playerCoins += increment;
         UpdateText();
     }
-    public void incrementPlayerGems(int increment)
+    public void IncrementPlayerGems(int increment)
     {
         playerGems += increment;
         UpdateText();
     }
-    public void incrementTime(float time)
+    public void IncrementTime(float time)
     {
         totalTime += time;
         UpdateText();
     }
-    public void incrementPlayerMoney(int increment)
+    public void IncrementPlayerMoney(int increment)
     {
         money += increment;
         UpdateText();

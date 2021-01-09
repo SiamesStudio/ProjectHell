@@ -82,6 +82,10 @@ public class QuestionManager : MonoBehaviour
     public void PrintQuestion()
     {
         currentQuestion = questions.Dequeue();
+        if(!currentQuestion.tourist)
+        {
+            currentQuestion = null; return;
+        }
 
         touristNameDisplay.text = currentQuestion.tourist.character.name;
         questionDisplay.text = currentQuestion.question;

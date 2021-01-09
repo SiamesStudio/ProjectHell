@@ -50,9 +50,9 @@ public class TimeButton : ButtonGeneric
     public void BuyTime(int moreTime, int money, int gems)
     {
         Debug.Log("Has comprado" + moreTime + "monedas y me ha costado: " + money + "y" + gems + "gemas");
-        ShopAux.instance.incrementTime(moreTime);
-        ShopAux.instance.incrementPlayerCoins(-gems);
-        ShopAux.instance.incrementPlayerMoney(-money);
+        ShopAux.instance.IncrementTime(moreTime);
+        ShopAux.instance.IncrementPlayerCoins(-gems);
+        ShopAux.instance.IncrementPlayerMoney(-money);
     }
 
 

@@ -53,8 +53,8 @@ public class GemasButton : ButtonGeneric
    public void BuyGems(int moreGems, int money, int coins)
     {
         Debug.Log("Has comprado" + moreGems + "monedas y me ha costado: " + money + "y" + coins+ "monedas");
-        ShopAux.instance.incrementPlayerGems(moreGems);
-        ShopAux.instance.incrementPlayerCoins(-coins);
-        ShopAux.instance.incrementPlayerMoney(-money);
+        ShopAux.instance.IncrementPlayerGems(moreGems);
+        ShopAux.instance.IncrementPlayerCoins(-coins);
+        ShopAux.instance.IncrementPlayerMoney(-money);
     }
 }

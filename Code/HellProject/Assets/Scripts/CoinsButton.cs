@@ -51,7 +51,7 @@ public class CoinsButton : ButtonGeneric
     public void BuyCoins(int moreCoins, int money)
     {
         Debug.Log("Has comprado" + moreCoins +"monedas" + "me ha costado"+ money);
-        ShopAux.instance.incrementPlayerCoins(moreCoins);
-        ShopAux.instance.incrementPlayerMoney(-money);
+        ShopAux.instance.IncrementPlayerCoins(moreCoins);
+        ShopAux.instance.IncrementPlayerMoney(-money);
     }
 }
