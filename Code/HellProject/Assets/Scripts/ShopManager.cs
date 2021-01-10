@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class ShopAux : MonoBehaviour
+public class ShopManager : MonoBehaviour
 {
     [Header("Información general")]
     public Text coinsText;
@@ -27,7 +27,7 @@ public class ShopAux : MonoBehaviour
     //public float timeLeft;
     public int money;
     public float totalTime;
-    public static ShopAux instance;
+    public static ShopManager instance;
     void Start()
     {
         instance = this;
@@ -38,11 +38,6 @@ public class ShopAux : MonoBehaviour
         playerGems = GameManager.instance.playerGems;
         totalTime = GameManager.instance.playerTimeLeft;
         UpdateText();    
-    }
-
-    void Update()
-    {
-        //LoseWinSelection();
     }
 
     public void IncrementPlayerCoins(int increment)
@@ -85,38 +80,6 @@ public class ShopAux : MonoBehaviour
         moneyText.text = money. ToString();
 
     }
-    /* GAMEMANAGER
-       #region WinnerAndLoser
-       public void Loser()
-       {
-           Debug.Log("He perdido");
-           // panel de volver a jugar
-           //Cambiar de escena automaticamente( no se si vamos a querer hacer un reset de las cosas que haya conseguido en el nivel.
-
-       }
-       public void Winner()
-       {
-           //metemos 10 segundo más
-           totalTime += 10;
-           playerCoins += 10;
-           playerGems += 1;
-           Debug.Log("He ganado el nivel");
-          //Cambiar de escena automaticamente( no se si vamos a querer hacer un reset de las cosas que haya conseguido en el nivel.
-
-       }
-       public void LoseWinSelection()
-       {
-           int demons = GameObject.FindGameObjectsWithTag("Demon").Length;
-           //metodo de comprobacioón constante
-           if ( tourists.Count > 0 && Time.time < totalTime )// && llegado a la zona de victoria??)
-           {
-               Winner();
-           }
-           else
-           { if((tourists.Count <= 0  && demons <=0)|| Time.time < totalTime)
-               Loser();
-
-           }
-       }
-       #endregion*/
+       
+      
 }

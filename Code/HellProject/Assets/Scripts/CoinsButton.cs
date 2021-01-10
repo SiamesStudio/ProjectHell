@@ -10,9 +10,9 @@ public class CoinsButton : ButtonGeneric
     {
 
         GetComponentInChildren<Canvas>().enabled = true;
-        ShopAux.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.time.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.time.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
 
         Debug.Log("He pulsado el botón");
         SetButton1();
@@ -52,7 +52,7 @@ public class CoinsButton : ButtonGeneric
     public void BuyCoins(int moreCoins, int money)
     {
         Debug.Log("Has comprado" + moreCoins +"monedas" + "me ha costado"+ money);
-        ShopAux.instance.IncrementPlayerCoins(moreCoins);
-        ShopAux.instance.IncrementPlayerMoney(-money);
+        ShopManager.instance.IncrementPlayerCoins(moreCoins);
+        ShopManager.instance.IncrementPlayerMoney(-money);
     }
 }

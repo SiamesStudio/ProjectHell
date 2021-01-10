@@ -11,9 +11,9 @@ public class AssetsButton : ButtonGeneric
     {
 
         GetComponentInChildren<Canvas>().enabled = true;
-        ShopAux.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.time.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.time.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
 
 
         Debug.Log("He pulsado el botón");
@@ -61,13 +61,13 @@ public class AssetsButton : ButtonGeneric
     {
         Debug.Log("Has comprado el monumento de indice:" + monument + "monedas" + "me ha costado" + gems);
        // ShopAux.instance.IncrementPlayerCoins(monument);
-        ShopAux.instance.IncrementPlayerGems(-gems);
+        ShopManager.instance.IncrementPlayerGems(-gems);
     }
     public void BuyTexts(int text, int money)
     {
         Debug.Log("Has comprado el texto de indice" + text + "monedas" + "me ha costado" + money);
        // ShopAux.instance.IncrementPlayerCoins(moreCoins);
-        ShopAux.instance.IncrementPlayerMoney(-money);
+        ShopManager.instance.IncrementPlayerMoney(-money);
     }
 }
 

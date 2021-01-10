@@ -7,9 +7,9 @@ public class TimeButton : ButtonGeneric
     public override void ButtonPressed()
     {
         GetComponentInChildren<Canvas>().enabled = true;
-        ShopAux.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
         SetButton1();
         SetButton2();
         SetButton3();
@@ -51,9 +51,9 @@ public class TimeButton : ButtonGeneric
     public void BuyTime(int moreTime, int money, int gems)
     {
         Debug.Log("Has comprado" + moreTime + "monedas y me ha costado: " + money + "y" + gems + "gemas");
-        ShopAux.instance.IncrementTime(moreTime);
-        ShopAux.instance.IncrementPlayerCoins(-gems);
-        ShopAux.instance.IncrementPlayerMoney(-money);
+        ShopManager.instance.IncrementTime(moreTime);
+        ShopManager.instance.IncrementPlayerCoins(-gems);
+        ShopManager.instance.IncrementPlayerMoney(-money);
     }
 
 

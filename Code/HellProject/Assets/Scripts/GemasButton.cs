@@ -10,9 +10,9 @@ public class GemasButton : ButtonGeneric
     public override void ButtonPressed()
     {
         GetComponentInChildren<Canvas>().enabled = true;
-        ShopAux.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.time.GetComponentInChildren<Canvas>().enabled = false;
-        ShopAux.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.time.GetComponentInChildren<Canvas>().enabled = false;
+        ShopManager.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
         SetButton1();
         SetButton2();
         SetButton3();
@@ -54,8 +54,8 @@ public class GemasButton : ButtonGeneric
    public void BuyGems(int moreGems, int money, int coins)
     {
         Debug.Log("Has comprado" + moreGems + "monedas y me ha costado: " + money + "y" + coins+ "monedas");
-        ShopAux.instance.IncrementPlayerGems(moreGems);
-        ShopAux.instance.IncrementPlayerCoins(-coins);
-        ShopAux.instance.IncrementPlayerMoney(-money);
+        ShopManager.instance.IncrementPlayerGems(moreGems);
+        ShopManager.instance.IncrementPlayerCoins(-coins);
+        ShopManager.instance.IncrementPlayerMoney(-money);
     }
 }

@@ -104,5 +104,20 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        
+        if (other.gameObject.TryGetComponent(out Player player))
+        {
+
+            GameManager.instance.playerCoins+= (5 * GameManager.instance.tourists.Count);
+            GameManager.instance.playerGems += (1* GameManager.instance.tourists.Count);
+            Debug.Log("He ganado el nivel");
+            //Cambiar de escena automaticamente( no se si vamos a querer hacer un reset de las cosas que haya conseguido en el nivel.
+        }
+
+    }
+
     #endregion
 }
