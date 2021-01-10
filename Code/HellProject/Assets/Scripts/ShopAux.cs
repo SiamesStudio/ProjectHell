@@ -24,7 +24,7 @@ public class ShopAux : MonoBehaviour
     public List<Mesh> newMonuments = new List<Mesh>();
     public int playerCoins;
     public int playerGems;
-    public float timeLeft;
+    //public float timeLeft;
     public int money;
     public float totalTime;
     public static ShopAux instance;
@@ -33,10 +33,10 @@ public class ShopAux : MonoBehaviour
         instance = this;
         //if (instance){ Destroy(instance); instance = this; }
         DontDestroyOnLoad(gameObject);
-        playerCoins = 30;
-        money = 20;
-        playerGems = 40;
-        totalTime = 120.0f;
+        playerCoins = GameManager.instance.playerCoins;
+        money = GameManager.instance.playerMoney;
+        playerGems = GameManager.instance.playerGems;
+        totalTime = GameManager.instance.playerTimeLeft;
         UpdateText();    
     }
 

@@ -11,13 +11,21 @@ public class GameManager : MonoBehaviour
     public List<Tourist> tourists = new List<Tourist>();
     public List<Tourist> touristsAvailable = new List<Tourist>();
     private int currentLevel;
-    [HideInInspector] public int playerCoins;
+   /* [HideInInspector] public int playerCoins;
     [HideInInspector] public int playerGems;
     [HideInInspector] public float playerTimeLeft;
-    [HideInInspector] public int playerNumTourists;
+    [HideInInspector] public int playerNumTourists;*/
 
     public static GameManager instance;
     [SerializeField] bool isDebugging;
+
+
+    [Header("Player's variable")]
+    public int playerCoins;
+    public int playerGems;
+    public float playerTimeLeft;
+    public int playerNumTourists;
+    public int playerMoney;
 
     public Animator animator;
     private int levelToLoad;
