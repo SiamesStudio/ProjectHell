@@ -13,9 +13,9 @@ public class ButtonGeneric : MonoBehaviour
     public Button buttonGeneric3;
 
     [Header("Textos")]
-    public Text button1;
-    public Text button2;
-    public Text button3;
+    public Text text1;
+    public Text text2;
+    public Text text3;
 
     [Header("Imagenes")]
     public Image imagen1;

@@ -16,9 +16,12 @@ public class ShopAux : MonoBehaviour
     public Button coins;
     public Button gems;
     public Button time;
+    public Button assets;
 
     [Header("Información del jugador")]
     public List<Tourist> tourists = new List<Tourist>();
+    public List<Text> newQuestions = new List<Text>();
+    public List<Mesh> newMonuments = new List<Mesh>();
     public int playerCoins;
     public int playerGems;
     public float timeLeft;
@@ -62,13 +65,23 @@ public class ShopAux : MonoBehaviour
         money += increment;
         UpdateText();
     }
+    public void IncrementPlayerAssetsText(int increment)
+    {
+        //no se como hacerlo le paso el id 
+         Text text = newQuestions[increment];
+    }
+    public void IncrementPlayerAssetsMonument(int increment)
+    {
+        //igual que IncrementPlayerAssetsText le paso el id
+        Mesh newM = newMonuments[increment];
+    }
     public void UpdateText()
     {
 
-        String textoTiempo = (totalTime / 60).ToString() + ":" + (totalTime % 60).ToString();
+       // String textoTiempo = (totalTime / 60).ToString() + ":" + (totalTime % 60).ToString();
         coinsText.text = playerCoins.ToString();
         gemsText.text = playerGems.ToString();
-        timeText.text = textoTiempo;
+        timeText.text = totalTime.ToString();
         moneyText.text = money. ToString();
 
     }

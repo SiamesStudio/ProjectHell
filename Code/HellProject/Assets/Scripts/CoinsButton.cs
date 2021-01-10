@@ -12,6 +12,7 @@ public class CoinsButton : ButtonGeneric
         GetComponentInChildren<Canvas>().enabled = true;
         ShopAux.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
         ShopAux.instance.time.GetComponentInChildren<Canvas>().enabled = false;
+        ShopAux.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
 
         Debug.Log("He pulsado el botón");
         SetButton1();
@@ -19,18 +20,18 @@ public class CoinsButton : ButtonGeneric
         SetButton3();
     }
     public virtual void SetButton1() {
-        button1.text = "1  euro";
+        text1.text = "1  euro";
         buttonGeneric1.image = imagen1;
 
     }
     public virtual void SetButton2() {
 
-        button2.text = "3  euros";
+        text2.text = "3  euros";
         buttonGeneric2.image = imagen2;
     }
     public virtual void SetButton3() {
 
-        button3.text = "5  euros";
+        text3.text = "5  euros";
         buttonGeneric3.image = imagen3;
     }
     public void SetValue(int i)

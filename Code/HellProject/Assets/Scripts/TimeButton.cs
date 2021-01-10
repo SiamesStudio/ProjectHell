@@ -9,27 +9,28 @@ public class TimeButton : ButtonGeneric
         GetComponentInChildren<Canvas>().enabled = true;
         ShopAux.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
         ShopAux.instance.gems.GetComponentInChildren<Canvas>().enabled = false;
+        ShopAux.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
         SetButton1();
         SetButton2();
         SetButton3();
     }
     public virtual void SetButton1()
     {
-        button1.text = "2  euro + 5 gemas";
-        button1.enabled = true;
+        text1.text = "2  euro + 5 gemas";
+        text1.enabled = true;
         imagen1.enabled = true;
 
     }
     public virtual void SetButton2()
     {
-        button2.text = "4  euros + 8 gemas";
-        button2.enabled = true;
+        text2.text = "4  euros + 8 gemas";
+        text2.enabled = true;
         imagen2.enabled = true;
     }
     public virtual void SetButton3()
     {
-        button3.text = "8  euros + 10 gemas";
-        button3.enabled = true;
+        text3.text = "8  euros + 10 gemas";
+        text3.enabled = true;
         imagen3.enabled = true;
     }
     public void SetValue(int i)

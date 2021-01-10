@@ -12,27 +12,28 @@ public class GemasButton : ButtonGeneric
         GetComponentInChildren<Canvas>().enabled = true;
         ShopAux.instance.coins.GetComponentInChildren<Canvas>().enabled = false;
         ShopAux.instance.time.GetComponentInChildren<Canvas>().enabled = false;
+        ShopAux.instance.assets.GetComponentInChildren<Canvas>().enabled = false;
         SetButton1();
         SetButton2();
         SetButton3();
     }
     public void SetButton1()
     {
-        button1.text = "1  euro + 100 monedas";
-        button1.enabled = true;
+        text1.text = "1  euro + 100 monedas";
+        text1.enabled = true;
         imagen1.enabled = true;
 
     }
     public void SetButton2()
     {
-        button2.text = "3  euros + 200 monedas";
-        button2.enabled = true;
+        text2.text = "3  euros + 200 monedas";
+        text2.enabled = true;
         imagen2.enabled = true;
     }
     public void SetButton3()
     {
-        button3.text = "5  euros + 350 monedas";
-        button3.enabled = true;
+        text3.text = "5  euros + 350 monedas";
+        text3.enabled = true;
         imagen3.enabled = true;
     }
     public void SetValue(int i)
