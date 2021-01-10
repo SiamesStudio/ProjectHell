@@ -5677,7 +5677,7 @@ MonoBehaviour:
   numAgents: 6
   anglesToDisorder: 145
   directionCheckTime: 0.5
-  positioningRadius: 3.31
+  positioningRadius: 8.01
   defaultPositions: []
 --- !u!23 &254168526
 MeshRenderer:
@@ -5735,7 +5735,7 @@ Transform:
   m_GameObject: {fileID: 254168524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 75.95, y: 4.5, z: -53.68}
-  m_LocalScale: {x: 9, y: 0.0050457157, z: 9}
+  m_LocalScale: {x: 16.8903, y: 0.009469295, z: 16.8903}
   m_Children:
   - {fileID: 443285668}
   - {fileID: 1388906449}
@@ -6854,7 +6854,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 15
-  m_Acceleration: 20
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -6893,11 +6893,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb36be6f0276a74e92d11ee73c4af96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothRotation: 1
+  smoothRotation: 0
   completeRotationTime: 0.5
   anglesToStop: 90
   myCamera: {fileID: 0}
-  particlesPrefab: {fileID: 0}
+  particlesPrefab: {fileID: 6522282896342124603, guid: 112f4dbb44c99154c9af04ec60c7d57a,
+    type: 3}
   interactDistance: 3
   interactiveLayer:
     serializedVersion: 2
@@ -27305,6 +27306,7 @@ MonoBehaviour:
   playerTimeLeft: 0
   playerNumTourists: 0
   isDebugging: 1
+  animator: {fileID: 0}
 --- !u!4 &1313367971
 Transform:
   m_ObjectHideFlags: 0

@@ -11,8 +11,8 @@ public class Player : PointMovement
     //variable para update movimiento
     //
     [SerializeField] protected Camera myCamera;
-    [SerializeField] private SmokeBomb particlesPrefab;
-    private SmokeBomb particles;
+    [SerializeField] private PointAnimation particlesPrefab;
+    private PointAnimation particles;
 
     [SerializeField] private float interactDistance;
     [SerializeField] private LayerMask interactiveLayer;
@@ -27,7 +27,8 @@ public class Player : PointMovement
     {    
         base.Awake();
         if (!myCamera) myCamera = Camera.main;
-        if(particles) particles = Instantiate(particlesPrefab);
+        particles = Instantiate(particlesPrefab);
+        particles.name = "PointAnimation";
     }
 
 

@@ -179,6 +179,8 @@ public class Tourist : MonoBehaviour
     }
     public void SetKidnapped(bool isKidnapped)
     {
+        if (isKidnapped) anim.SetTrigger("Kidnapped");
+        anim.SetBool("isWalking", !isKidnapped);
         isQuestionable = !isKidnapped;
         kidnapped = isKidnapped;
     }
