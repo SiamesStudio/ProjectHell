@@ -221,7 +221,7 @@ public class MenuLogic : MonoBehaviour
         assetsButton.GetComponentInChildren<Canvas>().enabled = true;
         text1.text = "3 euros ";
         text2.text = "5 euros";
-        text3.text = "8  euros";
+        text3.text = "Próximamente";
     }
     public void SelectAssetsBuy(int i)
     {
