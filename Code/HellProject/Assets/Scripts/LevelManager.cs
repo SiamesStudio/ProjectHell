@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour
         {
 
             GameManager.instance.playerCoins+= (5 * GameManager.instance.tourists.Count);
-            GameManager.instance.playerGems += (1* GameManager.instance.tourists.Count);
+            GameManager.instance.playerGems += ( GameManager.instance.tourists.Count);
             Debug.Log("He ganado el nivel");
             //Cambiar de escena automaticamente( no se si vamos a querer hacer un reset de las cosas que haya conseguido en el nivel.
         }

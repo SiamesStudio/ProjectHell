@@ -12,16 +12,8 @@ public class ShopManager : MonoBehaviour
     public Text timeText;
     public Text moneyText;
 
-    [Header("Botones interfaz")]
-    public Button coins;
-    public Button gems;
-    public Button time;
-    public Button assets;
-
     [Header("Información del jugador")]
     public List<Tourist> tourists = new List<Tourist>();
-    public List<Text> newQuestions = new List<Text>();
-    public List<Mesh> newMonuments = new List<Mesh>();
     public int playerCoins;
     public int playerGems;
     //public float timeLeft;
@@ -60,15 +52,13 @@ public class ShopManager : MonoBehaviour
         money += increment;
         UpdateText();
     }
-    public void IncrementPlayerAssetsText(int increment)
+    public void IncrementPlayerAssetsCharacter(int increment)
     {
         //no se como hacerlo le paso el id 
-         Text text = newQuestions[increment];
     }
     public void IncrementPlayerAssetsMonument(int increment)
     {
-        //igual que IncrementPlayerAssetsText le paso el id
-        Mesh newM = newMonuments[increment];
+        //igual que IncrementPlayerAssetsCharacter le paso el id
     }
     public void UpdateText()
     {

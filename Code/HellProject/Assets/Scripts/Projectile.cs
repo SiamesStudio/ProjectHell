@@ -19,7 +19,6 @@ public class Projectile : MonoBehaviour
  
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Other" + other.gameObject.ToString());
         if (other.gameObject.TryGetComponent(out Rock rock))
             Physics.IgnoreCollision(other.gameObject.GetComponent<Rock>().GetComponent<Collider>(), GetComponent<Collider>(), true);
         if (other.gameObject.TryGetComponent(out Tourist _tourist))
@@ -35,7 +34,6 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Other" + other.gameObject.ToString());
         if(other.gameObject.TryGetComponent(out Rock rock))
         Physics.IgnoreCollision(other.gameObject.GetComponent<Rock>().GetComponent<Collider>(), GetComponent<Collider>(), true);
         if (other.gameObject.TryGetComponent(out Tourist _tourist))

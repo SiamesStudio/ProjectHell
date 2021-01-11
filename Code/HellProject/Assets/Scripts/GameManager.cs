@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         levelToLoad = level;
         animator.SetTrigger("FadeOut");
     }
-
+    
     public void OnFadeOutComplete()
     {
         SceneManager.LoadScene(levelToLoad);
