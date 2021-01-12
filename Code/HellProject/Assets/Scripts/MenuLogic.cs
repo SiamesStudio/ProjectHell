@@ -48,22 +48,27 @@ public class MenuLogic : MonoBehaviour
     }
     public void OnEnterGameButton()
     {
-        menuUI.GetComponentInChildren<Canvas>().enabled = false;
-        creditsUI.GetComponentInChildren<Canvas>().enabled = false;
-        gameUI.GetComponentInChildren<Canvas>().enabled = true;
+        menuUI.SetActive(false);
+        creditsUI.SetActive(false);
+        storeUI.SetActive(false);
+        gameUI.SetActive(true);
 
     }
     public void OnStoreGameButton()
     {
-        storeUI.GetComponentInChildren<Canvas>().enabled = true;
-        gameUI.GetComponentInChildren<Canvas>().enabled = false;
+        menuUI.SetActive(false);
+        creditsUI.SetActive(false);
+        storeUI.SetActive(true);
+        gameUI.SetActive(false);
         OnCoinsStoreButton();
 
     }
     public void OnCreditsGameButton()
     {
-        menuUI.GetComponentInChildren<Canvas>().enabled = false;
-        creditsUI.GetComponentInChildren<Canvas>().enabled = true;
+        menuUI.SetActive(false);
+        creditsUI.SetActive(true);
+        storeUI.SetActive(false);
+        gameUI.SetActive(false);
 
     }
     public void OnLevelGameButton( int level)
@@ -85,20 +90,22 @@ public class MenuLogic : MonoBehaviour
         switch (index)
         {
             case 0:
-                menuUI.GetComponentInChildren<Canvas>().enabled = true;
-                gameUI.GetComponentInChildren<Canvas>().enabled = false;
+                menuUI.SetActive(true);
+                creditsUI.SetActive(false);
+                storeUI.SetActive(false);
+                gameUI.SetActive(false);
                 break;
             case 1:
-                menuUI.GetComponentInChildren<Canvas>().enabled = true;
-                creditsUI.GetComponentInChildren<Canvas>().enabled = false;
+                menuUI.SetActive(true);
+                creditsUI.SetActive(false);
+                storeUI.SetActive(false);
+                gameUI.SetActive(false);
                 break;
             case 2:
-                gameUI.GetComponentInChildren<Canvas>().enabled = true;
-                storeUI.GetComponentInChildren<Canvas>().enabled = false;
-                gemsButton.GetComponentInChildren<Canvas>().enabled = false;
-                coinsButton.GetComponentInChildren<Canvas>().enabled = false;
-                timeButton.GetComponentInChildren<Canvas>().enabled = false;
-                assetsButton.GetComponentInChildren<Canvas>().enabled = false;
+                menuUI.SetActive(false);
+                creditsUI.SetActive(false);
+                storeUI.SetActive(false);
+                gameUI.SetActive(true);
                 break;
         }
 
@@ -119,6 +126,7 @@ public class MenuLogic : MonoBehaviour
         coinsButton.GetComponentInChildren<Canvas>().enabled = false;
         timeButton.GetComponentInChildren<Canvas>().enabled = false;
         assetsButton.GetComponentInChildren<Canvas>().enabled = false;
+
         text1.text = "1  euro + 100 monedas";
         text2.text = "3  euros + 200 monedas";
         text3.text = "5  euros + 350 monedas";
