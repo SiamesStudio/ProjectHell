@@ -69,7 +69,7 @@ public class Tourist : MonoBehaviour
         anim.SetBool("isWalking", !GetComponent<RTSAgent>().isPositioned || isLeaving);
         //DebugInput();
         questionTimeOut -= Time.deltaTime;
-        if (questionTimeOut <= 0)
+        if (questionTimeOut <= 0 && !LevelManager.instance.isTutorial)
         {
             questionTimeOut = UnityEngine.Random.Range(character.questionCoolDown.x, character.questionCoolDown.y);
             AskQuestion();

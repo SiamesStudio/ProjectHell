@@ -72,7 +72,7 @@ public class Monument : MonoBehaviour
         else CancelInvoke();
     }
 
-    private void Spawn()
+    public Demon Spawn()
     {
         //tourists = GameObject.FindGameObjectsWithTag("Tourist").ToList();
         //numDemons = GameObject.FindGameObjectsWithTag("Demon").Length;
@@ -86,6 +86,7 @@ public class Monument : MonoBehaviour
             if (numDemons < maxDemons && GameManager.instance.touristsAvailable.Count > 0)
             {
                 int _random = UnityEngine.Random.Range(0, 2);
+                if (LevelManager.instance.isTutorial) _random = 0;
                 if (_random == 0)
                 {
                     _demon = Instantiate(demonMelee, new Vector3(point.position.x, demonMelee.transform.position.y, point.position.z), point.transform.rotation);
@@ -102,7 +103,9 @@ public class Monument : MonoBehaviour
                 _demon.SetHome(defHome);
                 _demon.myMonument = this;
                 numDemons++;
+                return _demon;
             }
         }
+        return null;
     }
 }

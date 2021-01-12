@@ -28,6 +28,9 @@ public class LevelManager : MonoBehaviour
     [HideInInspector] public Monument currentMonument;
 
     public static LevelManager instance;
+    public RTSZone touristsZone;
+    public bool isTutorial;
+    public Player player;
 
 
     #endregion
@@ -60,7 +63,8 @@ public class LevelManager : MonoBehaviour
     {
         timeLevel -= Time.deltaTime;
         timeTextleft.text = ((int)timeLevel).ToString();
-        if (timeLevel <= 0 || GameManager.instance.tourists.Count<=0) GameOver();
+        if (timeLevel <= 0 && !isTutorial) GameOver();
+        if (GameManager.instance.tourists.Count<=0) GameOver();
 
 
     }
