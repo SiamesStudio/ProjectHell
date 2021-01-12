@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("End Game")]
     public Text timeTextleft;
-    private float timeLevel;
+    [SerializeField] private float timeLevel;
     public GameObject endArea;
 
     [Header("Others")]
@@ -29,8 +29,10 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-   
+
     #endregion
+
+    public bool isFinished;
 
 
     #region methods
@@ -49,15 +51,16 @@ public class LevelManager : MonoBehaviour
         lavaSource.loop = true;
         lavaSource.Play();
         lavaSource.volume = 0.5f;
-        timeLevel = GameManager.instance.playerTimeLeft;
+        timeLevel += GameManager.instance.extraTime;
 
         musicSource.volume = 0.6f;
         InvokeRepeating("CheckIfSongEnded", 0.25f, 2);
     }
     void Update()
     {
-        timeTextleft.text = (timeLevel-(int)Time.time).ToString();
-        if ((timeLevel - (int)Time.time) <= 0 || GameManager.instance.tourists.Count<=0) Loser();
+        timeLevel -= Time.deltaTime;
+        timeTextleft.text = ((int)timeLevel).ToString();
+        if (timeLevel <= 0 || GameManager.instance.tourists.Count<=0) GameOver();
 
 
     }
@@ -93,31 +96,23 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Level Manager: Monument Updated!");
         //AQUI SE GENERA EL PODER AVANZAR
         currentMonument = monuments[monuments.IndexOf(currentMonument) + 1];
-        if (monuments.IndexOf(currentMonument) >= monuments.Count) endArea.GetComponent<Collider>().enabled = true;
+        if (monuments.IndexOf(currentMonument) >= monuments.Count)
+        {
+            isFinished = true;
+            endArea.GetComponent<Collider>().enabled = true;
+        }
+        Debug.Log("You won!");
+        currentMonument.gameObject.SetActive(true);
         //foreach Tourist  _tourist in in tourists _tourist.GenerateQuestions(); -> ahora mismo la lista de tourists es la que es
     }
-    public void Loser()
+
+    public void GameOver()
     {
-        Debug.Log("He perdido");
-        // panel de volver a jugar
-        //Cambiar de escena automaticamente( no se si vamos a querer hacer un reset de las cosas que haya conseguido en el nivel.
-
+        if (isFinished) return;
+        isFinished = true;
+        Debug.Log("GameOver");
+        //Cosas de que has perdido
+        GameManager.instance.FadeToLevel(0);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        
-        if (other.gameObject.TryGetComponent(out Player player))
-        {
-
-            GameManager.instance.playerCoins+= (5 * GameManager.instance.tourists.Count);
-            GameManager.instance.playerGems += ( GameManager.instance.tourists.Count);
-            Debug.Log("He ganado el nivel");
-            //Cambiar de escena automaticamente( no se si vamos a querer hacer un reset de las cosas que haya conseguido en el nivel.
-        }
-
-    }
-
     #endregion
 }

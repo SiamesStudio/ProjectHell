@@ -23,4 +23,10 @@ public class MonumentZone : MonoBehaviour
             myMonument.SetSpawning(false);
         }
     }
+
+    private void OnDisable()
+    {
+        LevelManager.instance.isQuestionable = false;
+        myMonument.SetSpawning(false);
+    }
 }

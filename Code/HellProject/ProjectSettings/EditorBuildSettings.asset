@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 13ca789ec71cebe4da187626989d5d6d
   - enabled: 1
-    path: Assets/Scenes/Joselu.unity
-    guid: f2ddc7f74270b9b47a3b33c917a9cb91
+    path: Assets/Scenes/Testing.unity
+    guid: d0c618b0ac6df2a45a2e56971e94fcdc
   m_configObjects: {}

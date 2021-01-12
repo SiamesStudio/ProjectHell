@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
         playerCoins = GameManager.instance.playerCoins;
         money = GameManager.instance.playerMoney;
         playerGems = GameManager.instance.playerGems;
-        totalTime = GameManager.instance.playerTimeLeft;
+        totalTime = GameManager.instance.extraTime;
         UpdateText();    
     }
 

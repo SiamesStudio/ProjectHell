@@ -23,6 +23,12 @@ public class Monument : MonoBehaviour
     [SerializeField] private DemonRanged demonRanged;
     [HideInInspector] public int numDemons;
 
+    private void Update()
+    {
+        //Debug
+        if (Input.GetKeyDown(KeyCode.M)) { if (AddAnswer()) LevelManager.instance.UpdateMonument(); }
+    }
+
 
     /// <summary>
     /// Adds a new answer. Returns true if completed
@@ -46,6 +52,14 @@ public class Monument : MonoBehaviour
             catch (System.Exception e) { }
         }
         //PARTICLES AND SHIT!
+
+        if(answersDone >= totalAnswers)
+        {
+            foreach(MonumentZone _zone in monumentZones)
+            {
+                _zone.gameObject.SetActive(false);
+            }
+        }
         return answersDone >= totalAnswers;
     }
 
@@ -65,7 +79,8 @@ public class Monument : MonoBehaviour
 
         Demon _demon = null;
         Transform defHome=null;
-        foreach (Transform point in spawnPoint)
+        Transform point = spawnPoint[Random.Range(0, spawnPoint.Count)];
+        //foreach (Transform point in spawnPoint)
         {
 
             if (numDemons < maxDemons && GameManager.instance.touristsAvailable.Count > 0)

@@ -43,7 +43,7 @@ public class MenuLogic : MonoBehaviour
     {
         playerCoins = GameManager.instance.playerCoins;
         playerGems = GameManager.instance.playerGems;
-        totalTime = GameManager.instance.playerTimeLeft;
+        totalTime = GameManager.instance.extraTime;
         PlayerDataOut();
     }
     public void OnEnterGameButton()

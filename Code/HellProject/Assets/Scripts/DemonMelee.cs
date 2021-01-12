@@ -25,11 +25,11 @@ public class DemonMelee : Demon
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        //InvokeRepeating("LookingForTourist", 1f, 1f); 
     }
 
     public void LateUpdate()
-    {
-
+    {       
         if (attackTourist)
         {
             if (Vector3.Distance(transform.position, home.position) <= 5) AtHome();
@@ -42,6 +42,8 @@ public class DemonMelee : Demon
             animator.SetBool("default", true);
             Destroy(gameObject);
         }
+
+        //LookingForTourist();
 
     }
 

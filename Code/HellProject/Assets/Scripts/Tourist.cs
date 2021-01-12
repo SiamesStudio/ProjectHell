@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using System.IO;
 using System.Linq;
 
@@ -42,6 +43,9 @@ public class Tourist : MonoBehaviour
     private AudioSource audioSource;
 
     #endregion
+
+    public Canvas myCanvas;
+    public Image fillImage;
 
 
     #region methods
@@ -123,10 +127,12 @@ public class Tourist : MonoBehaviour
 
     public void Leave()
     {
+        if (!TryGetComponent(out RTSAgent _rtsAgent)) return;
         GetComponent<RTSAgent>().enabled = false;
         GetComponent<NavMeshAgent>().SetDestination(LevelManager.instance.startPoint.position);
         isLeaving = true;
         isQuestionable = false;
+        myCanvas.gameObject.SetActive(false);
     }
 
     public void Die()

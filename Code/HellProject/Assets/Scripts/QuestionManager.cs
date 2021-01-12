@@ -53,12 +53,13 @@ public class QuestionManager : MonoBehaviour
         questionCountDown -= Time.deltaTime;
         if (debugOptions) DebugOptions();
 
-        if (LevelManager.instance.isQuestionVisible && currentQuestion != null)
+        if (LevelManager.instance.isQuestionVisible && currentQuestion != null && !LevelManager.instance.isFinished)
         {
             showButton.gameObject.SetActive(true); //MakeVisible();
         }
         else
         {
+            //if(currentQuestion != null) currentQuestion.tourist.fillImage.gameObject.SetActive(false);
             showButton.gameObject.SetActive(false);
             touristNameDisplay.gameObject.SetActive(false);
             MakeInvisible();
@@ -74,9 +75,14 @@ public class QuestionManager : MonoBehaviour
         if (!currentQuestion.tourist.isQuestionable) return;
             
         currentQuestion.coolDown -= Time.deltaTime;
+        currentQuestion.tourist.fillImage.fillAmount = currentQuestion.coolDown / currentQuestion.tourist.character.waitTime;
+        currentQuestion.tourist.myCanvas.gameObject.SetActive(currentQuestion.coolDown > 0);
         if(debugOptions && !freezeCoolDown) currentQuestion.coolDown -= Time.deltaTime;
         timeSlider.value = currentQuestion.coolDown;
-        if (currentQuestion.coolDown < 0) ReceiveAnswer(-1);
+        if (currentQuestion.coolDown < 0)
+        {
+            ReceiveAnswer(-1);
+        }
 
     }
 
@@ -91,6 +97,7 @@ public class QuestionManager : MonoBehaviour
             currentQuestion = null; return;
         }
 
+        currentQuestion.tourist.fillImage.fillAmount = 1;
         touristNameDisplay.text = currentQuestion.tourist.character.name;
         questionDisplay.text = currentQuestion.question;
         timeSlider.maxValue = currentQuestion.coolDown;
@@ -148,7 +155,8 @@ public class QuestionManager : MonoBehaviour
     public void ReceiveAnswer(int _answer)
     {
         if (currentQuestion == null) return;
-        if(_answer == -1) //Not answered
+        currentQuestion.tourist.myCanvas.gameObject.SetActive(false);
+        if (_answer == -1) //Not answered
         {
             currentQuestion.Answer(-1);
         }

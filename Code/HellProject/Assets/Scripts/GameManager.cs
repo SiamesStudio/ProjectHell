@@ -23,12 +23,13 @@ public class GameManager : MonoBehaviour
     [Header("Player's variable")]
     public int playerCoins;
     public int playerGems;
-    public float playerTimeLeft;
+    public float extraTime;
     public int playerNumTourists;
     public int playerMoney;
 
     public Animator animator;
     private int levelToLoad;
+    [SerializeField] GameObject dirtyBackground;
     //Ratings
 
     private void Awake()
@@ -68,21 +69,33 @@ public class GameManager : MonoBehaviour
             if (_tourist.isQuestionable) touristsAvailable.Add(_tourist);
         }
     }
-    public void FadeToLevel(int level)
+    public void FadeToLevel(int _lvlIndx)
     {
-        levelToLoad = level;
-        animator.SetTrigger("FadeOut");
+        //levelToLoad = level;
+        animator.SetTrigger("Fade");
+        StartCoroutine(LoadLevelIn(_lvlIndx, 1f));
+    }
+
+    private IEnumerator LoadLevelIn(int _lvlIdx, float _time)
+    {
+        while(_time > 0)
+        {
+            _time -= Time.deltaTime;
+            yield return null;
+        }
+        if (_lvlIdx != 0) dirtyBackground.SetActive(true);
+        SceneManager.LoadScene(_lvlIdx, 0);
     }
     
     public void OnFadeOutComplete()
     {
-        SceneManager.LoadScene(levelToLoad);
-        animator.SetTrigger("FadeOut");
+       // SceneManager.LoadScene(levelToLoad);
+       // animator.SetTrigger("FadeOut");
     }
     public void ResetScene()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(currentScene.buildIndex);
     }
 
     public void Save()
@@ -91,7 +104,7 @@ public class GameManager : MonoBehaviour
         {
             coins = playerCoins,
             gems = playerGems,
-            timeLeft = playerTimeLeft,
+            timeLeft = extraTime,
             numTourists = touristsAvailable.Count
         };
         string saveJSON = JsonUtility.ToJson(playerData);
@@ -125,7 +138,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(playerData.ToString());
             playerCoins = playerData.coins;
             playerGems = playerData.gems;
-            playerTimeLeft = playerData.timeLeft;
+            extraTime = playerData.timeLeft;
             playerNumTourists = playerData.numTourists;
         }
         else
