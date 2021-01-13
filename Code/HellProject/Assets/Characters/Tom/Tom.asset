@@ -15,9 +15,12 @@ MonoBehaviour:
   name: Tom
   waitTime: 10
   monRelatedPerc: 80
+  questionCoolDown: {x: 10, y: 40}
   genericQuestions: {fileID: 4900000, guid: d194b5fcdc111fc47a27b9f7cf0a6bb9, type: 3}
   monumentQuestionsList:
-  - {fileID: 4900000, guid: 514148373ce1e1f409ed08158ad3d4d6, type: 3}
-  - {fileID: 4900000, guid: 9674413eb94f75c4bb0b7284d1ece1d7, type: 3}
+  - {fileID: 4900000, guid: 337da67fad00c4546a0d7113d605aab9, type: 3}
+  - {fileID: 4900000, guid: 6f066e3051fc25648800043476225173, type: 3}
+  - {fileID: 4900000, guid: d3d0db0a5e936ff428b8c8372df07989, type: 3}
+  - {fileID: 4900000, guid: 4351b0802a188e841b81536a45dfe307, type: 3}
   hair: 9
   material: {fileID: 2100000, guid: d449b396ac85fc748ac316fb5dea8a1d, type: 2}

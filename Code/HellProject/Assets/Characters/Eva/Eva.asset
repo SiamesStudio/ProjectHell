@@ -15,9 +15,12 @@ MonoBehaviour:
   name: Eva
   waitTime: 10
   monRelatedPerc: 80
+  questionCoolDown: {x: 10, y: 40}
   genericQuestions: {fileID: 4900000, guid: daf0a2c61baca2e4d987e43070214631, type: 3}
   monumentQuestionsList:
-  - {fileID: 4900000, guid: 982d72e6652e8664b8e0abf60982ef22, type: 3}
-  - {fileID: 4900000, guid: cae27f64eb38a5c4c834c77a76ff46b7, type: 3}
+  - {fileID: 4900000, guid: 337da67fad00c4546a0d7113d605aab9, type: 3}
+  - {fileID: 4900000, guid: 6f066e3051fc25648800043476225173, type: 3}
+  - {fileID: 4900000, guid: d3d0db0a5e936ff428b8c8372df07989, type: 3}
+  - {fileID: 4900000, guid: 4351b0802a188e841b81536a45dfe307, type: 3}
   hair: 6
   material: {fileID: 2100000, guid: fba40c5ea4117af409cb783d7fba74fa, type: 2}

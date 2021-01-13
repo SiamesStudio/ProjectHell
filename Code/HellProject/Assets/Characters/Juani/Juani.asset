@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18710f23c61fc704580f6bea528f9de6, type: 3}
-  m_Name: Marina
+  m_Name: Juani
   m_EditorClassIdentifier: 
-  name: Marina
+  name: Juani
   waitTime: 10
   monRelatedPerc: 80
-  genericQuestions: {fileID: 4900000, guid: 29956aaf00441eb41a20872912de5978, type: 3}
+  questionCoolDown: {x: 10, y: 40}
+  genericQuestions: {fileID: 4900000, guid: b88c75eafa0bb454d8cd8d07269062b0, type: 3}
   monumentQuestionsList:
-  - {fileID: 4900000, guid: 5ab1e73d7aa31d241adca95db8081480, type: 3}
-  - {fileID: 4900000, guid: b33d081b06a2f9d4fa2ca01bb9d8a072, type: 3}
-  hair: 5
+  - {fileID: 4900000, guid: 337da67fad00c4546a0d7113d605aab9, type: 3}
+  - {fileID: 4900000, guid: 6f066e3051fc25648800043476225173, type: 3}
+  - {fileID: 4900000, guid: d3d0db0a5e936ff428b8c8372df07989, type: 3}
+  - {fileID: 4900000, guid: 4351b0802a188e841b81536a45dfe307, type: 3}
+  hair: 8
   material: {fileID: 2100000, guid: 9a4444ecbb151be488d9856987e583fe, type: 2}

@@ -15,9 +15,11 @@ MonoBehaviour:
   name: Daniel
   waitTime: 10
   monRelatedPerc: 80
+  questionCoolDown: {x: 10, y: 40}
   genericQuestions: {fileID: 4900000, guid: 5d4cca622faa78f41bd19c4357f2fb7d, type: 3}
   monumentQuestionsList:
-  - {fileID: 4900000, guid: 3e9bb980bf4821d4491341324eeb04c1, type: 3}
-  - {fileID: 4900000, guid: 9f54ebbb263223d4db29819592656607, type: 3}
+  - {fileID: 4900000, guid: 337da67fad00c4546a0d7113d605aab9, type: 3}
+  - {fileID: 4900000, guid: 6f066e3051fc25648800043476225173, type: 3}
+  - {fileID: 4900000, guid: d3d0db0a5e936ff428b8c8372df07989, type: 3}
   hair: 3
   material: {fileID: 2100000, guid: 50afb61e293c910449aa77c20bbdf077, type: 2}
