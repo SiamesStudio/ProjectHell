@@ -34,9 +34,11 @@ public class MenuLogic : MonoBehaviour
     public Text coinsText;
     public Text gemsText;
     public Text timeText;
+    public Text touristText;
     private int playerCoins;
     private int playerGems;
     private float totalTime;
+    private int playerTourist;
 
     #region Methods
     void Start()
@@ -44,6 +46,7 @@ public class MenuLogic : MonoBehaviour
         playerCoins = GameManager.instance.playerCoins;
         playerGems = GameManager.instance.playerGems;
         totalTime = GameManager.instance.extraTime;
+        playerTourist = GameManager.instance.tourists.Count;
         PlayerDataOut();
     }
     public void OnEnterGameButton()
@@ -116,6 +119,7 @@ public class MenuLogic : MonoBehaviour
         coinsText.text = playerCoins.ToString();
         gemsText.text = playerGems.ToString();
         timeText.text = totalTime.ToString();
+        touristText.text = playerTourist.ToString();
 
     }
 
