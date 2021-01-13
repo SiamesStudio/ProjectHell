@@ -76,6 +76,7 @@ public class MenuLogic : MonoBehaviour
     }
     public void OnLevelGameButton( int level)
     {
+        GameManager.instance.FadeToLevel(level); return;
         switch (level)
         {
             case 0:
@@ -84,6 +85,7 @@ public class MenuLogic : MonoBehaviour
                 break;
             case 1:
                 //cambio a pantalla de juego nivel 2;
+                GameManager.instance.FadeToLevel(2);
                 break;
         }
 

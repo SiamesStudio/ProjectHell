@@ -10,6 +10,7 @@ public class Player : PointMovement
     //tart is called before the first frame update
     //variable para update movimiento
     //
+    [SerializeField] Animator anim;
     [SerializeField] protected Camera myCamera;
     [SerializeField] private PointAnimation particlesPrefab;
     private PointAnimation particles;
@@ -35,6 +36,7 @@ public class Player : PointMovement
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("isWalking", Vector3.Distance(myAgent.destination, transform.position) > 0.1); ;
         if (Input.GetMouseButtonDown(0))
         {
             if (CheckUI()) return;
@@ -48,6 +50,7 @@ public class Player : PointMovement
             if(Vector3.Distance(interactive.transform.position, transform.position) <= interactDistance)
             {
                 interactive.Interact();
+                anim.SetTrigger("Attack");
             }
         }
            
