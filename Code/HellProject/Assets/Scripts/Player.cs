@@ -23,10 +23,11 @@ public class Player : PointMovement
     [SerializeField] private GraphicRaycaster[] m_Raycaster;
     [SerializeField] private EventSystem[] m_EventSystem;
     private PointerEventData m_PointerEventData;
-
+    [SerializeField] GameObject fire;
     private new void Awake()
     {    
         base.Awake();
+        fire.SetActive(false);
         if (!myCamera) myCamera = Camera.main;
         particles = Instantiate(particlesPrefab);
         particles.name = "PointAnimation";
@@ -50,10 +51,17 @@ public class Player : PointMovement
             if(Vector3.Distance(interactive.transform.position, transform.position) <= interactDistance)
             {
                 interactive.Interact();
+                StartCoroutine(AttackCoroutine());
                 anim.SetTrigger("Attack");
             }
-        }
-           
+        }       
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        fire.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        fire.SetActive(false);
     }
 
     private bool CheckUI()

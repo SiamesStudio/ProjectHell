@@ -98,6 +98,7 @@ public class RTSZone : MonoBehaviour
     public void ChangeState()
     {
         following = !following;
+        GetComponent<AudioSource>().Play();
         if (following) SetPositions(false);
     }
 
