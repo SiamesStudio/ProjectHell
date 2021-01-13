@@ -54,19 +54,11 @@ MonoBehaviour:
   musicList:
   - {fileID: 8300000, guid: d366dae34a7bb2a48afe03e92edfbd98, type: 3}
   - {fileID: 8300000, guid: 3cfff57f37ad81d44890d33f3ac631d3, type: 3}
-  - {fileID: 8300000, guid: 946cfd8ea8b3e78468389e2059178ff7, type: 3}
-  - {fileID: 8300000, guid: d096916a501f0a949abc09ae1027f8e7, type: 3}
-  - {fileID: 8300000, guid: 923dcaf3ac882494fa98c52b101f2ecb, type: 3}
   - {fileID: 8300000, guid: 8452f3aff3b62e744b8fbb3ad77579a9, type: 3}
   - {fileID: 8300000, guid: 9a6d4b5f23bc0ba40b3b694b20be4bb3, type: 3}
-  - {fileID: 8300000, guid: 07b3cd2e186dacd45a1fd0c0e649cba5, type: 3}
-  - {fileID: 8300000, guid: 556bc61301538054eab93e8f28d42547, type: 3}
   - {fileID: 8300000, guid: d550c039e634ad04eb99cb6bf911985c, type: 3}
-  - {fileID: 8300000, guid: 3d39b8b78b3e9b549863a13aabf11037, type: 3}
   - {fileID: 8300000, guid: b4046190cd5319c4b9014acfdc7338ee, type: 3}
-  - {fileID: 8300000, guid: 9f1c036cf83a04942ba622befcaaa967, type: 3}
   - {fileID: 8300000, guid: 03c3ab209bcbe6e47a48fe0d7790ad9e, type: 3}
-  - {fileID: 8300000, guid: 7ebe06531d89459429f5eaf3983bf10f, type: 3}
   timeTextleft: {fileID: 688531567609061628}
   timeLevel: 5
   endArea: {fileID: 2293194600486124964}

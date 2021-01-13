@@ -20,13 +20,14 @@ public class PointDemon : MonoBehaviour
             SwitchState(value);
         }
     }
-
+    [SerializeField]private List<GameObject> meshes;
+    [SerializeField]private List<Material> materials;
 
     [SerializeField] GameObject targetPrefab;
     private static readonly int material_IsSelected = Shader.PropertyToID("_IsSelected");
 
     Renderer[] renderers;
-    [SerializeField] GameObject body;
+    //[SerializeField] GameObject body;
 
     void Start()
     {
@@ -34,21 +35,31 @@ public class PointDemon : MonoBehaviour
         targetPrefab.SetActive(false);
 
         //renderers = GetComponentsInChildren<Renderer>();
-        //for (int i = 0; i < renderers.Length; i++)
-        //{
-        //   //renderers[i].material = new Material()
-        //
-        //}
+        for (int i = 0; i < meshes.Count; i++)
+        {
+            if(meshes[i] != null && meshes[i].activeSelf)
+           materials.Add(meshes[i].GetComponent<Renderer>().material);
+        
+        }
     }
 
     
     void SwitchState(bool selected)
     {
-        if (isSelected)
-        {
+        int selectedValue = 0;
+        if (selected) selectedValue = 1;
+        
             targetPrefab.SetActive(selected);
-            body.GetComponent<SkinnedMeshRenderer>().material.SetInt(material_IsSelected,  1);
-        }
+
+            for (int i = 0; i < materials.Count; i++)
+            {
+               // materials.GetComponent<SkinnedMeshRenderer>().material.SetInt(material_IsSelected,  1);
+                materials[i].SetInt(material_IsSelected, selectedValue);
+
+                //materials.Add(meshes[i].GetComponent<Renderer>().material);
+
+            }
+        
         
     }
 
