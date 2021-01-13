@@ -650,7 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tourists: []
   touristsAvailable: []
-  isDebugging: 1
+  isDebugging: 0
   playerCoins: 30
   playerGems: 30
   extraTime: 0
