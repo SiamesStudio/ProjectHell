@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Monument : MonoBehaviour
 {
-    public enum MonumentType { PutoJudas, PacoPorros};
+    public enum MonumentType { AngelCaido, PuertaDelInfierno, ElJardinDeLasDelicias, ElPoderBrutal};
 
     public MonumentType id;
     private int answersDone;
@@ -22,6 +22,8 @@ public class Monument : MonoBehaviour
     [SerializeField] private DemonMelee demonMelee;
     [SerializeField] private DemonRanged demonRanged;
     [HideInInspector] public int numDemons;
+
+    public GameObject fence;
 
     private void Update()
     {
