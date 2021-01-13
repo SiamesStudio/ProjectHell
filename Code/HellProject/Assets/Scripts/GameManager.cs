@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
+        LevelManager.instance.enabled = true;
         if(isDebugging)
         {
             if(Input.GetKeyDown(KeyCode.D))
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
     private void UpdateTourists()
     {
         touristsAvailable.Clear();
+        if (tourists == null) return;
         foreach(Tourist _tourist in tourists)
         {
             if (_tourist.isQuestionable) touristsAvailable.Add(_tourist);

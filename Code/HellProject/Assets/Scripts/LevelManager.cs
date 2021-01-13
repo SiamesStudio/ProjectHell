@@ -45,8 +45,9 @@ public class LevelManager : MonoBehaviour
         if (instance) Destroy(instance);
         instance = this;
         currentMonument = monuments[0];
-
-    }
+         GameManager.instance.tourists = new List<Tourist>();
+         GameManager.instance.touristsAvailable = new List<Tourist>();
+}
 
     private void Start()
     {
@@ -99,15 +100,24 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Level Manager: Monument Updated!");
         //AQUI SE GENERA EL PODER AVANZAR
-        currentMonument = monuments[monuments.IndexOf(currentMonument) + 1];
-        if (monuments.IndexOf(currentMonument) >= monuments.Count)
+        currentMonument.fence.SetActive(false);
+        try
+        {
+            currentMonument = monuments[monuments.IndexOf(currentMonument) + 1];
+        }
+        catch(System.Exception e)
         {
             isFinished = true;
             endArea.GetComponent<Collider>().enabled = true;
+            return;
         }
-        Debug.Log("You won!");
+        //if (monuments.IndexOf(currentMonument) >= monuments.Count)
+        //{
+        //
+        //}
         currentMonument.gameObject.SetActive(true);
-        //foreach Tourist  _tourist in in tourists _tourist.GenerateQuestions(); -> ahora mismo la lista de tourists es la que es
+        
+        foreach (Tourist  _tourist in GameManager.instance.tourists) _tourist.GenerateQuestions();
     }
 
     public void GameOver()
