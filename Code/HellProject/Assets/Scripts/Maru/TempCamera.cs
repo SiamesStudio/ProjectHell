@@ -24,8 +24,8 @@ public class TempCamera : MonoBehaviour
 
 
 
-       //transform.RotateAround(target.position + new Vector3(0,8,0), transform.right, -Input.GetAxis("Mouse Y") * speed);
-       //transform.RotateAround(target.position + new Vector3(0, 3, 0), transform.up, -Input.GetAxis("Mouse X") * speed);
+       transform.RotateAround(target.position + new Vector3(0,8,0), transform.right, -Input.GetAxis("Mouse Y") * speed);
+       transform.RotateAround(target.position + new Vector3(0, 3, 0), transform.up, -Input.GetAxis("Mouse X") * speed);
         transform.LookAt(target, Vector3.up);
 
 
