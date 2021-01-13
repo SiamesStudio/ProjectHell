@@ -21786,6 +21786,7 @@ MonoBehaviour:
   touristsZone: {fileID: 0}
   isTutorial: 0
   player: {fileID: 0}
+  gameOverAnim: {fileID: 0}
   isFinished: 0
 --- !u!4 &1044573593
 Transform:

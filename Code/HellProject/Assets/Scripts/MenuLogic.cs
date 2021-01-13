@@ -14,6 +14,7 @@ public class MenuLogic : MonoBehaviour
     public Button level2Button;
     public Button storeButton;
     public Button musicButton;
+    public Slider VolumeSlider;
 
     [Header ("Botones de la tienda")]
     public Button coinsButton;
@@ -138,9 +139,9 @@ public class MenuLogic : MonoBehaviour
 
     }
     #region music
-    public void VolumenC()
+  public void auxVolumen()
     {
-
+        GameManager.instance.AdjustVolume(VolumeSlider.value);
     }
     #endregion
     #region Gems

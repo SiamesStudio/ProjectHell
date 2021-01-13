@@ -11,10 +11,10 @@ public class GameManager : MonoBehaviour
     public List<Tourist> tourists = new List<Tourist>();
     public List<Tourist> touristsAvailable = new List<Tourist>();
     private int currentLevel;
-   /* [HideInInspector] public int playerCoins;
-    [HideInInspector] public int playerGems;
-    [HideInInspector] public float playerTimeLeft;
-    [HideInInspector] public int playerNumTourists;*/
+    /* [HideInInspector] public int playerCoins;
+     [HideInInspector] public int playerGems;
+     [HideInInspector] public float playerTimeLeft;
+     [HideInInspector] public int playerNumTourists;*/
 
     public static GameManager instance;
     [SerializeField] bool isDebugging;
@@ -171,8 +171,8 @@ public class GameManager : MonoBehaviour
             return "Coins:  " + coins + "\nGems: " + gems + "\ntimeLeft: " + timeLeft + "\nnumTourists: " + numTourists;
         }
     }
-    public void AdjustVolume(float newVolume)
+    public void AdjustVolume(float volumen)
     {
-        AudioListener.volume = newVolume;
+        AudioListener.volume = volumen;
     }
 }
