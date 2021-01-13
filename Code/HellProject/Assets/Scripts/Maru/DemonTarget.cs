@@ -9,6 +9,9 @@ public class DemonTarget : MonoBehaviour
     private float _size;
     private float _resizeFactor;
 
+
+    [SerializeField]private List<GameObject> mesh0;
+
     private void Start()
     {
         OnEnable();

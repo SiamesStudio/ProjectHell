@@ -77,6 +77,7 @@ public class Player : PointMovement
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit _hit))
         {
+            if(interactive != null)interactive.GetComponent<PointDemon>().IsSelected = false;
             if (particles) particles.transform.position = _hit.point;
             if (particles) particles.Play();
             Move(_hit.point);
@@ -89,7 +90,9 @@ public class Player : PointMovement
 
         if (Physics.Raycast(ray, out RaycastHit rayHit, Mathf.Infinity, interactiveLayer))
         {
+            if(interactive != null)interactive.GetComponent<PointDemon>().IsSelected = false;
             interactive = rayHit.collider.gameObject.GetComponent<Interactive>();
+            interactive.GetComponent<PointDemon>().IsSelected = true;
         }
         else interactive = null;
     }
