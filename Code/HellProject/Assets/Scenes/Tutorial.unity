@@ -60375,7 +60375,7 @@ PrefabInstance:
     - target: {fileID: 2293194599804428948, guid: 33b3a241d4edcc44f832b43d0d03e26d,
         type: 3}
       propertyPath: timeLevel
-      value: 500
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2293194599804428948, guid: 33b3a241d4edcc44f832b43d0d03e26d,
         type: 3}

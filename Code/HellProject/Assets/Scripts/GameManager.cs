@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        LevelManager.instance.enabled = true;
+        if(LevelManager.instance) LevelManager.instance.enabled = true;
         if(isDebugging)
         {
             if(Input.GetKeyDown(KeyCode.D))

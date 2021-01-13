@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
     public bool isTutorial;
     public Player player;
 
+    public Animator gameOverAnim;
+
 
     #endregion
 
@@ -123,9 +125,17 @@ public class LevelManager : MonoBehaviour
     public void GameOver()
     {
         if (isFinished) return;
+        GameManager.instance.Save();
+        gameOverAnim.SetTrigger("GameOver");
         isFinished = true;
+        StartCoroutine(FadeToLevelIn(2f));
         Debug.Log("GameOver");
         //Cosas de que has perdido
+    }
+
+    private IEnumerator FadeToLevelIn(float _time)
+    {
+        yield return new WaitForSeconds(_time);
         GameManager.instance.FadeToLevel(0);
     }
     #endregion
