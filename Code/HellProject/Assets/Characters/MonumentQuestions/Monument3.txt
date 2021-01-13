@@ -1,0 +1,27 @@
+﻿¿Está representada la lujuria?
+Sí
+No
+
+¿En qué museo se encuentra?
+Museo del Prado
+Museo del Louvre
+
+¿Cuánto mide de ancho?
+139cm
+223cm
+
+¿Está considerado Patrimonio Nacional?
+Sí
+No
+
+¿Con qué técnica se pintó?
+Óleo sobre madera
+Óleo sobre lienzo
+
+¿Está Caín dentro de la obra?
+No
+Sí
+
+¿Qué monarca lo adquirió?
+Felipe II
+Carlos I
