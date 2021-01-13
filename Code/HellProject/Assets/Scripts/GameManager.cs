@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour
     public int playerMoney;
 
     public Animator animator;
-    private int levelToLoad;
     [SerializeField] GameObject dirtyBackground;
+    public int iterations;
     //Ratings
 
     private void Awake()
     {
+        if (instance){ Destroy(gameObject); return; }
         instance = this;
-        //if (instance){ Destroy(instance); instance = this; }
         DontDestroyOnLoad(gameObject);
     }
 
@@ -71,7 +71,9 @@ public class GameManager : MonoBehaviour
     }
     public void FadeToLevel(int _lvlIndx)
     {
+        iterations++;
         //levelToLoad = level;
+        //animator.gameObject.SetActive(true);
         animator.SetTrigger("Fade");
         StartCoroutine(LoadLevelIn(_lvlIndx, 1f));
     }

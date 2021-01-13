@@ -7,10 +7,12 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] PathCreator pathCreator;
     [SerializeField] float speed;
+    [SerializeField] float sensitivity;
     float distanceTravelled;
     private bool moving = false;
     private int currentSegment = 0;
     private Vector3 goalPoint;
+    private Vector3 lastGoalPoint;
     [SerializeField] Transform target;
     private float pathLength;
     // Start is called before the first frame update
@@ -28,8 +30,11 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.LookAt(target);
         //goalPoint = pathCreator.bezierPath.GetPointsInSegment(currentSegment)[0];
+        lastGoalPoint = goalPoint;
         goalPoint = pathCreator.path.GetClosestPointOnPath(target.position);
+        if (Vector3.Distance(goalPoint, lastGoalPoint) < sensitivity) goalPoint = lastGoalPoint;
         FollowPlayer(goalPoint,2f);
     }
 
