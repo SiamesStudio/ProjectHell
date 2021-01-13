@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool isDebugging;
 
 
+
     [Header("Player's variable")]
     public int playerCoins;
     public int playerGems;
@@ -169,5 +170,9 @@ public class GameManager : MonoBehaviour
         {
             return "Coins:  " + coins + "\nGems: " + gems + "\ntimeLeft: " + timeLeft + "\nnumTourists: " + numTourists;
         }
+    }
+    public void AdjustVolume(float newVolume)
+    {
+        AudioListener.volume = newVolume;
     }
 }

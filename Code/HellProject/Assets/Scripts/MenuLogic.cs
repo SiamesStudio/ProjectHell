@@ -13,7 +13,8 @@ public class MenuLogic : MonoBehaviour
     public Button level1Button;
     public Button level2Button;
     public Button storeButton;
-    
+    public Button musicButton;
+
     [Header ("Botones de la tienda")]
     public Button coinsButton;
     public Button gemsButton;
@@ -29,6 +30,8 @@ public class MenuLogic : MonoBehaviour
     public GameObject gameUI;
     public GameObject creditsUI;
     public GameObject storeUI;
+    public GameObject musicUI;
+
 
     [Header("Información del jugador")]
     public Text coinsText;
@@ -64,6 +67,15 @@ public class MenuLogic : MonoBehaviour
         storeUI.SetActive(true);
         gameUI.SetActive(false);
         OnCoinsStoreButton();
+
+    }
+    public void OnMusicGameButton()
+    {
+        menuUI.SetActive(false);
+        creditsUI.SetActive(false);
+        storeUI.SetActive(false);
+        gameUI.SetActive(false);
+        musicUI.SetActive(true);
 
     }
     public void OnCreditsGameButton()
@@ -110,6 +122,7 @@ public class MenuLogic : MonoBehaviour
                 menuUI.SetActive(false);
                 creditsUI.SetActive(false);
                 storeUI.SetActive(false);
+                musicUI.SetActive(false);
                 gameUI.SetActive(true);
                 break;
         }
@@ -124,7 +137,12 @@ public class MenuLogic : MonoBehaviour
         touristText.text = playerTourist.ToString();
 
     }
+    #region music
+    public void VolumenC()
+    {
 
+    }
+    #endregion
     #region Gems
     public void OnGemsStoreButton()
     {

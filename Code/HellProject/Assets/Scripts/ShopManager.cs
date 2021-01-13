@@ -10,7 +10,6 @@ public class ShopManager : MonoBehaviour
     public Text coinsText;
     public Text gemsText;
     public Text timeText;
-    public Text moneyText;
 
     [Header("Información del jugador")]
     public List<Tourist> tourists = new List<Tourist>();
@@ -26,7 +25,6 @@ public class ShopManager : MonoBehaviour
         //if (instance){ Destroy(instance); instance = this; }
         DontDestroyOnLoad(gameObject);
         playerCoins = GameManager.instance.playerCoins;
-        money = GameManager.instance.playerMoney;
         playerGems = GameManager.instance.playerGems;
         totalTime = GameManager.instance.extraTime;
         UpdateText();    
@@ -67,7 +65,6 @@ public class ShopManager : MonoBehaviour
         coinsText.text = playerCoins.ToString();
         gemsText.text = playerGems.ToString();
         timeText.text = totalTime.ToString();
-        moneyText.text = money. ToString();
 
     }
        

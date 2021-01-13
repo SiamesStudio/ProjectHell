@@ -25,6 +25,11 @@ public class Monument : MonoBehaviour
 
     public GameObject fence;
 
+    void Start()
+    {
+        GetComponent<Renderer>().material.SetInt("_TotalQuestions", totalAnswers);
+        GetComponent<Renderer>().material.SetInt("_CompletedQuestions", answersDone);
+    }
     private void Update()
     {
         //Debug
@@ -40,6 +45,7 @@ public class Monument : MonoBehaviour
     {
         Debug.Log("Monument: Adding Answer");
         answersDone++;
+        GetComponent<Renderer>().material.SetInt("_CompletedQuestions", answersDone);
         if (monumentsUnlockAt.Length > 0)
         {
             try
@@ -49,6 +55,7 @@ public class Monument : MonoBehaviour
                     monumentZones[currentZoneId].gameObject.SetActive(false);
                     currentZoneId++;
                     monumentZones[currentZoneId].gameObject.SetActive(true);
+
                 }
             }
             catch (System.Exception e) { }

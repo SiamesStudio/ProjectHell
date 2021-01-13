@@ -128,6 +128,7 @@ MonoBehaviour:
   demonRanged: {fileID: 4950615421160476634, guid: d71956397ec3ed543a73e9a45b661607,
     type: 3}
   numDemons: 0
+  fence: {fileID: 0}
 --- !u!1 &2823984855590872746
 GameObject:
   m_ObjectHideFlags: 0
