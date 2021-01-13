@@ -52,6 +52,8 @@ public class Tourist : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.name = "Joselu";
+        Debug.Log(GameManager.instance);
         GameManager.instance.tourists.Add(this);
         character = TouristManager.instance.GenerateCharacter();
         name = character.name;

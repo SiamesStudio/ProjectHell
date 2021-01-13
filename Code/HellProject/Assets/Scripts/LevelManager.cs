@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour
         timeLevel -= Time.deltaTime;
         timeTextleft.text = ((int)timeLevel).ToString();
         if (timeLevel <= 0 && !isTutorial) GameOver();
-        if (GameManager.instance.tourists.Count<=0) GameOver();
+        if (GameManager.instance.tourists.Count<=0 && !isTutorial) GameOver();
 
 
     }
