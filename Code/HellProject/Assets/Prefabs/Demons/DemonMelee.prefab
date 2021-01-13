@@ -476,8 +476,7 @@ MonoBehaviour:
   - {fileID: 8948351348742288406}
   - {fileID: 5129358749566622376}
   materials: []
-  targetPrefab: {fileID: 1945896383021320780, guid: a701cf1f7c1120c4eb4046d27c3496e6,
-    type: 3}
+  targetPrefab: {fileID: 8240023792079052899}
 --- !u!95 &4626646430964646844
 Animator:
   serializedVersion: 3
@@ -636,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5865160037698224213
 Transform:
   m_ObjectHideFlags: 0

@@ -64,7 +64,8 @@ public class Monument : MonoBehaviour
 
         if(answersDone >= totalAnswers)
         {
-            foreach(MonumentZone _zone in monumentZones)
+            GetComponent<Renderer>().material.SetInt("_CompletedQuestions", answersDone + 5);
+            foreach (MonumentZone _zone in monumentZones)
             {
                 _zone.gameObject.SetActive(false);
             }
