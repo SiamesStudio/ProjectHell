@@ -76,7 +76,7 @@ public class MenuLogic : MonoBehaviour
         creditsUI.SetActive(false);
         storeUI.SetActive(false);
         gameUI.SetActive(false);
-        musicUI.SetActive(true);
+        //musicUI.SetActive(true);
 
     }
     public void OnCreditsGameButton()
@@ -123,7 +123,7 @@ public class MenuLogic : MonoBehaviour
                 menuUI.SetActive(false);
                 creditsUI.SetActive(false);
                 storeUI.SetActive(false);
-                musicUI.SetActive(false);
+                //musicUI.SetActive(false);
                 gameUI.SetActive(true);
                 break;
         }
