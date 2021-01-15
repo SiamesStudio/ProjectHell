@@ -1,27 +1,21 @@
-﻿¿Cuántos paneles lo componen?
+¿Cuántos paneles lo componen?
 3
 4
-
 ¿En qué museo se encuentra?
 Museo del Prado
 Museo del Louvre
-
 ¿Cuánto mide de ancho?
 389cm
 412cm
-
 ¿Quién es el autor?
 El Bosco
 Velazquez
-
 ¿Con qué técnica se pintó?
 Pintura al óleo
 Pintura al fresco
-
 ¿Qué representa el panel izquierdo?
 El jardin del Edén
 El jardín de las delicias
-
 ¿Qué representa el panel derecho?
 El infierno
 El jardín de las delicias

@@ -164,7 +164,7 @@ MonoBehaviour:
   following: 1
   agentPrefab: {fileID: 9214588583078909179, guid: 3f0ee47d5ad892e40ac8118c9c7cfd88,
     type: 3}
-  numAgents: 6
+  numAgents: 5
   anglesToDisorder: 145
   directionCheckTime: 0.5
   positioningRadius: 8.01

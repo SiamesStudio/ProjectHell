@@ -8735,7 +8735,6 @@ GameObject:
   - component: {fileID: 1842001402}
   - component: {fileID: 1842001401}
   - component: {fileID: 1842001400}
-  - component: {fileID: 1842001399}
   m_Layer: 5
   m_Name: ASSETS
   m_TagString: Untagged
@@ -8764,18 +8763,6 @@ RectTransform:
   m_AnchoredPosition: {x: -301, y: -93}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1842001399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842001397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889f781f1ee3d7644ac6861087160aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1842001400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8964,6 +8951,7 @@ MonoBehaviour:
   level1Button: {fileID: 165439081}
   level2Button: {fileID: 1145880210}
   storeButton: {fileID: 130259725}
+  musicButton: {fileID: 0}
   coinsButton: {fileID: 1038257277}
   gemsButton: {fileID: 46334889}
   timeButton: {fileID: 321643765}
@@ -8975,6 +8963,7 @@ MonoBehaviour:
   gameUI: {fileID: 1825743740}
   creditsUI: {fileID: 83891201}
   storeUI: {fileID: 1945526439}
+  musicUI: {fileID: 0}
   coinsText: {fileID: 318134191}
   gemsText: {fileID: 290843144}
   timeText: {fileID: 1222600677}
@@ -8990,7 +8979,6 @@ GameObject:
   - component: {fileID: 1857121226}
   - component: {fileID: 1857121229}
   - component: {fileID: 1857121228}
-  - component: {fileID: 1857121227}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -9017,18 +9005,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1857121227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857121225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889f781f1ee3d7644ac6861087160aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1857121228
 MonoBehaviour:
   m_ObjectHideFlags: 0
